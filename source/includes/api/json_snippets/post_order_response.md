@@ -11,6 +11,7 @@
       "updated-at": "2016-07-07T20:53:02.578Z",
       "state": "received",
       "shipping-method": "SAMPLE",
+      "shipping-account-number": "1234",
       "vendor-po": "1467924781"
     },
     "relationships": {

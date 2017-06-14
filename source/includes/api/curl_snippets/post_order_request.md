@@ -8,7 +8,8 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
     "type": "orders",
     "attributes": {
       "vendor-po": "1467988109",
-      "shipping-method": "SAMPLE"
+      "shipping-method": "SAMPLE",
+      "shipping-account-number": "1234"
     }
   },
   "included": [
@@ -91,4 +92,3 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
   ]
 }'
 ```
-
