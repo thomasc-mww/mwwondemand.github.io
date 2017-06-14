@@ -324,7 +324,8 @@ Content-Type: application/json; charset=utf-8
     <span class="s2">"type"</span>: <span class="s2">"orders"</span>,
     <span class="s2">"attributes"</span>: <span class="o">{</span>
       <span class="s2">"vendor-po"</span>: <span class="s2">"1467988109"</span>,
-      <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>
+      <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>,
+      <span class="s2">"shipping-account-number"</span>: <span class="s2">"1234"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"included"</span>: <span class="o">[</span>
@@ -424,6 +425,7 @@ Content-Type: application/json; charset=utf-8
       </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T20:53:02.578Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipping-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMPLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipping-account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1467924781"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -515,6 +517,10 @@ Content-Type: application/json; charset=utf-8
 <tr>
 <td>shipping-method <br><em>string</em></td>
 <td>The shipping carrier and method for the order. For example, use USPSF for USPS First Class. See shipping methods.</td>
+</tr>
+<tr>
+<td>shipping-account-number <br><em>string</em></td>
+<td>The shipping account number associated with the shipping carrier and order.</td>
 </tr>
 <tr>
 <td>included <br><em>array[objects]</em></td>
@@ -677,6 +683,7 @@ Content-Type: application/json; charset=utf-8
         </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-25T17:30:17.855Z"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipping-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMPLE"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipping-account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1467924781"</span><span class="w">
       </span><span class="p">},</span><span class="w">
            </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -798,6 +805,7 @@ Remember — a successful request will be an authenticated request!
       </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-13T19:06:51.563Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipping-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMPLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipping-account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1468436810"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

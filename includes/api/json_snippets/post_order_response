@@ -10,6 +10,7 @@
       </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T20:53:02.578Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"shipping-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMPLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipping-account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1467924781"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

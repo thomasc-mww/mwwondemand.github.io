@@ -7,7 +7,8 @@
     <span class="s2">"type"</span>: <span class="s2">"orders"</span>,
     <span class="s2">"attributes"</span>: <span class="o">{</span>
       <span class="s2">"vendor-po"</span>: <span class="s2">"1467988109"</span>,
-      <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>
+      <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>,
+      <span class="s2">"shipping-account-number"</span>: <span class="s2">"1234"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"included"</span>: <span class="o">[</span>
