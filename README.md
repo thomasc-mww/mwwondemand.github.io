@@ -56,8 +56,9 @@ At present, the sections are:
 
 How to make changes:
 
-* Make changes on your fork.
-* Create a Pull Request to have your changes merged upstream.
+* Make changes on your fork and commit.
+* Run `./build.sh`.
+* Create a Pull Request on to **upstream** `master` from your **origin** `master`.
 
 <!--
 a comment
