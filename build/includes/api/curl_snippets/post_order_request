@@ -1,0 +1,93 @@
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"http://api.mwwondemand.com/api/orders"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -d <span class="nv">$'</span><span class="o">{</span>
+ <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"type"</span>: <span class="s2">"orders"</span>,
+    <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"vendor-po"</span>: <span class="s2">"1467988109"</span>,
+      <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>,
+      <span class="s2">"shipping-account-number"</span>: <span class="s2">"1234"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"included"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"shipping-address"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"name"</span>: <span class="s2">"Phillip J. Fry"</span>,
+      <span class="s2">"address"</span>: <span class="s2">"123 Green St.</span><span class="se">\n</span><span class="s2">Suite 321"</span>,
+        <span class="s2">"city"</span>: <span class="s2">"New New York"</span>,
+        <span class="s2">"state"</span>: <span class="s2">"NY"</span>,
+        <span class="s2">"postal-code"</span>: <span class="s2">"10012"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"billing-address"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"name"</span>: <span class="s2">"Hubert Farnsworth"</span>,
+      <span class="s2">"address"</span>: <span class="s2">"123 Green St.</span><span class="se">\n</span><span class="s2">Suite 321"</span>,
+        <span class="s2">"city"</span>: <span class="s2">"New New York"</span>,
+        <span class="s2">"state"</span>: <span class="s2">"NY"</span>,
+        <span class="s2">"postal-code"</span>: <span class="s2">"10012"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"return-address"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"name"</span>: <span class="s2">"Bender B. Rodriguez"</span>,
+      <span class="s2">"address"</span>: <span class="s2">"123 Green St.</span><span class="se">\n</span><span class="s2">Suite 321"</span>,
+        <span class="s2">"city"</span>: <span class="s2">"New New York"</span>,
+        <span class="s2">"state"</span>: <span class="s2">"NY"</span>,
+        <span class="s2">"postal-code"</span>: <span class="s2">"10012"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"line-items"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"line-number"</span>: 1,
+        <span class="s2">"quantity"</span>: 2,
+        <span class="s2">"description"</span>: <span class="s2">"It</span><span class="se">\'</span><span class="s2">s not sò fluffy!"</span>,
+        <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-ZOH99"</span>,
+        <span class="s2">"item-properties"</span>: <span class="o">{</span>
+          <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
+        <span class="o">}</span>,
+        <span class="s2">"designs"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"image-remote-url"</span>: <span class="s2">"http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"line-items"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"line-number"</span>: 2,
+        <span class="s2">"quantity"</span>: 5,
+        <span class="s2">"description"</span>: <span class="s2">"Velour Vest"</span>,
+        <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-XOH99"</span>,
+        <span class="s2">"item-properties"</span>: <span class="o">{</span>
+          <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
+        <span class="o">}</span>,
+        <span class="s2">"designs"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"image-remote-url"</span>: <span class="s2">"http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"packing-list"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+        <span class="s2">"url"</span>: <span class="s2">"http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf"</span>
+       <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+      <span class="s2">"type"</span>: <span class="s2">"shipping-label"</span>,
+      <span class="s2">"attributes"</span>: <span class="o">{</span>
+       <span class="s2">"url"</span>: <span class="s2">"https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png"</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span><span class="s1">'
+</span></code></pre>

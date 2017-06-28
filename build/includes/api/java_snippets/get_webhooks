@@ -1,0 +1,33 @@
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span>
+<span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">sendRequest</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">sendRequest</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="c1">// Get Webhooks (GET )</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+
+      <span class="c1">// Create request</span>
+      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"http://localhost:3000/api/webhooks"</span><span class="o">)</span>
+
+      <span class="c1">// Add headers</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
+
+      <span class="c1">// Fetch request and return content</span>
+      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+
+      <span class="c1">// Print content</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>

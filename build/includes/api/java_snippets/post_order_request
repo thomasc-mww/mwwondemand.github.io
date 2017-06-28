@@ -1,0 +1,37 @@
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.http.entity.ContentType</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span>
+<span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">sendRequest</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">sendRequest</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="c1">// Create Order (POST )</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+
+      <span class="c1">// Create request</span>
+      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Post</span><span class="o">(</span><span class="s">"http://localhost:3000/api/orders"</span><span class="o">)</span>
+
+      <span class="c1">// Add headers</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=S@mpl3!"</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
+
+      <span class="c1">// Add body</span>
+      <span class="o">.</span><span class="na">bodyString</span><span class="o">(</span><span class="s">"{ \n \\ndata\\n: {\n    \\ntype\\n: \\norders\\n,\n    \\nattributes\\n: {\n      \\nvendor-po\\n: \\n1480697772\\n,\n      \\nshipping-method\\n: \\nSAMPLE\\n,\n      \\nshipping-account-number\\n: \\n1234\\n\n    }\n  },\n  \\nincluded\\n: [\n    {\n      \\ntype\\n: \\nshipping-address\\n,\n      \\nattributes\\n: {\n   \\nname\\n: \\nPhillip J. Fry\\n,\n         \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n       \\nstate\\n: \\nNY\\n,\n        \\npostal-code\\n: \\n10012\\n\n      }\n    },\n    {\n      \\ntype\\n: \\nbilling-address\\n,\n      \\nattributes\\n: {\n   \\nname\\n: \\nHubert Farnsworth\\n,\n      \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n       \\nstate\\n: \\nNY\\n,\n        \\npostal-code\\n: \\n10012\\n\n      }\n    },\n    {\n      \\ntype\\n: \\nreturn-address\\n,\n      \\nattributes\\n: {\n    \\nname\\n: \\nBender B. Rodriguez\\n,\n        \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n       \\nstate\\n: \\nNY\\n,\n        \\npostal-code\\n: \\n10012\\n\n      }\n    },\n    {\n      \\ntype\\n: \\nline-items\\n,\n      \\nattributes\\n: {\n        \\nline-number\\n: 1,\n        \\nquantity\\n: 2,\n        \\ndescription\\n: \\nIt's not sò fluffy!\\n,\n        \\nproduct-code\\n: \\n3PF-PSY-SQPGZ2C\\n,\n        \\nitem-properties\\n: {\n          \\nthread-color\\n: \\nwhite\\n,\n          \\nblah\\n: \\nblah-2\\n\n        },\n        \\ndesigns\\n: [\n          {\n            \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg\\n,\n            \\nposition\\n: \\ncentered\\n,\n            \\ncrop\\n: \\nleft\\n\n          }\n        ]\n      }\n    },\n    {\n      \\ntype\\n: \\nline-items\\n,\n      \\nattributes\\n: {\n        \\nline-number\\n: 2,\n        \\nquantity\\n: 5,\n        \\ndescription\\n: \\nIt's sò fluffy!\\n,\n        \\nproduct-code\\n: \\n3PF-PJT-SLPG4CW\\n,\n        \\nitem-properties\\n: {\n          \\nthread-color\\n: \\nwhite\\n,\n          \\nblah\\n: \\nblah-2\\n\n        },\n        \\ndesigns\\n: [\n          {\n            \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg\\n\n          }\n        ]\n      }\n    },\n    {    \n      \\ntype\\n: \\npacking-list\\n,\n       \\nattributes\\n: {\n   \\nurl\\n: \\nhttp://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf\\n\n       }\n      },\n      { \n         \\ntype\\n: \\nshipping-label\\n,\n      \\nattributes\\n: {\n      \\nurl\\n: \\nhttps://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png\\n\n    }\n   \n      }\n  ]\n}"</span><span class="o">,</span> <span class="n">ContentType</span><span class="o">.</span><span class="na">DEFAULT_TEXT</span><span class="o">)</span>
+
+      <span class="c1">// Fetch request and return content</span>
+      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+
+      <span class="c1">// Print content</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>

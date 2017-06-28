@@ -1,0 +1,133 @@
+<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource
+</span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'http://localhost:3000/api/orders'</span><span class="p">);</span>
+
+<span class="c1">// Set method
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
+  <span class="s2">"Authorization: auth-key=S@mpl3!"</span><span class="p">,</span>
+  <span class="s2">"Accept: application/vnd.api+json; version=1"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body
+</span><span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{
+ \"data\": {
+    \"type\": \"orders\",
+    \"attributes\": {
+      \"vendor-po\": \"1480697743\",
+      \"shipping-method\": \"SAMPLE\",
+      \"shipping-account-number\": \"1234\"
+    }
+  },
+  \"included\": [
+    {
+      \"type\": \"shipping-address\",
+      \"attributes\": {
+    \"name\": \"Phillip J. Fry\",
+        \"address\": \"123 Green St.\\nSuite 321\",
+        \"city\": \"New New York\",
+        \"state\": \"NY\",
+        \"postal-code\": \"10012\"
+      }
+    },
+    {
+      \"type\": \"billing-address\",
+      \"attributes\": {
+    \"name\": \"Hubert Farnsworth\",
+        \"address\": \"123 Green St.\\nSuite 321\",
+        \"city\": \"New New York\",
+        \"state\": \"NY\",
+        \"postal-code\": \"10012\"
+      }
+    },
+    {
+      \"type\": \"return-address\",
+      \"attributes\": {
+    \"name\": \"Bender B. Rodriguez\",
+        \"address\": \"123 Green St.\\nSuite 321\",
+        \"city\": \"New New York\",
+        \"state\": \"NY\",
+        \"postal-code\": \"10012\"
+      }
+    },
+    {
+      \"type\": \"line-items\",
+      \"attributes\": {
+        \"line-number\": 1,
+        \"quantity\": 2,
+        \"description\": \"It'</span><span class="nx">s</span> <span class="k">not</span> <span class="nx">s</span><span class="err">ò</span> <span class="nx">fluffy</span><span class="o">!</span><span class="nx">\</span><span class="s2">",
+        </span><span class="se">\"</span><span class="s2">product-code</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">3PF-PSY-SQPGZ2C</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">item-properties</span><span class="se">\"</span><span class="s2">: {
+          </span><span class="se">\"</span><span class="s2">thread-color</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">white</span><span class="se">\"</span><span class="s2">,
+          </span><span class="se">\"</span><span class="s2">blah</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">blah-2</span><span class="se">\"</span><span class="s2">
+        },
+        </span><span class="se">\"</span><span class="s2">designs</span><span class="se">\"</span><span class="s2">: [
+          {
+            </span><span class="se">\"</span><span class="s2">image_remote_url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg</span><span class="se">\"</span><span class="s2">,
+            </span><span class="se">\"</span><span class="s2">position</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">centered</span><span class="se">\"</span><span class="s2">,
+            </span><span class="se">\"</span><span class="s2">crop</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">left</span><span class="se">\"</span><span class="s2">
+          }
+        ]
+      }
+    },
+    {
+      </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">line-items</span><span class="se">\"</span><span class="s2">,
+      </span><span class="se">\"</span><span class="s2">attributes</span><span class="se">\"</span><span class="s2">: {
+        </span><span class="se">\"</span><span class="s2">line-number</span><span class="se">\"</span><span class="s2">: 2,
+        </span><span class="se">\"</span><span class="s2">quantity</span><span class="se">\"</span><span class="s2">: 5,
+        </span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">It's sò fluffy!</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">product-code</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">3PF-PJT-SLPG4CW</span><span class="se">\"</span><span class="s2">,
+        </span><span class="se">\"</span><span class="s2">item-properties</span><span class="se">\"</span><span class="s2">: {
+          </span><span class="se">\"</span><span class="s2">thread-color</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">white</span><span class="se">\"</span><span class="s2">,
+          </span><span class="se">\"</span><span class="s2">blah</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">blah-2</span><span class="se">\"</span><span class="s2">
+        },
+        </span><span class="se">\"</span><span class="s2">designs</span><span class="se">\"</span><span class="s2">: [
+          {
+            </span><span class="se">\"</span><span class="s2">image_remote_url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg</span><span class="se">\"</span><span class="s2">
+          }
+        ]
+      }
+    },
+    {
+      </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">packing-list</span><span class="se">\"</span><span class="s2">,
+       </span><span class="se">\"</span><span class="s2">attributes</span><span class="se">\"</span><span class="s2">: {
+    </span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf</span><span class="se">\"</span><span class="s2">
+       }
+      },
+      {
+         </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">shipping-label</span><span class="se">\"</span><span class="s2">,
+      </span><span class="se">\"</span><span class="s2">attributes</span><span class="se">\"</span><span class="s2">: {
+         </span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png</span><span class="se">\"</span><span class="s2">
+      }
+
+      }
+  ]
+}';
+
+// Set body
+curl_setopt(</span><span class="nv">$ch</span><span class="s2">, CURLOPT_POST, 1);
+curl_setopt(</span><span class="nv">$ch</span><span class="s2">, CURLOPT_POSTFIELDS, </span><span class="nv">$body</span><span class="s2">);
+
+// Send the request &amp; save response to </span><span class="nv">$resp</span><span class="s2">
+</span><span class="nv">$resp</span><span class="s2"> = curl_exec(</span><span class="nv">$ch</span><span class="s2">);
+
+if(!</span><span class="nv">$resp</span><span class="s2">) {
+  die('Error: "</span><span class="s1">' . curl_error($ch) . '</span><span class="s2">" - Code: ' . curl_errno(</span><span class="nv">$ch</span><span class="s2">));
+} else {
+  echo "</span><span class="nx">Response</span> <span class="nx">HTTP</span> <span class="nx">Status</span> <span class="nx">Code</span> <span class="o">:</span> <span class="s2">" . curl_getinfo(</span><span class="nv">$ch</span><span class="s2">, CURLINFO_HTTP_CODE);
+  echo "</span><span class="nx">\nResponse</span> <span class="nx">HTTP</span> <span class="nx">Body</span> <span class="o">:</span> <span class="s2">" . </span><span class="nv">$resp</span><span class="s2">;
+}
+
+// Close request to clear up some resources
+curl_close(</span><span class="nv">$ch</span><span class="s2">);
+</span></code></pre>

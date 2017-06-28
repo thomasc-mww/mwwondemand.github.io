@@ -1,0 +1,119 @@
+<pre class="highlight python"><code><span class="c"># Install the Python Requests library:</span>
+<span class="c"># `pip install requests`</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
+    <span class="c"># Create Order</span>
+    <span class="c"># POST http://localhost:3000/api/orders</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/orders"</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
+                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=S@mpl3!"</span><span class="p">,</span>
+                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="s">"{</span><span class="err">
+</span><span class="s"> </span><span class="se">\"</span><span class="s">data</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">orders</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">vendor-po</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">1480697715</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">shipping-method</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">SAMPLE</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">shipping-account-number</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">1234</span><span class="se">\"</span><span class="err">
+</span><span class="s">    }</span><span class="err">
+</span><span class="s">  },</span><span class="err">
+</span><span class="s">  </span><span class="se">\"</span><span class="s">included</span><span class="se">\"</span><span class="s">: [</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">shipping-address</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">Phillip J. Fry</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">address</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">city</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">New New York</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">state</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">NY</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">postal-code</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">10012</span><span class="se">\"</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">    },</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">billing-address</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">Hubert Farnsworth</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">address</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">city</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">New New York</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">state</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">NY</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">postal-code</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">10012</span><span class="se">\"</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">    },</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">return-address</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">name</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">Bender B. Rodriguez</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">address</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">city</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">New New York</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">state</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">NY</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">postal-code</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">10012</span><span class="se">\"</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">    },</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">line-items</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">line-number</span><span class="se">\"</span><span class="s">: 1,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">quantity</span><span class="se">\"</span><span class="s">: 2,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">It's not sò fluffy!</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">product-code</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">3PF-PSY-SQPGZ2C</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">item-properties</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">          </span><span class="se">\"</span><span class="s">thread-color</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">white</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">          </span><span class="se">\"</span><span class="s">blah</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">blah-2</span><span class="se">\"</span><span class="err">
+</span><span class="s">        },</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">designs</span><span class="se">\"</span><span class="s">: [</span><span class="err">
+</span><span class="s">          {</span><span class="err">
+</span><span class="s">            </span><span class="se">\"</span><span class="s">image_remote_url</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">            </span><span class="se">\"</span><span class="s">position</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">centered</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">            </span><span class="se">\"</span><span class="s">crop</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">left</span><span class="se">\"</span><span class="err">
+</span><span class="s">          }</span><span class="err">
+</span><span class="s">        ]</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">    },</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">line-items</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">line-number</span><span class="se">\"</span><span class="s">: 2,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">quantity</span><span class="se">\"</span><span class="s">: 5,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">description</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">It's sò fluffy!</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">product-code</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">3PF-PJT-SLPG4CW</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">item-properties</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">          </span><span class="se">\"</span><span class="s">thread-color</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">white</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">          </span><span class="se">\"</span><span class="s">blah</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">blah-2</span><span class="se">\"</span><span class="err">
+</span><span class="s">        },</span><span class="err">
+</span><span class="s">        </span><span class="se">\"</span><span class="s">designs</span><span class="se">\"</span><span class="s">: [</span><span class="err">
+</span><span class="s">          {</span><span class="err">
+</span><span class="s">            </span><span class="se">\"</span><span class="s">image_remote_url</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg</span><span class="se">\"</span><span class="err">
+</span><span class="s">          }</span><span class="err">
+</span><span class="s">        ]</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">    },</span><span class="err">
+</span><span class="s">    {</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">packing-list</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">       </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">    </span><span class="se">\"</span><span class="s">url</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf</span><span class="se">\"</span><span class="err">
+</span><span class="s">       }</span><span class="err">
+</span><span class="s">      },</span><span class="err">
+</span><span class="s">      {</span><span class="err">
+</span><span class="s">         </span><span class="se">\"</span><span class="s">type</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">shipping-label</span><span class="se">\"</span><span class="s">,</span><span class="err">
+</span><span class="s">      </span><span class="se">\"</span><span class="s">attributes</span><span class="se">\"</span><span class="s">: {</span><span class="err">
+</span><span class="s">         </span><span class="se">\"</span><span class="s">url</span><span class="se">\"</span><span class="s">: </span><span class="se">\"</span><span class="s">https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png</span><span class="se">\"</span><span class="err">
+</span><span class="s">      }</span><span class="err">
+
+</span><span class="s">      }</span><span class="err">
+</span><span class="s">  ]</span><span class="err">
+</span><span class="s">}"</span>
+        <span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Status Code: {status_code}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Response Body: {content}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'HTTP Request failed'</span><span class="p">)</span>
+</code></pre>
