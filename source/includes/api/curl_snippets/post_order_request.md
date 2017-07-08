@@ -50,6 +50,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
         "quantity": 2,
         "description": "It\'s not sò fluffy!",
         "product-code": "PRT-GEN-ZOH99",
+        "customer-product-code": "YOUR_UPC/SKU_NUMBER",
         "item-properties": {
           "thread-color": "white"
         },
@@ -67,6 +68,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
         "quantity": 5,
         "description": "Velour Vest",
         "product-code": "PRT-GEN-XOH99",
+        "customer-product-code": "YOUR_UPC/SKU_NUMBER",
         "item-properties": {
           "thread-color": "white"
         },
