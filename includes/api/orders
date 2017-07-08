@@ -53,6 +53,7 @@
         <span class="s2">"quantity"</span>: 2,
         <span class="s2">"description"</span>: <span class="s2">"It</span><span class="se">\'</span><span class="s2">s not sò fluffy!"</span>,
         <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-ZOH99"</span>,
+        <span class="s2">"customer-product-code"</span>: <span class="s2">"YOUR_UPC/SKU_NUMBER"</span>,
         <span class="s2">"item-properties"</span>: <span class="o">{</span>
           <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
         <span class="o">}</span>,
@@ -70,6 +71,7 @@
         <span class="s2">"quantity"</span>: 5,
         <span class="s2">"description"</span>: <span class="s2">"Velour Vest"</span>,
         <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-XOH99"</span>,
+        <span class="s2">"customer-product-code"</span>: <span class="s2">"YOUR_UPC/SKU_NUMBER"</span>,
         <span class="s2">"item-properties"</span>: <span class="o">{</span>
           <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
         <span class="o">}</span>,
@@ -241,11 +243,15 @@
 </tr>
 <tr>
 <td>description <br><em>string</em></td>
-<td>You description of the item. If omitted the default product description will be used.</td>
+<td>Your description of the item. If omitted the default product description will be used.</td>
 </tr>
 <tr>
 <td>product-code <br><em>string</em></td>
-<td>The product code of the item to order.</td>
+<td>The MWW product code of the item to order.</td>
+</tr>
+<tr>
+<td>customer-product-code <br><em>string (optional)</em></td>
+<td>Your custom SKU or UPC number.</td>
 </tr>
 <tr>
 <td>item-properties <br><em>object (optional)</em></td>

@@ -13,7 +13,7 @@
 <p>This endpoint includes line item details for all items in an order, status info,
 and for items that are shipped - tracking numbers are available.</p>
 
-<p>A LineItem resource has a <code class="prettyprint">tracking-numbers</code> attribute which is an array of
+<p>A LineItem resource has an <code class="prettyprint">tracking-numbers</code> attribute which is an array of
 numbers for tracking the shipment(s).</p>
 
 <pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/orders/647372458376520634/line-items"</span> <span class="se">\</span>

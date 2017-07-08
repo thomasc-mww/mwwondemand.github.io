@@ -1,5 +1,0 @@
-<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/orders/001122334455667788"</span> <span class="se">\</span>
-  -H <span class="s2">"Accept: application/vnd.api+json;version=1"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
-</code></pre>
