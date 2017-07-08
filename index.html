@@ -274,7 +274,7 @@ curl -X GET https://api.mwwondemand.com/api/endpoint <span class="se">\</span>
 <p>Be sure to replace <code class="prettyprint">YOUR_API_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>If you need an API key please contact your MWW representative.</p>
+<p>If you need and API key please contact your MWW representative.</p>
 
 <h2 id="regenerate-your-api-key">Regenerate Your API Key</h2>
 
@@ -366,6 +366,7 @@ Content-Type: application/json; charset=utf-8
         <span class="s2">"quantity"</span>: 2,
         <span class="s2">"description"</span>: <span class="s2">"It</span><span class="se">\'</span><span class="s2">s not sò fluffy!"</span>,
         <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-ZOH99"</span>,
+        <span class="s2">"customer-product-code"</span>: <span class="s2">"YOUR_UPC/SKU_NUMBER"</span>,
         <span class="s2">"item-properties"</span>: <span class="o">{</span>
           <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
         <span class="o">}</span>,
@@ -383,6 +384,7 @@ Content-Type: application/json; charset=utf-8
         <span class="s2">"quantity"</span>: 5,
         <span class="s2">"description"</span>: <span class="s2">"Velour Vest"</span>,
         <span class="s2">"product-code"</span>: <span class="s2">"PRT-GEN-XOH99"</span>,
+        <span class="s2">"customer-product-code"</span>: <span class="s2">"YOUR_UPC/SKU_NUMBER"</span>,
         <span class="s2">"item-properties"</span>: <span class="o">{</span>
           <span class="s2">"thread-color"</span>: <span class="s2">"white"</span>
         <span class="o">}</span>,
@@ -554,11 +556,15 @@ Content-Type: application/json; charset=utf-8
 </tr>
 <tr>
 <td>description <br><em>string</em></td>
-<td>You description of the item. If omitted the default product description will be used.</td>
+<td>Your description of the item. If omitted the default product description will be used.</td>
 </tr>
 <tr>
 <td>product-code <br><em>string</em></td>
-<td>The product code of the item to order.</td>
+<td>The MWW product code of the item to order.</td>
+</tr>
+<tr>
+<td>customer-product-code <br><em>string (optional)</em></td>
+<td>Your custom SKU or UPC number.</td>
 </tr>
 <tr>
 <td>item-properties <br><em>object (optional)</em></td>
@@ -909,7 +915,7 @@ Remember — a successful request will be an authenticated request!
 <p>This endpoint includes line item details for all items in an order, status info,
 and for items that are shipped - tracking numbers are available.</p>
 
-<p>A LineItem resource has a <code class="prettyprint">tracking-numbers</code> attribute which is an array of
+<p>A LineItem resource has an <code class="prettyprint">tracking-numbers</code> attribute which is an array of
 numbers for tracking the shipment(s).</p>
 
 <pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/orders/647372458376520634/line-items"</span> <span class="se">\</span>
@@ -1149,9 +1155,11 @@ for items that are shipped - tracking numbers are available. See the
 
 <h1 id="web-hooks">Web Hooks</h1>
 
-<blockquote>
-<p>Received Notification</p>
-</blockquote>
+<p>Example POST payload (JSON) for the (order) <code class="prettyprint">received</code> event:</p>
+
+<aside class="danger">
+  This is an experimental feature and subject to change. For production applications we highly recommend querying for status via the order end point.
+</aside>
 
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1161,8 +1169,7 @@ for items that are shipped - tracking numbers are available. See the
       </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Received"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You have a webhook notice"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-06T16:41:36.895Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking-numbers"</span><span class="p">:[]</span><span class="w">
+      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-06T16:41:36.895Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"mwwondemand-order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1233,90 +1240,6 @@ for items that are shipped - tracking numbers are available. See the
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<blockquote>
-<p>Shipped Notification</p>
-</blockquote>
-
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323962228147713"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mwwondemand-order-notifications"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your order/item was shipped."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A portion or all of your order has shipped. (Some orders may have multiple shipments.)"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-06T16:41:36.895Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking-numbers"</span><span class="p">:[</span><span class="s2">"1Z9999999999999999"</span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"mwwondemand-order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323961548670462"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mwwondemand-orders"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"mwwondemand-order-items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323961934546431"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mwwondemand-order-items"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"mwwondemand-orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323961548670462"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mwwondemand-orders"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323961548670462"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"mwwondemand-order-items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"501323961934546431"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mwwondemand-order-items"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"product-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"254"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"line-number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"received"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"not-valid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"printed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"pressed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"cut"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sewn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"turned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"packed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"callback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/mwwondemand-orders"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mwwondemand-api"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"webhook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/webhooks/501323961246680573"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"mwwondemand-api"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"jsonapi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <p>Based on your opt-in preferences for various events, the API will POST back
 to the your Web Hook URL. The web hook url and settings are available in your
 profile, see the <a href="https://api.mwwondemand.com/account/">https://api.mwwondemand.com/account/</a> page.</p>
@@ -1345,7 +1268,8 @@ edit your Web Hooks (opt-in) preferences.</p>
 </tr>
 </tbody></table>
 
-<p>To the right are examples of the JSON payload for both received and shipped POST notifications.</p>
+<p>To the right is an example JSON payload for a POST notification sent after an
+order is received.</p>
 
           <h1 id="errors">Errors</h1>
 

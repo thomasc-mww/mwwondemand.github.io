@@ -138,7 +138,7 @@ curl -X GET https://api.mwwondemand.com/api/endpoint <span class="se">\</span>
 <p>Be sure to replace <code class="prettyprint">YOUR_API_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>If you need an API key please contact your MWW representative.</p>
+<p>If you need and API key please contact your MWW representative.</p>
 
 <h2 id="regenerate-your-api-key">Regenerate Your API Key</h2>
 
