@@ -4,6 +4,17 @@ Line items are included when an Order request is posted.
 
 ## GET LineItems
 
+<%= partial "includes/api/curl_snippets/get_order_line_items_request.md" %>
+<%= partial "includes/api/ruby_snippets/get_order_line_items.md" %>
+<%= partial "includes/api/python_snippets.md/get_order_line_items_request.md" %>
+<%= partial "includes/api/java_snippets/get_order_line_items.md" %>
+<%= partial "includes/api/php_snippets/get_order_line_items.md" %>
+
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/api/json_snippets/get_order_line_items_response.md" %>
+
 Get all line items in an order.
 
 ### HTTPS Request
@@ -16,18 +27,25 @@ and for items that are shipped - tracking numbers are available.
 A LineItem resource has an `tracking-numbers` attribute which is an array of
 numbers for tracking the shipment(s).
 
-<%= partial "includes/api/curl_snippets/get_order_line_items_request.md" %>
-
-> The above command returns JSON structured like this:
-
-<%= partial "includes/api/json_snippets/get_order_line_items_response.md" %>
 
 
-## GET LineItems/:id
+
+
+
+## GET LineItems by id
 
 Get details for a specific line item by ID.
 
 ### HTTPS Request
+<%= partial "includes/api/curl_snippets/get_order_line_item_request.md" %>
+<%= partial "includes/api/ruby_snippets/get_line_item_request.md" %>
+<%= partial "includes/api/python_snippets.md/get_order_line_items_request.md" %>
+<%= partial "includes/api/java_snippets/get_order_line_items.md" %>
+<%= partial "includes/api/php_snippets/get_order_line_items.md" %>
+
+> The above command returns JSON structured like this:
+
+<%= partial "includes/api/json_snippets/get_order_line_item_response.md" %>
 
 `GET https://api.mwwondemand.com/api/line-items/<MWW_LINE_ITEM_ID>`
 
@@ -35,8 +53,4 @@ This endpoint includes line item details with status info;
 for items that are shipped - tracking numbers are available. See the
 `tracking-numbers` attribute for available shipment(s).
 
-<%= partial "includes/api/curl_snippets/get_order_line_item_request.md" %>
 
-> The above command returns JSON structured like this:
-
-<%= partial "includes/api/json_snippets/get_order_line_item_response.md" %>

@@ -15,10 +15,10 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Get("http://localhost:3000/api/orders//line-items")
+      Content content = Request.Get("http://localhost:3000/api/orders/647372455787562562/line-items")
 
       // Add headers
-      .addHeader("Authorization", "auth-key=S@mpl3!")
+      .addHeader("Authorization", "auth-key=YOUR_API_KEY")
       .addHeader("Accept", "application/vnd.api+json; version=1")
 
       // Fetch request and return content

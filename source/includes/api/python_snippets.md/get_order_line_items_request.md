@@ -7,13 +7,13 @@ import requests
 
 def send_request():
     # Get Line Items By Order
-    # GET http://localhost:3000/api/orders//line-items
+    # GET http://localhost:3000/api/orders/647372455787562562/line-items
 
     try:
         response = requests.get(
             url="http://localhost:3000/api/orders//line-items",
             headers={
-                "Authorization": "auth-key=S@mpl3!",
+                "Authorization": "auth-key=YOUR_API_KEY",
                 "Accept": "application/vnd.api+json; version=1",
             },
         )

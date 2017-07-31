@@ -11,9 +11,9 @@ def send_request():
 
     try:
         response = requests.get(
-            url="http://localhost:3000/api/line_items/",
+            url="http://localhost:3000/api/line_items/647372455787562562",
             headers={
-                "Authorization": "auth-key=S@mpl3!",
+                "Authorization": "auth-key=YOUR_API_KEY",
                 "Accept": "application/vnd.api+json; version=1",
             },
         )
