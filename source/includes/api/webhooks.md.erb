@@ -1,11 +1,10 @@
 # Web Hooks
 
-Example POST payload (JSON) for the (order) `received` event:
 
-<aside class="danger">
-  This is an experimental feature and subject to change. For production applications we highly recommend querying for status via the order end point.
-</aside>
+
+
 <%= partial "includes/api/json_snippets/post_webhook_notification.md" %>
+<%= partial "includes/api/json_snippets/webhook_shipped_notification.md" %>
 
 Based on your opt-in preferences for various events, the API will POST back
 to the your Web Hook URL. The web hook url and settings are available in your
@@ -22,8 +21,9 @@ edit your Web Hooks (opt-in) preferences.
 
 |Events for Orders|
 |-----------------|
-|Received|
-|Shipped|
+|<button onclick = "activateLanguage('shell')"">Received</button>|
+|<button onclick = "activateLanguage('ruby')">Shipped</button>|
 
 To the right is an example JSON payload for a POST notification sent after an
 order is received.
+

@@ -2,16 +2,16 @@
 
 
 
-```shell
-# Notification for received event
+```ruby
+# Notification for shipped order
 
 {
   "data": {
     "id": "501323962228147713",
     "type": "mwwondemand-order-notifications",
     "attributes": {
-      "event": "received",
-      "title": "Order Received",
+      "event": "Shipped",
+      "title": "Order Shipped",
       "description": "You have a webhook notice",
       "timestamp": "2016-04-06T16:41:36.895Z"
     },
