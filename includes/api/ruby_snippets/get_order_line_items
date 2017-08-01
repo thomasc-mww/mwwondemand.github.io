@@ -2,7 +2,7 @@
 
 <span class="c1"># Get Line Items By Order (GET )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/orders//line-items'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/orders/647372455787562562/line-items'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
@@ -10,7 +10,7 @@
   <span class="c1"># Create Request</span>
   <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
   <span class="c1"># Add headers</span>
-  <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=S@mpl3!"</span>
+  <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Accept"</span><span class="p">,</span> <span class="s2">"application/vnd.api+json; version=1"</span>
 
