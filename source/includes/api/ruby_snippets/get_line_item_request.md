@@ -3,7 +3,7 @@ require 'net/http'
 
 # Get Line Item (GET )
 def send_request
-  uri = URI('http://localhost:3000/api/line_items/')
+  uri = URI('http://localhost:3000/api/line_items/647372455787562562')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)
@@ -11,7 +11,7 @@ def send_request
   # Create Request
   req =  Net::HTTP::Get.new(uri)
   # Add headers
-  req.add_field "Authorization", "auth-key=S@mpl3!"
+  req.add_field "Authorization", "auth-key=YOUR_API_KEY"
   # Add headers
   req.add_field "Accept", "application/vnd.api+json; version=1"
 

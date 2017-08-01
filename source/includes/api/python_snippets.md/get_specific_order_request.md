@@ -6,15 +6,18 @@ import requests
 
 
 def send_request():
-    # Get Line Items By Order
-    # GET http://localhost:3000/api/orders/647372455787562562/line-items
+    # Get Order
+    # GET http://localhost:3000/api/orders/
 
     try:
         response = requests.get(
-            url="http://localhost:3000/api/orders//line-items",
+            url="http://localhost:3000/api/orders/572425086284334684",
+            params={
+            },
             headers={
+                "Content-Type": "application/vnd.api+json",
                 "Authorization": "auth-key=YOUR_API_KEY",
-                "Accept": "application/vnd.api+json; version=1",
+                "Accept": "application/vnd.api+json;version=1",
             },
         )
         print('Response HTTP Status Code: {status_code}'.format(
