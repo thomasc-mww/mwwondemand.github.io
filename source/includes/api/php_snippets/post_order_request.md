@@ -21,99 +21,99 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
  ]
 );
 // Create body
-$body = '{
- \"data\": {
-    \"type\": \"orders\",
-    \"attributes\": {
-      \"vendor-po\": \"1480697743\",
-      \"shipping-method\": \"SAMPLE\",
-      \"shipping-account-number\": \"1234\"
+$body = "{
+ 'data': {
+    'type': 'orders',
+    'attributes': {
+      'vendor-po': '1480697743',
+      'shipping-method': 'SAMPLE',
+      'shipping-account-number': '1234'
     }
   },
-  \"included\": [
+  'included': [
     {
-      \"type\": \"shipping-address\",
-      \"attributes\": {
-	\"name\": \"Phillip J. Fry\",
-     	\"address\": \"123 Green St.\\nSuite 321\",
-      	\"city\": \"New New York\",
-      	\"state\": \"NY\",
-      	\"postal-code\": \"10012\"
+      'type': 'shipping-address',
+      'attributes': {
+	'name': 'Phillip J. Fry',
+     	'address': '123 Green St.\\nSuite 321',
+      	'city': 'New New York',
+      	'state': 'NY',
+      	'postal-code': '10012'
       }
     },
     {
-      \"type\": \"billing-address\",
-      \"attributes\": {
-	\"name\": \"Hubert Farnsworth\",
-     	\"address\": \"123 Green St.\\nSuite 321\",
-      	\"city\": \"New New York\",
-      	\"state\": \"NY\",
-      	\"postal-code\": \"10012\"
+      'type': 'billing-address',
+      'attributes': {
+	'name': 'Hubert Farnsworth',
+     	'address': '123 Green St.\\nSuite 321',
+      	'city': 'New New York',
+      	'state': 'NY',
+      	'postal-code': '10012'
       }
     },
     {
-      \"type\": \"return-address\",
-      \"attributes\": {
-	\"name\": \"Bender B. Rodriguez\",
-     	\"address\": \"123 Green St.\\nSuite 321\",
-      	\"city\": \"New New York\",
-      	\"state\": \"NY\",
-      	\"postal-code\": \"10012\"
+      'type': 'return-address',
+      'attributes': {
+	'name': 'Bender B. Rodriguez',
+     	'address': '123 Green St.\\nSuite 321',
+      	'city': 'New New York',
+      	'state': 'NY',
+      	'postal-code': '10012'
       }
     },
     {
-      \"type\": \"line-items\",
-      \"attributes\": {
-        \"line-number\": 1,
-        \"quantity\": 2,
-        \"description\": \"It's not sò fluffy!\",
-        \"product-code\": \"3PF-PSY-SQPGZ2C\",
-        \"item-properties\": {
-          \"thread-color\": \"white\",
-          \"blah\": \"blah-2\"
+      'type': 'line-items',
+      'attributes': {
+        'line-number': 1,
+        'quantity': 2,
+        'description': 'It's not sò fluffy!',
+        'product-code': '3PF-PSY-SQPGZ2C',
+        'item-properties': {
+          'thread-color': 'white',
+          'blah': 'blah-2'
         },
-        \"designs\": [
+        'designs': [
           {
-            \"image_remote_url\": \"http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg\",
-            \"position\": \"centered\",
-            \"crop\": \"left\"
+            'image_remote_url': 'http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg',
+            'position': 'centered',
+            'crop': 'left'
           }
         ]
       }
     },
     {
-      \"type\": \"line-items\",
-      \"attributes\": {
-        \"line-number\": 2,
-        \"quantity\": 5,
-        \"description\": \"It's sò fluffy!\",
-        \"product-code\": \"3PF-PJT-SLPG4CW\",
-        \"item-properties\": {
-          \"thread-color\": \"white\",
-          \"blah\": \"blah-2\"
+      'type': 'line-items',
+      'attributes': {
+        'line-number': 2,
+        'quantity': 5,
+        'description': 'It's sò fluffy!',
+        'product-code': '3PF-PJT-SLPG4CW',
+        'item-properties': {
+          'thread-color': 'white',
+          'blah': 'blah-2'
         },
-        \"designs\": [
+        'designs': [
           {
-            \"image_remote_url\": \"http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg\"
+            'image_remote_url': 'http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg'
           }
         ]
       }
     },
     {
-      \"type\": \"packing-list\",
-       \"attributes\": {
-	\"url\": \"http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf\"
+      'type': 'packing-list',
+       'attributes': {
+	'url': 'http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf'
        }
       },
       {
-         \"type\": \"shipping-label\",
-   	  \"attributes\": {
-	     \"url\": \"https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png\"
+         'type': 'shipping-label',
+   	  'attributes': {
+	     'url': 'https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png'
 	  }
 
       }
   ]
-}';
+}";
 
 // Set body
 curl_setopt($ch, CURLOPT_POST, 1);

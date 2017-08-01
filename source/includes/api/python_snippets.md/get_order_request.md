@@ -17,7 +17,7 @@ def send_request():
             },
             headers={
                 "Content-Type": "application/vnd.api+json",
-                "Authorization": "auth-key=S@mpl3!",
+                "Authorization": "auth-key=YOUR_API_KEY",
                 "Accept": "application/vnd.api+json;version=1",
             },
         )

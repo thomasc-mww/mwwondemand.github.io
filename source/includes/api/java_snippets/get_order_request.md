@@ -19,7 +19,7 @@ public class SendRequest
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")
-      .addHeader("Authorization", "auth-key=S@mpl3!")
+      .addHeader("Authorization", "auth-key=YOUR_API_KEY")
       .addHeader("Accept", "application/vnd.api+json;version=1")
 
       // Fetch request and return content

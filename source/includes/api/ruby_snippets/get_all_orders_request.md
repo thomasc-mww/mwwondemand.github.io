@@ -13,7 +13,7 @@ def send_request
   # Add headers
   req.add_field "Accept", "application/vnd.api+json; version=1"
   # Add headers
-  req.add_field "Authorization", "auth-key=S@mpl3!"
+  req.add_field "Authorization", "auth-key=YOUR_API_KEY"
   # Add headers
   req.add_field "Content-Type", "application/vnd.api+json"
 

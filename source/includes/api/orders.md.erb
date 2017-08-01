@@ -5,6 +5,12 @@
 
 <%= partial "includes/api/curl_snippets/post_order_request.md" %>
 
+<%= partial "includes/api/ruby_snippets/post_order_request.md" %>
+
+<%= partial "includes/api/python_snippets.md/post_order_request.md" %>
+
+<%= partial "includes/api/php_snippets/post_order_request.md" %>
+
 > The above command returns JSON structured like this:
 
 <%= partial "includes/api/json_snippets/post_order_response.md" %>
@@ -78,9 +84,22 @@ url <br><em>string</em> | Http(s) accessible path to image file (or PDF) for the
 
 *Note: This endpoint follows the [JSON API 1.0 Spec](http://jsonapi.org/format/1.0/), and also allows included items when creating the order.*
 
+<aside class="success">
+Remember to replace 'YOUR_API_KEY' with your actual key!
+</aside>
+
 ## Get All Orders
 
 <%= partial "includes/api/curl_snippets/get_all_orders_request.md" %>
+
+<%= partial "includes/api/ruby_snippets/get_all_orders_request.md" %>
+
+<%= partial "includes/api/python_snippets.md/get_all_orders_request.md" %>
+
+<%= partial "includes/api/java_snippets/get_all_orders_request.md" %>
+
+<%= partial "includes/api/php_snippets/get_all_orders_request.md" %>
+
 
 > The above command returns JSON structured like this:
 
@@ -118,7 +137,15 @@ Remember — a successful request will be an authenticated request!
 
 ## Get a Specific Order
 
-<%= partial "includes/api/curl_snippets/get_specific_order_request.md" %>
+<%= partial "includes/api/curl_snippets/get_order_request.md" %>
+
+<%= partial "includes/api/ruby_snippets/get_specific_order_request.md" %>
+
+<%= partial "includes/api/python_snippets.md/get_specific_order_request.md" %>
+
+<%= partial "includes/api/java_snippets/get_specific_order_request.md" %>
+
+<%= partial "includes/api/php_snippets/get_specific_order_request.md" %>
 
 > The above command returns the following JSON:
 

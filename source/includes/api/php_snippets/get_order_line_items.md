@@ -5,7 +5,7 @@
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/orders//line-items');
+curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/orders/647372455787562562/line-items');
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -15,7 +15,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: auth-key=S@mpl3!",
+  "Authorization: auth-key=YOUR_API_KEY",
   "Accept: application/vnd.api+json; version=1",
  ]
 );
