@@ -22,7 +22,7 @@ require 'net/http'
 
 # api_user Login API KEY (POST )
 def send_request
-  uri = URI('http://localhost:3000/api/login')
+  uri = URI('https://api.mwwondemand.com/api/login')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)
@@ -54,11 +54,11 @@ import requests
 
 def send_request():
     # api_user Login API KEY
-    # POST http://localhost:3000/api/login
+    # POST https://api.mwwondemand.com/api/login
 
     try:
         response = requests.post(
-            url="http://localhost:3000/api/login",
+            url="https://api.mwwondemand.com/api/login",
             headers={
                 "Content-Type": "application/vnd.api+json",
                 "Authorization": "auth-key=S@mpl3!",
@@ -90,7 +90,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Post("http://localhost:3000/api/login")
+      Content content = Request.Post("https://api.mwwondemand.com/api/login")
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")
@@ -115,7 +115,7 @@ public class SendRequest
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/login');
+curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/login');
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');

@@ -7,11 +7,11 @@ import requests
 
 def send_request():
     # Get Validate token
-    # GET http://localhost:3000/api/validate_token
+    # GET https://api.mwwondemand.com/api/validate_token
 
     try:
         response = requests.get(
-            url="http://localhost:3000/api/validate_token",
+            url="https://api.mwwondemand.com/api/validate_token",
             headers={
                 "Content-Type": "application/vnd.api+json",
                 "Authorization": "application/vnd.api+json; version=1",

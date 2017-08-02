@@ -15,7 +15,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Get("http://localhost:3000/api/orders")
+      Content content = Request.Get("https://api.mwwondemand.com/api/orders")
 
       // Add headers
       .addHeader("Accept", "application/vnd.api+json; version=1")

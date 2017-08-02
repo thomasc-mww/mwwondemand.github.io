@@ -4,7 +4,7 @@ require 'json'
 
 # api_user Login JWT (POST )
 def send_request
-  uri = URI('http://localhost:3000/api/login')
+  uri = URI('https://api.mwwondemand.com/api/login')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)

@@ -3,7 +3,7 @@ require 'net/http'
 
 # Get Line Item (GET )
 def send_request
-  uri = URI('http://localhost:3000/api/line_items/647372455787562562')
+  uri = URI('https://api.mwwondemand.com/api/line_items/647372455787562562')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)

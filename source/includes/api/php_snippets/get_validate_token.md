@@ -5,7 +5,7 @@
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/validate_token');
+curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/validate_token');
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');

@@ -16,7 +16,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Post("http://localhost:3000/api/orders")
+      Content content = Request.Post("https://api.mwwondemand.com/api/orders")
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")
@@ -31,7 +31,7 @@ public class SendRequest
                                 }\n
                             },\n  
                             \\nincluded\\n: [\n    {\n      
-                                      \\ntype\\n:   \\nshipping-address\\n,\n      \\nattributes\\n: {\n	
+                                      \\ntype\\n:   \\nshipping-address\\n,\n      \\nattributes\\n: {\n
                                           \\nname\\n: \\nPhillip J. Fry\\n,\n     	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n
                                           \\nstate\\n: \\nNY\\n,\n
                                           \\npostal-code\\n: \\n10012\\n\n      
@@ -39,12 +39,12 @@ public class SendRequest
                                 },\n    
                                 {\n      
                                   \\ntype\\n: \\nbilling-address\\n,\n      
-                                  \\nattributes\\n: {\n	
+                                  \\nattributes\\n: {\n
                                       \\nname\\n: \\nHubert Farnsworth\\n,\n       	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n             	\\nstate\\n: \\nNY\\n,\n                 	\\npostal-code\\n: \\n10012\\n\n                       }\n   
                                   },\n    
                                   {\n      
                                     \\ntype\\n: \\nreturn-address\\n,\n  
-                                    \\nattributes\\n: {\n	
+                                    \\nattributes\\n: {\n
                                         \\nname\\n: \\nBender B. Rodriguez\\n,\n     	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n      	
                                         \\nstate\\n: \\nNY\\n,\n      	
                                         \\npostal-code\\n: \\n10012\\n\n      
@@ -57,9 +57,9 @@ public class SendRequest
                                               \\nquantity\\n: 2,\n        
                                               \\ndescription\\n: \\nIt's not so fluffy!\\n,\n        
                                               \\nproduct-code\\n: \\n3PF-PSY-SQPGZ2C\\n,\n        \\nitem-properties\\n:  
-                                              {\n 
+                                              {\n
                                                   \\nthread-color\\n: \\nwhite\\n,\n
-                                                  \\nblah\\n: 
+                                                  \\nblah\\n:
                                                   \\nblah-2\\n\n        
                                               },\n      
                                               \\ndesigns\\n: [\n         

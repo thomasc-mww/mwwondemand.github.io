@@ -3,7 +3,7 @@ require 'net/http'
 
 # Request (11) (DELETE )
 def send_request
-  uri = URI('http://localhost:3000/api/logout')
+  uri = URI('https://api.mwwondemand.com/api/logout')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)

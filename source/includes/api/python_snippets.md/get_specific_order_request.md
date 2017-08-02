@@ -7,11 +7,11 @@ import requests
 
 def send_request():
     # Get Order
-    # GET http://localhost:3000/api/orders/
+    # GET https://api.mwwondemand.com/api/orders/
 
     try:
         response = requests.get(
-            url="http://localhost:3000/api/orders/572425086284334684",
+            url="https://api.mwwondemand.com/api/orders/572425086284334684",
             params={
             },
             headers={

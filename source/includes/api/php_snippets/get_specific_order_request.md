@@ -5,7 +5,7 @@
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:3000/api/orders/572425086284334684');
+curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/orders/572425086284334684');
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');

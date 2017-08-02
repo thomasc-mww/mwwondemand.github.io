@@ -7,11 +7,11 @@ import requests
 
 def send_request():
     # Request (11)
-    # DELETE http://localhost:3000/api/logout
+    # DELETE https://api.mwwondemand.com/api/logout
 
     try:
         response = requests.delete(
-            url="http://localhost:3000/api/logout",
+            url="https://api.mwwondemand.com/api/logout",
             headers={
                 "Content-Type": "application/vnd.api+json",
                 "Authorization": "auth-key=S@mpl3!",
