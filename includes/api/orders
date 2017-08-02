@@ -102,7 +102,7 @@
 
 <span class="c1"># Create Order (POST )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/orders'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
@@ -228,11 +228,11 @@
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
     <span class="c"># Create Order</span>
-    <span class="c"># POST http://localhost:3000/api/orders</span>
+    <span class="c"># POST https://api.mwwondemand.com/api/orders</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/orders"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
@@ -346,7 +346,7 @@
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'http://localhost:3000/api/orders'</span><span class="p">);</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">);</span>
 
 <span class="c1">// Set method
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
@@ -743,7 +743,7 @@ Remember to replace &lsquo;YOUR_API_KEY&rsquo; with your actual key!
 
 <span class="c1"># Get All Orders (GET )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/orders'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
@@ -774,11 +774,11 @@ Remember to replace &lsquo;YOUR_API_KEY&rsquo; with your actual key!
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
     <span class="c"># Get All Orders</span>
-    <span class="c"># GET http://localhost:3000/api/orders</span>
+    <span class="c"># GET https://api.mwwondemand.com/api/orders</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/orders"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=S@mpl3!"</span><span class="p">,</span>
@@ -809,7 +809,7 @@ Remember to replace &lsquo;YOUR_API_KEY&rsquo; with your actual key!
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"http://localhost:3000/api/orders"</span><span class="o">)</span>
+      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="o">)</span>
 
       <span class="c1">// Add headers</span>
       <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
@@ -833,7 +833,7 @@ Remember to replace &lsquo;YOUR_API_KEY&rsquo; with your actual key!
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'http://localhost:3000/api/orders'</span><span class="p">);</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">);</span>
 
 <span class="c1">// Set method
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
@@ -995,7 +995,7 @@ Remember — a successful request will be an authenticated request!
 
 <span class="c1"># Get Order (GET )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/orders/572425086284334684'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders/572425086284334684'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
@@ -1026,11 +1026,11 @@ Remember — a successful request will be an authenticated request!
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
     <span class="c"># Get Order</span>
-    <span class="c"># GET http://localhost:3000/api/orders/</span>
+    <span class="c"># GET https://api.mwwondemand.com/api/orders/</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/orders/572425086284334684"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders/572425086284334684"</span><span class="p">,</span>
             <span class="n">params</span><span class="o">=</span><span class="p">{</span>
             <span class="p">},</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
@@ -1063,7 +1063,7 @@ Remember — a successful request will be an authenticated request!
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"http://localhost:3000/api/orders/572425086284334684"</span><span class="o">)</span>
+      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/572425086284334684"</span><span class="o">)</span>
 
       <span class="c1">// Add headers</span>
       <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
@@ -1087,7 +1087,7 @@ Remember — a successful request will be an authenticated request!
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'http://localhost:3000/api/orders/572425086284334684'</span><span class="p">);</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders/572425086284334684'</span><span class="p">);</span>
 
 <span class="c1">// Set method
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>

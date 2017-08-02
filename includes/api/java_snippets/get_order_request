@@ -14,7 +14,7 @@
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"http://localhost:3000/api/orders/?history=1"</span><span class="o">)</span>
+      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/?history=1"</span><span class="o">)</span>
 
       <span class="c1">// Add headers</span>
       <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
