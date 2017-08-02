@@ -10,9 +10,9 @@
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/line_items/"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"http://localhost:3000/api/line_items/647372455787562562"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
-                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=S@mpl3!"</span><span class="p">,</span>
+                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">)</span>
