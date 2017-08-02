@@ -2,7 +2,7 @@
 
 <span class="c1"># Create Webhook (POST )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'http://localhost:3000/api/webhooks'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/webhooks'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
