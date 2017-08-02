@@ -15,7 +15,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Get("http://localhost:3000/api/line_items/")
+      Content content = Request.Get("https://api.mwwondemand.com/api/line_items/")
 
       // Add headers
       .addHeader("Authorization", "auth-key=S@mpl3!")

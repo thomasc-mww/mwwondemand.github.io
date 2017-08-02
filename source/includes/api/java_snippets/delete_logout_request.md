@@ -15,7 +15,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Delete("http://localhost:3000/api/logout")
+      Content content = Request.Delete("https://api.mwwondemand.com/api/logout")
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")

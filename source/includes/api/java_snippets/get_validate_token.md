@@ -15,7 +15,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Get("http://localhost:3000/api/validate_token")
+      Content content = Request.Get("https://api.mwwondemand.com/api/validate_token")
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")

@@ -3,7 +3,7 @@ require 'net/http'
 
 # Get Validate token (GET )
 def send_request
-  uri = URI('http://localhost:3000/api/validate_token')
+  uri = URI('https://api.mwwondemand.com/api/validate_token')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)

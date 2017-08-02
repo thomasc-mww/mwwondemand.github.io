@@ -16,7 +16,7 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Post("http://localhost:3000/api/webhooks")
+      Content content = Request.Post("https://api.mwwondemand.com/api/webhooks")
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")

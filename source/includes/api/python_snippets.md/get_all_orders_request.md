@@ -7,11 +7,11 @@ import requests
 
 def send_request():
     # Get All Orders
-    # GET http://localhost:3000/api/orders
+    # GET https://api.mwwondemand.com/api/orders
 
     try:
         response = requests.get(
-            url="http://localhost:3000/api/orders",
+            url="https://api.mwwondemand.com/api/orders",
             headers={
                 "Accept": "application/vnd.api+json; version=1",
                 "Authorization": "auth-key=S@mpl3!",

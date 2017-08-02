@@ -7,11 +7,11 @@ import requests
 
 def send_request():
     # Create Order
-    # POST http://localhost:3000/api/orders
+    # POST https://api.mwwondemand.com/api/orders
 
     try:
         response = requests.post(
-            url="http://localhost:3000/api/orders",
+            url="https://api.mwwondemand.com/api/orders",
             headers={
                 "Content-Type": "application/vnd.api+json",
                 "Authorization": "auth-key=YOUR_API_KEY",
