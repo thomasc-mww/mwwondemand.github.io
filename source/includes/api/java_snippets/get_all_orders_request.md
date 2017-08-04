@@ -1,7 +1,9 @@
 ```java
 import java.io.IOException;
-import org.apache.http.client.fluent.*;
-
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 public class SendRequest
 {
   public static void main(String[] args) {
@@ -15,19 +17,35 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Get("https://api.mwwondemand.com/api/orders")
+      URL obj = new URL("https://api.mwwondemand.com/api/orders");
+      HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+      con.setRequestMethod("GET");
+
 
       // Add headers
-      .addHeader("Accept", "application/vnd.api+json; version=1")
-      .addHeader("Authorization", "auth-key=S@mpl3!")
-      .addHeader("Content-Type", "application/vnd.api+json")
+      con.setRequestProperty("Accept", "application/vnd.api+json; version=1");
+      con.setRequestProperty("Authorization", "auth-key=S@mpl3!");
+      con.setRequestProperty("Content-Type", "application/vnd.api+json");
 
-      // Fetch request and return content
-      .execute().returnContent();
+      // Get response code (200 is good)
+      int responseCode = con.getResponseCode();
+      System.out.println("Response Code : " + responseCode);
 
-      // Print content
-      System.out.println(content);
-    }
+
+      BufferedReader in = new BufferedReader(
+		        new InputStreamReader(con.getInputStream()));
+      String inLine;
+      StringBuffer response = new StringBuffer();
+
+      while ((inLine = in.readLine()) != null) {
+	        response.append(inLine);
+      }
+      in.close();
+
+      //print result
+      System.out.println(response.toString());
+     }
     catch (IOException e) { System.out.println(e); }
   }
 }

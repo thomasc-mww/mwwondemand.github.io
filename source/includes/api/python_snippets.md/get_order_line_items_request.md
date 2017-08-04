@@ -1,9 +1,7 @@
 ```python
 # Install the Python Requests library:
 # `pip install requests`
-
 import requests
-
 
 def send_request():
     # Get Line Items By Order
@@ -11,7 +9,7 @@ def send_request():
 
     try:
         response = requests.get(
-            url="https://api.mwwondemand.com/api/orders//line-items",
+            url="https://api.mwwondemand.com/api/orders/705517149988324623/line-items",
             headers={
                 "Authorization": "auth-key=YOUR_API_KEY",
                 "Accept": "application/vnd.api+json; version=1",

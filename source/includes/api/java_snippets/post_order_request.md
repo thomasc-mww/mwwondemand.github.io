@@ -1,9 +1,13 @@
 ```java
 import java.io.IOException;
-import org.apache.http.client.fluent.*;
-import org.apache.http.entity.ContentType;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.DataOutputStream;
 
-public class SendRequest
+
+public class post_request
 {
   public static void main(String[] args) {
     sendRequest();
@@ -16,63 +20,132 @@ public class SendRequest
     try {
 
       // Create request
-      Content content = Request.Post("https://api.mwwondemand.com/api/orders")
+      URL obj = new URL("https://api.mwwondemand.com/api/orders");
+      HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+      con.setRequestMethod("POST");
+
 
       // Add headers
-      .addHeader("Content-Type", "application/vnd.api+json")
-      .addHeader("Authorization", "auth-key=S@mpl3!")
-      .addHeader("Accept", "application/vnd.api+json; version=1")
+      con.setRequestProperty("Accept", "application/vnd.api+json; version=1");
+      con.setRequestProperty("Authorization", "auth-key=YOUR_API_KEY");
+      con.setRequestProperty("Content-Type", "application/vnd.api+json");
+
 
       // Add body
-      .bodyString("{ \n \\ndata\\n: {
-                      \n    \\ntype\\n: \\norders\\n,\n    
-                            \\nattributes\\n: {\n      
-                                      \\nvendor-po\\n: \\n1480697772\\n,\n      \\nshipping-method\\n: \\nSAMPLE\\n,\n      \\nshipping-account-number\\n: \\n1234\\n\n  
-                                }\n
-                            },\n  
-                            \\nincluded\\n: [\n    {\n      
-                                      \\ntype\\n:   \\nshipping-address\\n,\n      \\nattributes\\n: {\n
-                                          \\nname\\n: \\nPhillip J. Fry\\n,\n     	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n
-                                          \\nstate\\n: \\nNY\\n,\n
-                                          \\npostal-code\\n: \\n10012\\n\n      
-                                      }\n    
-                                },\n    
-                                {\n      
-                                  \\ntype\\n: \\nbilling-address\\n,\n      
-                                  \\nattributes\\n: {\n
-                                      \\nname\\n: \\nHubert Farnsworth\\n,\n       	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n             	\\nstate\\n: \\nNY\\n,\n                 	\\npostal-code\\n: \\n10012\\n\n                       }\n   
-                                  },\n    
-                                  {\n      
-                                    \\ntype\\n: \\nreturn-address\\n,\n  
-                                    \\nattributes\\n: {\n
-                                        \\nname\\n: \\nBender B. Rodriguez\\n,\n     	\\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n      	\\ncity\\n: \\nNew New York\\n,\n      	
-                                        \\nstate\\n: \\nNY\\n,\n      	
-                                        \\npostal-code\\n: \\n10012\\n\n      
-                                      }\n
-                                   },\n    
-                                   {\n     
-                                     \\ntype\\n: \\nline-items\\n,\n   
-                                      \\nattributes\\n: {\n
-                                              \\nline-number\\n: 1,\n        
-                                              \\nquantity\\n: 2,\n        
-                                              \\ndescription\\n: \\nIt's not so fluffy!\\n,\n        
-                                              \\nproduct-code\\n: \\n3PF-PSY-SQPGZ2C\\n,\n        \\nitem-properties\\n:  
-                                              {\n
-                                                  \\nthread-color\\n: \\nwhite\\n,\n
-                                                  \\nblah\\n:
-                                                  \\nblah-2\\n\n        
-                                              },\n      
-                                              \\ndesigns\\n: [\n         
-                                                 {\n            
-                                                  \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg\\n,\n            \\nposition\\n: \\ncentered\\n,\n            \\ncrop\\n: \\nleft\\n\n          }\n        ]\n      }\n    },\n    {\n      \\ntype\\n: \\nline-items\\n,\n      \\nattributes\\n: {\n        \\nline-number\\n: 2,\n        \\nquantity\\n: 5,\n        \\ndescription\\n: \\nIt's sò fluffy!\\n,\n        \\nproduct-code\\n: \\n3PF-PJT-SLPG4CW\\n,\n        \\nitem-properties\\n: {\n          \\nthread-color\\n: \\nwhite\\n,\n          \\nblah\\n: \\nblah-2\\n\n        },\n        \\ndesigns\\n: [\n          {\n            \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg\\n\n          }\n        ]\n      }\n    },\n    {	\n      \\ntype\\n: \\npacking-list\\n,\n       \\nattributes\\n: {\n	\\nurl\\n: \\nhttp://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf\\n\n       }\n      },\n      { \n         \\ntype\\n: \\nshipping-label\\n,\n   	  \\nattributes\\n: {\n	     \\nurl\\n: \\nhttps://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png\\n\n	  }\n	\n      }\n  ]\n}", ContentType.DEFAULT_TEXT)
+      String urlParams = "{" +
+        "'data': {" +
+            "'type': 'orders'," +
+            "'attributes': {" +
+              "'vendor-po': '146798810923'," +
+              "'shipping-method': 'SAMPLE'," +
+              "'shipping-account-number': '1234'" +
+            "}" +
+          "}," +
+          "'included': [" +
+            "{" +
+              "'type': 'shipping-address'," +
+              "'attributes': { " +
+              "'name': 'Phillip J. Fry', " +
+              "'address: '123 Green St.\nSuite 321'," +
+                "'city': 'New New York', " +
+                "'state': 'NY'," +
+                "'postal-code': '10012'" +
+              "}" +
+            "}," +
+            "{" +
+              "'type': 'billing-address'," +
+              "'attributes': {" +
+              "'name': 'Hubert Farnsworth'," +
+              "'address': '123 Green St.\nSuite 321'," +
+                "'city': 'New New York'," +
+                "'state': 'NY'," +
+                "'postal-code': '10012'" +
+              "}" +
+            "}," +
+            "{" +
+              "'type': 'return-address'," +
+              "'attributes': { " +
+              "'name': 'Bender B. Rodriguez'," +
+              "'address': '123 Green St.\nSuite 321',"  +
+                "'city': 'New New York', " +
+                "'state': 'NY'," +
+                "'postal-code': '10012' " +
+              "}" +
+            "}," +
+            "{" +
+              "'type': 'line-items', " +
+              "'attributes': { " +
+                "'line-number': 1, " +
+                "'quantity': 2, "  +
+                "'description': 'It\'s not so fluffy!', " +
+                "'product-code': '3PF-SC6-SPFPI', " +
+                "'customer-product-code': 'YOUR_UPC/SKU_NUMBER', " +
+                "'item-properties': { " +
+                  "'thread-color': 'white'" +
+                "}," +
+                "'designs': [" +
+                  "{" +
+                    "'image-remote-url': 'http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg'" +
+                  "}" +
+                "]" +
+              "}" +
+            "}," +
+            "{" +
+              "'type': 'line-items', " +
+              "'attributes': { " +
+                "'line-number': 2, " +
+                "'quantity': 5, " +
+                "'description': 'Velour Vest', "+
+                "'product-code': '3PF-SC6-SPFPI'," +
+                "'customer-product-code': 'YOUR_UPC/SKU_NUMBER', " +
+                "'item-properties': { " +
+                  "'thread-color': 'white'" +
+                "}," +
+                "'designs': ["  +
+                  "{" +
+                    "'image-remote-url': 'http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg'" +
+                  "}" +
+                "]" +
+              "}" +
+            "}," +
+            "{" +
+              "'type': 'packing-list', " +
+              "'attributes': { " +
+                "'url': 'http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf' " +
+               "}" +
+              "}," +
+              "{" +
+              "'type': 'shipping-label'," +
+              "'attributes': { " +
+               "'url': 'https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png'" +
+              "}" +
+            "}" +
+          "]"+
+        "};";
+       con.setDoOutput(true);
+       DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		   wr.writeBytes(urlParams);
+		   wr.flush();
+		   wr.close();
+       int responseCode = con.getResponseCode();
+       System.out.println("Response Code : " + responseCode);
 
-      // Fetch request and return content
-      .execute().returnContent();
+       BufferedReader in = new BufferedReader(
+       		        new InputStreamReader(con.getInputStream()));
+       		String inputLine;
+       		StringBuffer response = new StringBuffer();
 
-      // Print content
-      System.out.println(content);
+       		while ((inputLine = in.readLine()) != null) {
+       			response.append(inputLine);
+       		}
+       		in.close();
+
+       		//print result
+       		System.out.println(response.toString());
     }
     catch (IOException e) { System.out.println(e); }
   }
 }
+
 ```
