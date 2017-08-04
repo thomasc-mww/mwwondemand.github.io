@@ -122,7 +122,7 @@ public class post_request
               "}" +
             "}" +
           "]"+
-        "};";
+        "}";
        con.setDoOutput(true);
        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		   wr.writeBytes(urlParams);
