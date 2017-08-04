@@ -9,7 +9,7 @@ Our API conforms to the JSON API 1.0 Specification. Please visit http://jsonapi.
 ## Postman Collection
 
 ![Postman Image](/images/PostmanImage.png)
-Postman is a free application that allows you to test calls in an easy to use interface. [Click here to get our collection of MWW API calls.](includes/api/json_snippets/postman_collection.json)
+Postman is a free application that allows you to test calls in an easy to use interface. <a href="includes/api/json_snippets/postman_collection.json" download>Click here to get our collection of MWW API calls.</a>
 
 <aside class="success">
   If you use this collection, you must replace 'YOUR_API_KEY' with the api key you have been granted.
