@@ -1,8 +1,6 @@
 ```python
 # Install the Python Requests library:
 # `pip install requests`
-# Install the Python Requests library:
-# `pip install requests`
 
 import requests
 
