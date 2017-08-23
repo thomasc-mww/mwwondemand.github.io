@@ -20,6 +20,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
       "address": "123 Green St.\nSuite 321",
         "city": "New New York",
         "state": "NY",
+        "country": "US",
         "postal-code": "10012"
       }
     },
@@ -30,6 +31,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
       "address": "123 Green St.\nSuite 321",
         "city": "New New York",
         "state": "NY",
+        "country": "US",
         "postal-code": "10012"
       }
     },
@@ -40,6 +42,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
       "address": "123 Green St.\nSuite 321",
         "city": "New New York",
         "state": "NY",
+        "country": "US",
         "postal-code": "10012"
       }
     },

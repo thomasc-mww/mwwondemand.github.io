@@ -50,6 +50,7 @@ public class post_request
               "'address: '123 Green St.\nSuite 321'," +
                 "'city': 'New New York', " +
                 "'state': 'NY'," +
+                "'country': 'US'," +
                 "'postal-code': '10012'" +
               "}" +
             "}," +
@@ -60,6 +61,7 @@ public class post_request
               "'address': '123 Green St.\nSuite 321'," +
                 "'city': 'New New York'," +
                 "'state': 'NY'," +
+                "'country': 'US'," +
                 "'postal-code': '10012'" +
               "}" +
             "}," +
@@ -70,6 +72,7 @@ public class post_request
               "'address': '123 Green St.\nSuite 321',"  +
                 "'city': 'New New York', " +
                 "'state': 'NY'," +
+                "'country': 'US'," +
                 "'postal-code': '10012' " +
               "}" +
             "}," +
