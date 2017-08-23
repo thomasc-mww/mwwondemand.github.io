@@ -7,7 +7,18 @@ def send_request
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)
-  body = '{
+
+  # Create Request
+  #http.use_ssl = true
+  req =  Net::HTTP::Post.new(uri)
+  # Add headers
+  req["Accept"] = "application/vnd.api+json; version=1"
+  # Add headers
+  req.add_field "Authorization", "auth-key=YOUR_API_KEY"
+  # Add headers
+  req["Content-Type"] = "application/vnd.api+json"
+  # Set body
+  req.body = '{
   "data": {
      "type": "orders",
      "attributes": {
@@ -98,18 +109,6 @@ def send_request
    ]
 
 }'
-
-  # Create Request
-  #http.use_ssl = true
-  req =  Net::HTTP::Post.new(uri)
-  # Add headers
-  req["Accept"] = "application/vnd.api+json; version=1"
-  # Add headers
-  req.add_field "Authorization", "auth-key=YOUR_API_KEY"
-  # Add headers
-  req["Content-Type"] = "application/vnd.api+json"
-  # Set body
-  req.body = body
 
 
   # Fetch Request
