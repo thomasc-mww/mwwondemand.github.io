@@ -49,7 +49,7 @@ description <br><em>string</em> | Your description of the item. If omitted the d
 product-code <br><em>string</em> | The MWW product code of the item to order.
 customer-product-code <br><em>string (optional)</em> | Your custom SKU or UPC number.
 item-properties <br><em>object (optional)</em> | Additional attributes for some products. This can be omitted in most cases. See products for more information.
-designs <br><em>array[objects]</em> | An array of objects describing information about the artwork to be printed.
+designs <br><em>array[single object]</em> | Information about the design to be rendered.
 image-remote-url <br><em>string</em> | A publically accessible path to the source artwork.
 
 *Shipping details*
@@ -60,8 +60,8 @@ type <br><em>string</em> | Shipping address is required. This will always be "sh
 name <br><em>string</em> | The name to reference the shipment details.
 address <br><em>string</em> | The shipment street plus additional details (suite/apt./etc). Additional lines should be separated by a carriage return "\n".
 city <br><em>string</em> | The city of the shipment.
-state <br><em>string</em> | Two letter ISO 3166-2 code of the destination state, ie "NC".
-country<br><em>string</em> | Two letter ISO 3166-1 code of the destination country, ie "US".
+state <br><em>string</em> | Two letter ISO 3166 alpha 2 code of the destination state, ie "NC".
+country<br><em>string</em> | Two letter ISO 3166 alpha 2 code of the destination country, ie "US".
 postal-code <br><em>string</em> | The postal code of the shipment.
 
 <aside class="success">
