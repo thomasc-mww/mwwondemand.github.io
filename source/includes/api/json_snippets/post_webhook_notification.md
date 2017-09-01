@@ -38,7 +38,7 @@
         "id": "501323961548670462",
         "type": "mwwondemand-orders",
         "attributes": {
-          "vendor-po": "501323961548670462",
+          "vendor-po": "YOUR-ID-HERE",
           "state": "received"
         }
       }

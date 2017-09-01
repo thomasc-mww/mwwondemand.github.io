@@ -4,7 +4,7 @@
 <%= partial "includes/api/json_snippets/webhook_shipped_notification.md" %>
 
 Based on your opt-in preferences for various events, the API will POST back
-to the your Web Hook URL. The web hook url and settings are available in your
+to your Web Hook URL. The web hook url and settings are available in your
 profile, see the <https://api.mwwondemand.com/account/> page.
 
 The `url` (string) must be a valid URL (an API endpoint you host) and the
@@ -18,8 +18,22 @@ edit your Web Hooks (opt-in) preferences.
 
 |Events for Orders|
 |-----------------|
-|<button onclick = "activateLanguage('shell')"">Received</button>|
+|<button onclick = "activateLanguage('shell')">Received</button>|
 |<button onclick = "activateLanguage('ruby')">Shipped</button>|
+
+### POST Parameters
+
+Attributes ||
+--------- | ------- | -----------
+data <br><em>object</em> | The root element of your JSON post object.
+type <br><em>string</em> | Resource the object represents. This will always be "webhooks".
+attributes | object | The object that contains all the pertanent information about the order.
+url <br><em>string</em> | The URL to receive callback notifications.
+enabled <br><em>boolean</em> | Pause notifications by setting false.
+received <br><em>boolean</em> | Fired when order is received.
+shipped <br><em>boolean</em> | Fired when an order/item ships.
+
+
 
 To the right is an example JSON payload for a POST notification sent after an
 order is received.
