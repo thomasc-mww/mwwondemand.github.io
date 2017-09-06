@@ -21,7 +21,7 @@
     "relationships": {
       "mwwondemand-order": {
         "data": {
-          "id": "501323961548670462",
+          "id": "YOUR-ID-HERE",
           "type": "mwwondemand-orders"
         }
       },
@@ -38,7 +38,7 @@
   "included": {
     "mwwondemand-orders": [
       {
-        "id": "501323961548670462",
+        "id": "YOUR-ID-HERE",
         "type": "mwwondemand-orders",
         "attributes": {
           "vendor-po": "YOUR-ID-HERE",

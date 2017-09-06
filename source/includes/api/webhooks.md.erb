@@ -26,12 +26,22 @@ edit your Web Hooks (opt-in) preferences.
 Attributes ||
 --------- | ------- | -----------
 data <br><em>object</em> | The root element of your JSON post object.
-type <br><em>string</em> | Resource the object represents. This will always be "webhooks".
-attributes | object | The object that contains all the pertanent information about the order.
-url <br><em>string</em> | The URL to receive callback notifications.
+type <br><em>string</em> | Resource the object represents.
+attributes <br><em>object</em> | The object that contains all the pertanent information about the order.
+timestamp <br><em>string</em> | Time order was shipped/recieved.
+tracking-numbers <br> <em>object</em> | Array of tracking numbers for your order
 enabled <br><em>boolean</em> | Pause notifications by setting false.
-received <br><em>boolean</em> | Fired when order is received.
-shipped <br><em>boolean</em> | Fired when an order/item ships.
+meta <br><em>object</em> | Array of status of all items in your order.
+received <br><em>int</em> | Number of recieved items
+shipped <br><em>int</em> | Number of shipped items
+cancelled <br><em>int</em> | Number of cancelled items
+printed <br><em>int</em> | Number of printed items
+pressed <br><em>int</em> | Number of pressed items
+cut <br><em>int</em> | Number of cut items
+sewn <br><em>int</em> | Number of sewn items
+turned <br><em>int</em> | Number of turned items
+packed <br><em>int</em> | Number of packed items
+
 
 
 
