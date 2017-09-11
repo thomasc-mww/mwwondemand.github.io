@@ -89,7 +89,7 @@ public class post_request
                 "}," +
                 "'designs': [" +
                   "{" +
-                    "'image-remote-url': 'http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg'" +
+                    "'image-remote-url': 'https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg'" +
                   "}" +
                 "]" +
               "}" +
@@ -107,7 +107,7 @@ public class post_request
                 "}," +
                 "'designs': ["  +
                   "{" +
-                    "'image-remote-url': 'http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg'" +
+                    "'image-remote-url': 'http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg'" +
                   "}" +
                 "]" +
               "}" +
@@ -115,13 +115,13 @@ public class post_request
             "{" +
               "'type': 'packing-list', " +
               "'attributes': { " +
-                "'url': 'http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf' " +
+                "'url': 'https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf' " +
                "}" +
               "}," +
               "{" +
               "'type': 'shipping-label'," +
               "'attributes': { " +
-               "'url': 'https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png'" +
+               "'url': 'https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg'" +
               "}" +
             "}" +
           "]"+
