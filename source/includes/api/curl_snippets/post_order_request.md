@@ -16,34 +16,43 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
     {
       "type": "shipping-address",
       "attributes": {
-      "name": "Phillip J. Fry",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Phillip J. Fry",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
         "country": "US",
-        "postal-code": "10012"
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {
       "type": "billing-address",
       "attributes": {
-      "name": "Hubert Farnsworth",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Hubert Farnsworth",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
         "country": "US",
-        "postal-code": "10012"
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {
       "type": "return-address",
       "attributes": {
-      "name": "Bender B. Rodriguez",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Bender B. Rodriguez",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
         "country": "US",
-        "postal-code": "10012"
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {

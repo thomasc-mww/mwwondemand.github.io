@@ -36,6 +36,11 @@ vendor-po <br><em>string / number</em> | Your PO number. This string/number must
 shipping-method <br><em>string</em> | The shipping carrier and method for the order. For example, use USPSF for USPS First Class. See shipping methods.
 shipping-account-number <br><em>string</em> | The shipping account number associated with the shipping carrier and order.
 included <br><em>array[objects]</em> | The array element describing the item(s) to be included in the order.
+</address>
+
+</address>
+
+</address>
 
 *Line Item details*
 
@@ -58,11 +63,15 @@ Attribute\* ||
 --------- | ------- | -----------
 type <br><em>string</em> | Shipping address is required. This will always be "shipping-address".
 name <br><em>string</em> | The name to reference the shipment details.
-address <br><em>string</em> | The shipment street plus additional details (suite/apt./etc). Additional lines should be separated by a carriage return "\n".
+address1 <br><em>string</em> | First line of the address
+address2 <br><em>string<br>(optional)</em> | Second line of the address
 city <br><em>string</em> | The city of the shipment.
 state <br><em>string</em> | Two letter ISO 3166 alpha 2 code of the destination state, ie "NC".
-country<br><em>string</em> | Two letter ISO 3166 alpha 2 code of the destination country, ie "US".
+country<br><em>string<br>(optional)</em> | Two letter ISO 3166 alpha 2 code of the destination country, ie "US".  (Defaults to U.S. if not provided)
 postal-code <br><em>string</em> | The postal code of the shipment.
+phone <br><em>string<br>(optional)</em> | Phone number associated with address
+email <br><em>string<br>(optional)</em> | Email associated with address
+
 
 <aside class="success">
   * An object with type billing-address or return-address may also be proivided. If they are not provided shipping-address will be used as the default.
