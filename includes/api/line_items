@@ -12,19 +12,21 @@
 
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="c1"># Get Line Items By Order (GET )</span>
+<span class="c1"># Get All Orders (GET )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders/647372455787562562/line-items'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders/705517149988324623/line-items'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
-
+  <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
   <span class="c1"># Create Request</span>
   <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
   <span class="c1"># Add headers</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json; version=1"</span>
+  <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
   <span class="c1"># Add headers</span>
-  <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Accept"</span><span class="p">,</span> <span class="s2">"application/vnd.api+json; version=1"</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json"</span>
 
   <span class="c1"># Fetch Request</span>
   <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
@@ -33,13 +35,13 @@
 <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
   <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
 <span class="k">end</span>
+<span class="n">send_request</span>
+
 </code></pre>
 
 <pre class="highlight python"><code><span class="c"># Install the Python Requests library:</span>
 <span class="c"># `pip install requests`</span>
-
 <span class="kn">import</span> <span class="nn">requests</span>
-
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
     <span class="c"># Get Line Items By Order</span>
@@ -47,7 +49,7 @@
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders//line-items"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders/705517149988324623/line-items"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
@@ -62,8 +64,10 @@
 </code></pre>
 
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
-
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span>
 <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -72,26 +76,45 @@
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">sendRequest</span><span class="o">()</span> <span class="o">{</span>
 
-    <span class="c1">// Get Line Items By Order (GET )</span>
+    <span class="c1">// Get All Orders (GET )</span>
 
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/647372455787562562/line-items"</span><span class="o">)</span>
+      <span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/705517149988324623/line-items"</span><span class="o">);</span>
+      <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+
 
       <span class="c1">// Add headers</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=S@mpl3!"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">);</span>
 
-      <span class="c1">// Fetch request and return content</span>
-      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+      <span class="c1">// Get response code (200 is good)</span>
+      <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
 
-      <span class="c1">// Print content</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
-    <span class="o">}</span>
+
+      <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+                <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+      <span class="n">String</span> <span class="n">inLine</span><span class="o">;</span>
+      <span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+
+      <span class="k">while</span> <span class="o">((</span><span class="n">inLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inLine</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="c1">//print result</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+   <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
+
 </code></pre>
 
 <pre class="highlight php"><code><span class="cp">&lt;?php</span>
@@ -292,21 +315,29 @@ numbers for tracking the shipment(s).</p>
 
 <h3 id="https-request">HTTPS Request</h3>
 
+<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json;version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+</code></pre>
+
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="c1"># Get Line Item (GET )</span>
+<span class="c1"># Get All Orders (GET )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/line_items/647372455787562562'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/line-items/764805840312993036'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
-
+  <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
   <span class="c1"># Create Request</span>
   <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
   <span class="c1"># Add headers</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json; version=1"</span>
+  <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
   <span class="c1"># Add headers</span>
-  <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Accept"</span><span class="p">,</span> <span class="s2">"application/vnd.api+json; version=1"</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json"</span>
 
   <span class="c1"># Fetch Request</span>
   <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
@@ -324,12 +355,12 @@ numbers for tracking the shipment(s).</p>
 
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
-    <span class="c"># Get Line Items By Order</span>
-    <span class="c"># GET https://api.mwwondemand.com/api/orders/647372455787562562/line-items</span>
+    <span class="c"># Get Line Item</span>
+    <span class="c"># GET https://api.mwwondemand.com/api/line_items/</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders//line-items"</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/line_items/764805840312993036"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
@@ -344,9 +375,11 @@ numbers for tracking the shipment(s).</p>
 </code></pre>
 
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest4</span>
 <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">sendRequest</span><span class="o">();</span>
@@ -354,23 +387,41 @@ numbers for tracking the shipment(s).</p>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">sendRequest</span><span class="o">()</span> <span class="o">{</span>
 
-    <span class="c1">// Get Line Items By Order (GET )</span>
+    <span class="c1">// Get All Orders (GET )</span>
 
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/647372455787562562/line-items"</span><span class="o">)</span>
+      <span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/line-items/764805840312993036"</span><span class="o">);</span>
+      <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"GET"</span><span class="o">);</span>
+
 
       <span class="c1">// Add headers</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">);</span>
 
-      <span class="c1">// Fetch request and return content</span>
-      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+      <span class="c1">// Get response code (200 is good)</span>
+      <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
 
-      <span class="c1">// Print content</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
-    <span class="o">}</span>
+
+      <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+                <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+      <span class="n">String</span> <span class="n">inLine</span><span class="o">;</span>
+      <span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+
+      <span class="k">while</span> <span class="o">((</span><span class="n">inLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inLine</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="c1">//print result</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+   <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
@@ -382,7 +433,7 @@ numbers for tracking the shipment(s).</p>
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
 <span class="c1">// Set url
-</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders/647372455787562562/line-items'</span><span class="p">);</span>
+</span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/line-items/764805840312993036'</span><span class="p">);</span>
 
 <span class="c1">// Set method
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
@@ -417,71 +468,138 @@ numbers for tracking the shipment(s).</p>
 </blockquote>
 
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"647372455787562562"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"line-items"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.043Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.043Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's sò fluffy!"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"product-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3PF-PJT-SLPG4CW"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"line-number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6477724553765206641477418918.0488908"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"line_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">647372455787562562</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"received"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"loom"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"printed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"stretched"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pressed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cut"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"eton"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"packed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pillow_blow"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"tentered"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"quality_control"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sewn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"turned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"764805840312993036"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"line-items"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"kit-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"co"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tracking-numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/items"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/items"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"created-at"</span><span class="p">:</span><span class="s2">"2017-04-05T05:18:22.573Z"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="s2">"2017-04-06T21:42:15.562Z"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"Carry-All Pouch / Set of 3"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"quantity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"state-events"</span><span class="p">:[</span><span class="w">
+
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nt">"order-id"</span><span class="p">:</span><span class="s2">"764805828787045582"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"product-code"</span><span class="p">:</span><span class="s2">"3PF-SC6-SPFZMP"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"customer-product-code"</span><span class="p">:</span><span class="s2">"3PF-SC6-SPFZMP"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"line-number"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"item-properties"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"PENCIL POUCH POLY SILK"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"fabric"</span><span class="p">:</span><span class="s2">"PFP POLY SILKY SLUB 61IN"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"weight"</span><span class="p">:</span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"law_tag"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"con_safety"</span><span class="p">:</span><span class="s2">"FOR CONSUMER PRODUCT SAFETY INFORMATION. PLEASE VISIT"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"label_size"</span><span class="p">:</span><span class="s2">"9.5X6in 24.13X15.24cm"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"french_back"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"french_care"</span><span class="p">:</span><span class="s2">"NETTOYER LES TACHES OU PEUVENT ÊTRE NETTOYÉS À SEC"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"french_fill"</span><span class="p">:</span><span class="s2">"100% FIBRES DE POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"french_made"</span><span class="p">:</span><span class="s2">"FABRIQUÉ AUX E.-U."</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"english_back"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"english_care"</span><span class="p">:</span><span class="s2">"DRY OR SPOT CLEAN ONLY"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"english_fill"</span><span class="p">:</span><span class="s2">"100% POLYESTER FIBER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"english_made"</span><span class="p">:</span><span class="s2">"MADE IN USA"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"spanish_back"</span><span class="p">:</span><span class="s2">"100% POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"spanish_care"</span><span class="p">:</span><span class="s2">"LIMPIEZA DE ÁREAS SUCIAS O PUEDE LIMPIARSE EN SECO"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"spanish_fill"</span><span class="p">:</span><span class="s2">"100% FIBRA DE POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"spanish_made"</span><span class="p">:</span><span class="s2">"HECHO EN E.U.A"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"english_front"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"spanish_front"</span><span class="p">:</span><span class="s2">"100% POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"label_description"</span><span class="p">:</span><span class="s2">"GEN -DYE ZIP PENCIL POUCH "</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"con_safety_website"</span><span class="p">:</span><span class="s2">"http://67.32.50.6/CSPC/defult.aspx"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"federal_registration_number"</span><span class="p">:</span><span class="s2">"FEDERAL RN# 90630 ONT. REG.# 34333"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"eton_flow"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"dimensions"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"width"</span><span class="p">:</span><span class="mf">11.5</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"height"</span><span class="p">:</span><span class="mf">14.0</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"measurement"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"resolution"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"flow_number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state_machine"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"on"</span><span class="p">:</span><span class="s2">"print_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"received"</span><span class="p">:</span><span class="s2">"printed"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"on"</span><span class="p">:</span><span class="s2">"press_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"printed"</span><span class="p">:</span><span class="s2">"pressed"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"on"</span><span class="p">:</span><span class="s2">"cut_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"pressed"</span><span class="p">:</span><span class="s2">"cut"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"on"</span><span class="p">:</span><span class="s2">"sew_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"cut"</span><span class="p">:</span><span class="s2">"sewn"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"on"</span><span class="p">:</span><span class="s2">"pack_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"sewn"</span><span class="p">:</span><span class="s2">"packed"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"print_environment"</span><span class="p">:</span><span class="s2">"op130328-{0}-JV33-PP14-EJ-4C-JC2-6248-540x720v"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nt">"design-urls"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nt">"original"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/original/764805843181896991.jpg?1491370890"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"thumb"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/thumb/764805843181896991.png?1491370890"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"medium"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/medium/764805843181896991.png?1491370890"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nt">"po"</span><span class="p">:</span><span class="s2">"SOC040517000138"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"co"</span><span class="p">:</span><span class="s2">"CDS-04051701134"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"line-item-count"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"line_item_id"</span><span class="p">:</span><span class="mi">764805840312993036</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"received"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"cancelled"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"loom"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"printed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"hold"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"stretched"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pressed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"cut"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"eton"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"packed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"pillow_blow"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tentered"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"quality_control"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sewn"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"turned"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"shipped"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nt">"kit-data"</span><span class="p">:[</span><span class="w">
+
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nt">"tracking-numbers"</span><span class="p">:[</span><span class="w">
+            </span><span class="s2">"44335442-5331554"</span><span class="w">
+         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/designs"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/designs"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/line-item-count"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/line-item-count"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"order-shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/order-shipments"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/order-shipments"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:{</span><span class="w">
+         </span><span class="nt">"items"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/items"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/items"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nt">"order"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/order"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/order"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nt">"line-item-count"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nt">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/line-item-count"</span><span class="p">,</span><span class="w">
+               </span><span class="nt">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/line-item-count"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 

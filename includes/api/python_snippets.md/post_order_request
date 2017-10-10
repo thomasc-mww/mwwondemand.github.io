@@ -16,104 +16,114 @@
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
             <span class="p">},</span>
-            <span class="n">data</span><span class="o">=</span><span class="s">"{</span><span class="err">
-</span><span class="s"> 'data': {</span><span class="err">
-</span><span class="s">    'type': 'orders',</span><span class="err">
-</span><span class="s">    'attributes': {</span><span class="err">
-</span><span class="s">      'vendor-po': '1480697715',</span><span class="err">
-</span><span class="s">      'shipping-method': 'SAMPLE',</span><span class="err">
-</span><span class="s">      'shipping-account-number': '1234'</span><span class="err">
-</span><span class="s">    }</span><span class="err">
-</span><span class="s">  },</span><span class="err">
-</span><span class="s">  'included': [</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'shipping-address',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">    'name': 'Phillip J. Fry',</span><span class="err">
-</span><span class="s">        'address': '123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321',</span><span class="err">
-</span><span class="s">        'city': 'New New York',</span><span class="err">
-</span><span class="s">        'state': 'NY',</span><span class="err">
-</span><span class="s">        'postal-code': '10012'</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">    },</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'billing-address',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">    'name': 'Hubert Farnsworth',</span><span class="err">
-</span><span class="s">        'address': '123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321',</span><span class="err">
-</span><span class="s">        'city': 'New New York',</span><span class="err">
-</span><span class="s">        'state': 'NY',</span><span class="err">
-</span><span class="s">        'postal-code': '10012'</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">    },</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'return-address',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">    'name': 'Bender B. Rodriguez',</span><span class="err">
-</span><span class="s">        'address': '123 Green St.</span><span class="se">\\</span><span class="s">nSuite 321',</span><span class="err">
-</span><span class="s">        'city': 'New New York',</span><span class="err">
-</span><span class="s">        'state': 'NY',</span><span class="err">
-</span><span class="s">        'postal-code': '10012'</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">    },</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'line-items',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">        'line-number': 1,</span><span class="err">
-</span><span class="s">        'quantity': 2,</span><span class="err">
-</span><span class="s">        'description': 'It's not sò fluffy!',</span><span class="err">
-</span><span class="s">        'product-code': '3PF-PSY-SQPGZ2C',</span><span class="err">
-</span><span class="s">        'item-properties': {</span><span class="err">
-</span><span class="s">          'thread-color': 'white',</span><span class="err">
-</span><span class="s">          'blah': 'blah-2'</span><span class="err">
-</span><span class="s">        },</span><span class="err">
-</span><span class="s">        'designs': [</span><span class="err">
-</span><span class="s">          {</span><span class="err">
-</span><span class="s">            'image_remote_url': 'http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg',</span><span class="err">
-</span><span class="s">            'position': 'centered',</span><span class="err">
-</span><span class="s">            'crop': 'left'</span><span class="err">
-</span><span class="s">          }</span><span class="err">
-</span><span class="s">        ]</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">    },</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'line-items',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">        'line-number': 2,</span><span class="err">
-</span><span class="s">        'quantity': 5,</span><span class="err">
-</span><span class="s">        'description': 'It's sò fluffy!',</span><span class="err">
-</span><span class="s">        'product-code': '3PF-PJT-SLPG4CW',</span><span class="err">
-</span><span class="s">        'item-properties': {</span><span class="err">
-</span><span class="s">          'thread-color': 'white',</span><span class="err">
-</span><span class="s">          'blah': 'blah-2'</span><span class="err">
-</span><span class="s">        },</span><span class="err">
-</span><span class="s">        'designs': [</span><span class="err">
-</span><span class="s">          {</span><span class="err">
-</span><span class="s">            'image_remote_url': 'http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg'</span><span class="err">
-</span><span class="s">          }</span><span class="err">
-</span><span class="s">        ]</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">    },</span><span class="err">
-</span><span class="s">    {</span><span class="err">
-</span><span class="s">      'type': 'packing-list',</span><span class="err">
-</span><span class="s">       'attributes': {</span><span class="err">
-</span><span class="s">    'url': 'http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf'</span><span class="err">
-</span><span class="s">       }</span><span class="err">
-</span><span class="s">      },</span><span class="err">
-</span><span class="s">      {</span><span class="err">
-</span><span class="s">         'type': 'shipping-label',</span><span class="err">
-</span><span class="s">      'attributes': {</span><span class="err">
-</span><span class="s">         'url': 'https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png'</span><span class="err">
-</span><span class="s">      }</span><span class="err">
-
-</span><span class="s">      }</span><span class="err">
-</span><span class="s">  ]</span><span class="err">
-</span><span class="s">}"</span>
+            <span class="n">data</span><span class="o">=</span>
+            <span class="s">"""{
+         "data": {
+            "type": "orders",
+            "attributes": {
+              "vendor-po": "14679881092",
+              "shipping-method": "SAMPLE",
+              "shipping-account-number": "1234"
+            }
+          },
+          "included": [
+            {
+              "type": "shipping-address",
+              "attributes": {
+                "name": "Phillip J. Fry",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "billing-address",
+              "attributes": {
+                "name": "Hubert Farnsworth",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "return-address",
+              "attributes": {
+                "name": "Bender B. Rodriguez",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "line-items",
+              "attributes": {
+                "line-number": 1,
+                "quantity": 2,
+                "description": "It</span><span class="se">\'</span><span class="s">s not so fluffy!",
+                "product-code": "3PF-SC6-SPFPI",
+                "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+                "item-properties": {
+                  "thread-color": "white"
+                },
+                "designs": [
+                  {
+                    "image-remote-url": "https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "line-items",
+              "attributes": {
+                "line-number": 2,
+                "quantity": 5,
+                "description": "Velour Vest",
+                "product-code": "3PF-SC6-SPFPI",
+                "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+                "item-properties": {
+                  "thread-color": "white"
+                },
+                "designs": [
+                  {
+                    "image-remote-url": "http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "packing-list",
+              "attributes": {
+                "url": "https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf"
+               }
+              },
+              {
+              "type": "shipping-label",
+              "attributes": {
+               "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
+              }
+            }
+          ]
+        }"""</span>
         <span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Status Code: {status_code}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">status_code</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Response Body: {content}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">'HTTP Request failed'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre>

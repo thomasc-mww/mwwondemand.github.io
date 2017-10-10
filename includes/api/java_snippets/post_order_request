@@ -1,8 +1,12 @@
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.http.entity.ContentType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">post_request</span>
 <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">sendRequest</span><span class="o">();</span>
@@ -15,63 +19,144 @@
     <span class="k">try</span> <span class="o">{</span>
 
       <span class="c1">// Create request</span>
-      <span class="n">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="na">Post</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="o">)</span>
+      <span class="n">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="o">);</span>
+      <span class="n">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"POST"</span><span class="o">);</span>
+
 
       <span class="c1">// Add headers</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=S@mpl3!"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">)</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">);</span>
+
 
       <span class="c1">// Add body</span>
-      <span class="o">.</span><span class="na">bodyString</span><span class="o">(</span><span class="s">"{ \n \\ndata\\n: {
-                      \n    \\ntype\\n: \\norders\\n,\n    
-                            \\nattributes\\n: {\n      
-                                      \\nvendor-po\\n: \\n1480697772\\n,\n      \\nshipping-method\\n: \\nSAMPLE\\n,\n      \\nshipping-account-number\\n: \\n1234\\n\n  
-                                }\n
-                            },\n  
-                            \\nincluded\\n: [\n    {\n      
-                                      \\ntype\\n:   \\nshipping-address\\n,\n      \\nattributes\\n: {\n
-                                          \\nname\\n: \\nPhillip J. Fry\\n,\n       \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n
-                                          \\nstate\\n: \\nNY\\n,\n
-                                          \\npostal-code\\n: \\n10012\\n\n      
-                                      }\n    
-                                },\n    
-                                {\n      
-                                  \\ntype\\n: \\nbilling-address\\n,\n      
-                                  \\nattributes\\n: {\n
-                                      \\nname\\n: \\nHubert Farnsworth\\n,\n        \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n               \\nstate\\n: \\nNY\\n,\n                    \\npostal-code\\n: \\n10012\\n\n                       }\n   
-                                  },\n    
-                                  {\n      
-                                    \\ntype\\n: \\nreturn-address\\n,\n  
-                                    \\nattributes\\n: {\n
-                                        \\nname\\n: \\nBender B. Rodriguez\\n,\n        \\naddress\\n: \\n123 Green St.\\nSuite 321\\n,\n       \\ncity\\n: \\nNew New York\\n,\n       
-                                        \\nstate\\n: \\nNY\\n,\n        
-                                        \\npostal-code\\n: \\n10012\\n\n      
-                                      }\n
-                                   },\n    
-                                   {\n     
-                                     \\ntype\\n: \\nline-items\\n,\n   
-                                      \\nattributes\\n: {\n
-                                              \\nline-number\\n: 1,\n        
-                                              \\nquantity\\n: 2,\n        
-                                              \\ndescription\\n: \\nIt's not so fluffy!\\n,\n        
-                                              \\nproduct-code\\n: \\n3PF-PSY-SQPGZ2C\\n,\n        \\nitem-properties\\n:  
-                                              {\n
-                                                  \\nthread-color\\n: \\nwhite\\n,\n
-                                                  \\nblah\\n:
-                                                  \\nblah-2\\n\n        
-                                              },\n      
-                                              \\ndesigns\\n: [\n         
-                                                 {\n            
-                                                  \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg\\n,\n            \\nposition\\n: \\ncentered\\n,\n            \\ncrop\\n: \\nleft\\n\n          }\n        ]\n      }\n    },\n    {\n      \\ntype\\n: \\nline-items\\n,\n      \\nattributes\\n: {\n        \\nline-number\\n: 2,\n        \\nquantity\\n: 5,\n        \\ndescription\\n: \\nIt's sò fluffy!\\n,\n        \\nproduct-code\\n: \\n3PF-PJT-SLPG4CW\\n,\n        \\nitem-properties\\n: {\n          \\nthread-color\\n: \\nwhite\\n,\n          \\nblah\\n: \\nblah-2\\n\n        },\n        \\ndesigns\\n: [\n          {\n            \\nimage_remote_url\\n: \\nhttp://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg\\n\n          }\n        ]\n      }\n    },\n    {  \n      \\ntype\\n: \\npacking-list\\n,\n       \\nattributes\\n: {\n   \\nurl\\n: \\nhttp://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf\\n\n       }\n      },\n      { \n         \\ntype\\n: \\nshipping-label\\n,\n      \\nattributes\\n: {\n      \\nurl\\n: \\nhttps://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png\\n\n    }\n   \n      }\n  ]\n}"</span><span class="o">,</span> <span class="n">ContentType</span><span class="o">.</span><span class="na">DEFAULT_TEXT</span><span class="o">)</span>
+      <span class="n">String</span> <span class="n">urlParams</span> <span class="o">=</span> <span class="s">"{"</span> <span class="o">+</span>
+        <span class="s">"'data': {"</span> <span class="o">+</span>
+            <span class="s">"'type': 'orders',"</span> <span class="o">+</span>
+            <span class="s">"'attributes': {"</span> <span class="o">+</span>
+              <span class="s">"'vendor-po': '146798810923',"</span> <span class="o">+</span>
+              <span class="s">"'shipping-method': 'SAMPLE',"</span> <span class="o">+</span>
+              <span class="s">"'shipping-account-number': '1234',"</span> <span class="o">+</span>
+            <span class="s">"}"</span> <span class="o">+</span>
+          <span class="s">"},"</span> <span class="o">+</span>
+          <span class="s">"'included': ["</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'shipping-address',"</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+                <span class="s">"'name': 'Phillip J. Fry', "</span> <span class="o">+</span>
+                <span class="s">"'address1: '123 Green St.',"</span> <span class="o">+</span>
+                <span class="s">"'address2: 'Suite 321',"</span> <span class="o">+</span>
+                <span class="s">"'city': 'New New York', "</span> <span class="o">+</span>
+                <span class="s">"'state': 'NY',"</span> <span class="o">+</span>
+                <span class="s">"'country': 'US',"</span> <span class="o">+</span>
+                <span class="s">"'postal-code': '10012'"</span> <span class="o">+</span>
+                <span class="s">"'email': 'bob@dobalina.net',"</span> <span class="o">+</span>
+                <span class="s">"'phone': '8288888888'"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"},"</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'billing-address',"</span> <span class="o">+</span>
+              <span class="s">"'attributes': {"</span> <span class="o">+</span>
+                <span class="s">"'name': 'Hubert Farnsworth',"</span> <span class="o">+</span>
+                <span class="s">"'address1: '123 Green St.',"</span> <span class="o">+</span>
+                <span class="s">"'address2: 'Suite 321',"</span> <span class="o">+</span>
+                <span class="s">"'city': 'New New York',"</span> <span class="o">+</span>
+                <span class="s">"'state': 'NY',"</span> <span class="o">+</span>
+                <span class="s">"'country': 'US',"</span> <span class="o">+</span>
+                <span class="s">"'postal-code': '10012'"</span> <span class="o">+</span>
+                <span class="s">"'email': 'bob@dobalina.net',"</span> <span class="o">+</span>
+                <span class="s">"'phone': '8288888888'"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"},"</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'return-address',"</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+                <span class="s">"'name': 'Bender B. Rodriguez',"</span> <span class="o">+</span>
+                <span class="s">"'address1: '123 Green St.',"</span> <span class="o">+</span>
+                <span class="s">"'address2: 'Suite 321',"</span> <span class="o">+</span>
+                <span class="s">"'city': 'New New York', "</span> <span class="o">+</span>
+                <span class="s">"'state': 'NY',"</span> <span class="o">+</span>
+                <span class="s">"'country': 'US',"</span> <span class="o">+</span>
+                <span class="s">"'postal-code': '10012',"</span> <span class="o">+</span>
+                <span class="s">"'email': 'bob@dobalina.net',"</span> <span class="o">+</span>
+                <span class="s">"'phone': '8288888888'"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"},"</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'line-items', "</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+                <span class="s">"'line-number': 1, "</span> <span class="o">+</span>
+                <span class="s">"'quantity': 2, "</span>  <span class="o">+</span>
+                <span class="s">"'description': 'It\'s not so fluffy!', "</span> <span class="o">+</span>
+                <span class="s">"'product-code': '3PF-SC6-SPFPI', "</span> <span class="o">+</span>
+                <span class="s">"'customer-product-code': 'YOUR_UPC/SKU_NUMBER', "</span> <span class="o">+</span>
+                <span class="s">"'item-properties': { "</span> <span class="o">+</span>
+                  <span class="s">"'thread-color': 'white'"</span> <span class="o">+</span>
+                <span class="s">"},"</span> <span class="o">+</span>
+                <span class="s">"'designs': ["</span> <span class="o">+</span>
+                  <span class="s">"{"</span> <span class="o">+</span>
+                    <span class="s">"'image-remote-url': 'https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg'"</span> <span class="o">+</span>
+                  <span class="s">"}"</span> <span class="o">+</span>
+                <span class="s">"]"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"},"</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'line-items', "</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+                <span class="s">"'line-number': 2, "</span> <span class="o">+</span>
+                <span class="s">"'quantity': 5, "</span> <span class="o">+</span>
+                <span class="s">"'description': 'Velour Vest', "</span><span class="o">+</span>
+                <span class="s">"'product-code': '3PF-SC6-SPFPI',"</span> <span class="o">+</span>
+                <span class="s">"'customer-product-code': 'YOUR_UPC/SKU_NUMBER', "</span> <span class="o">+</span>
+                <span class="s">"'item-properties': { "</span> <span class="o">+</span>
+                  <span class="s">"'thread-color': 'white'"</span> <span class="o">+</span>
+                <span class="s">"},"</span> <span class="o">+</span>
+                <span class="s">"'designs': ["</span>  <span class="o">+</span>
+                  <span class="s">"{"</span> <span class="o">+</span>
+                    <span class="s">"'image-remote-url': 'http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg'"</span> <span class="o">+</span>
+                  <span class="s">"}"</span> <span class="o">+</span>
+                <span class="s">"]"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"},"</span> <span class="o">+</span>
+            <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'packing-list', "</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+                <span class="s">"'url': 'https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf' "</span> <span class="o">+</span>
+               <span class="s">"}"</span> <span class="o">+</span>
+              <span class="s">"},"</span> <span class="o">+</span>
+              <span class="s">"{"</span> <span class="o">+</span>
+              <span class="s">"'type': 'shipping-label',"</span> <span class="o">+</span>
+              <span class="s">"'attributes': { "</span> <span class="o">+</span>
+               <span class="s">"'url': 'https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg'"</span> <span class="o">+</span>
+              <span class="s">"}"</span> <span class="o">+</span>
+            <span class="s">"}"</span> <span class="o">+</span>
+          <span class="s">"]"</span><span class="o">+</span>
+        <span class="s">"}"</span><span class="o">;</span>
+       <span class="n">con</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+       <span class="n">DataOutputStream</span> <span class="n">wr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+           <span class="n">wr</span><span class="o">.</span><span class="na">writeBytes</span><span class="o">(</span><span class="n">urlParams</span><span class="o">);</span>
+           <span class="n">wr</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+           <span class="n">wr</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+       <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
 
-      <span class="c1">// Fetch request and return content</span>
-      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+       <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+            <span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
 
-      <span class="c1">// Print content</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+            <span class="c1">//print result</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
     <span class="o">}</span>
     <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
+
 </code></pre>
