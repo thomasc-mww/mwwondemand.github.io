@@ -1,19 +1,21 @@
 ```ruby
 require 'net/http'
 
-# Get Line Item (GET )
+# Get All Orders (GET )
 def send_request
-  uri = URI('https://api.mwwondemand.com/api/line_items/647372455787562562')
+  uri = URI.parse('https://api.mwwondemand.com/api/line-items/764805840312993036')
 
   # Create client
   http = Net::HTTP.new(uri.host, uri.port)
-
+  http.use_ssl = true
   # Create Request
   req =  Net::HTTP::Get.new(uri)
   # Add headers
+  req["Accept"] = "application/vnd.api+json; version=1"
+  # Add headers
   req.add_field "Authorization", "auth-key=YOUR_API_KEY"
   # Add headers
-  req.add_field "Accept", "application/vnd.api+json; version=1"
+  req["Content-Type"] = "application/vnd.api+json"
 
   # Fetch Request
   res = http.request(req)

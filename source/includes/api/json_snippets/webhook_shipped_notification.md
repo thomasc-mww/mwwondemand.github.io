@@ -13,12 +13,15 @@
       "event": "Shipped",
       "title": "Order Shipped",
       "description": "You have a webhook notice",
-      "timestamp": "2016-04-06T16:41:36.895Z"
+      "timestamp": "2016-04-06T16:41:36.895Z",
+      "tracking-numbers": [
+          "1Z999AA10123456784"
+      ]
     },
     "relationships": {
       "mwwondemand-order": {
         "data": {
-          "id": "501323961548670462",
+          "id": "YOUR-ID-HERE",
           "type": "mwwondemand-orders"
         }
       },
@@ -35,10 +38,10 @@
   "included": {
     "mwwondemand-orders": [
       {
-        "id": "501323961548670462",
+        "id": "YOUR-ID-HERE",
         "type": "mwwondemand-orders",
         "attributes": {
-          "vendor-po": "501323961548670462",
+          "vendor-po": "YOUR-ID-HERE",
           "state": "received"
         }
       }

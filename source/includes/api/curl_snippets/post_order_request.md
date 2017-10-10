@@ -9,38 +9,50 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
     "attributes": {
       "vendor-po": "1467988109",
       "shipping-method": "SAMPLE",
-      "shipping-account-number": "1234"
+      "shipping-account-number": "1234",
     }
   },
   "included": [
     {
       "type": "shipping-address",
       "attributes": {
-      "name": "Phillip J. Fry",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Phillip J. Fry",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
-        "postal-code": "10012"
+        "country": "US",
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {
       "type": "billing-address",
       "attributes": {
-      "name": "Hubert Farnsworth",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Hubert Farnsworth",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
-        "postal-code": "10012"
+        "country": "US",
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {
       "type": "return-address",
       "attributes": {
-      "name": "Bender B. Rodriguez",
-      "address": "123 Green St.\nSuite 321",
+        "name": "Bender B. Rodriguez",
+        "address1": "123 Green St.",
+        "address2:" "Suite 321",
         "city": "New New York",
         "state": "NY",
-        "postal-code": "10012"
+        "country": "US",
+        "postal-code": "10012",
+        "email": "bob@dobalina.net",
+        "phone": "8288888888"
       }
     },
     {
@@ -56,7 +68,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
         },
         "designs": [
           {
-            "image-remote-url": "http://images.apple.com/v/home/cj/images/promos/ipad_pro_large.jpg"
+            "image-remote-url": "https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg"
           }
         ]
       }
@@ -74,7 +86,7 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
         },
         "designs": [
           {
-            "image-remote-url": "http://images.apple.com/v/home/cj/images/heros/iphone-6s-change_xlarge.jpg"
+            "image-remote-url":"http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg"
           }
         ]
       }
@@ -82,13 +94,13 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
     {
       "type": "packing-list",
       "attributes": {
-        "url": "http://www.akapparel.com/assets/production-pdf/110-160511-050-2.pdf"
+        "url": "https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf"
        }
       },
       {
       "type": "shipping-label",
       "attributes": {
-       "url": "https://hellofabric.com/assets/mww/orders/86667297/56d712af0897d-86667297-MWWA1411.png"
+       "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
       }
     }
   ]

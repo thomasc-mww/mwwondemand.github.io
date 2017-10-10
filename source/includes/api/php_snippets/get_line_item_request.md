@@ -5,7 +5,7 @@
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/line_items/');
+curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/line-items/764805840312993036');
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -15,7 +15,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: auth-key=S@mpl3!",
+  "Authorization: auth-key=YOUR_API_KEY",
   "Accept: application/vnd.api+json; version=1",
  ]
 );
