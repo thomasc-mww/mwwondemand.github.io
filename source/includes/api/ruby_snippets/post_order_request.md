@@ -24,8 +24,7 @@ def send_request
      "attributes": {
        "vendor-po": "14679881309",
        "shipping-method": "SAMPLE",
-       "shipping-account-number": "1234",
-       "order-type": "test"
+       "shipping-account-number": "1234"
      }
    },
    "included": [
