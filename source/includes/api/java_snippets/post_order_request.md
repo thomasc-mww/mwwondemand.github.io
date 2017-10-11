@@ -40,6 +40,7 @@ public class post_request
               "'vendor-po': '146798810923'," +
               "'shipping-method': 'SAMPLE'," +
               "'shipping-account-number': '1234'," +
+              "'order-type': 'test'" +
             "}" +
           "}," +
           "'included': [" +

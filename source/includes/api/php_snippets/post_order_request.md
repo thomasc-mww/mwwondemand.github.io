@@ -27,6 +27,7 @@ $body = '"data": {
      "vendor-po": "1467988109",
      "shipping-method": "SAMPLE",
      "shipping-account-number": "1234",
+     "order-type": "test"
    }
  },
  "included": [
