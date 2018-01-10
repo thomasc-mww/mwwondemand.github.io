@@ -39,6 +39,7 @@
               <span class="s">"'vendor-po': '146798810923',"</span> <span class="o">+</span>
               <span class="s">"'shipping-method': 'SAMPLE',"</span> <span class="o">+</span>
               <span class="s">"'shipping-account-number': '1234',"</span> <span class="o">+</span>
+              <span class="s">"'test-order': 'test'"</span> <span class="o">+</span>
             <span class="s">"}"</span> <span class="o">+</span>
           <span class="s">"},"</span> <span class="o">+</span>
           <span class="s">"'included': ["</span> <span class="o">+</span>
