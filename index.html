@@ -335,6 +335,7 @@ Content-Type: application/json; charset=utf-8
       <span class="s2">"vendor-po"</span>: <span class="s2">"1467988109"</span>,
       <span class="s2">"shipping-method"</span>: <span class="s2">"SAMPLE"</span>,
       <span class="s2">"shipping-account-number"</span>: <span class="s2">"1234"</span>,
+      <span class="s2">"test-order"</span>: <span class="s2">"test"</span>
     <span class="o">}</span>
   <span class="o">}</span>,
   <span class="s2">"included"</span>: <span class="o">[</span>
@@ -457,7 +458,8 @@ Content-Type: application/json; charset=utf-8
      "attributes": {
        "vendor-po": "14679881309",
        "shipping-method": "SAMPLE",
-       "shipping-account-number": "1234"
+       "shipping-account-number": "1234",
+       "test-order": "test"
      }
    },
    "included": [
@@ -590,7 +592,8 @@ Content-Type: application/json; charset=utf-8
             "attributes": {
               "vendor-po": "14679881092",
               "shipping-method": "SAMPLE",
-              "shipping-account-number": "1234"
+              "shipping-account-number": "1234",
+              "test-order": "test"
             }
           },
           "included": [
@@ -723,6 +726,7 @@ Content-Type: application/json; charset=utf-8
      "vendor-po": "1467988109",
      "shipping-method": "SAMPLE",
      "shipping-account-number": "1234",
+     "test-order": "test"
    }
  },
  "included": [
@@ -877,6 +881,7 @@ Content-Type: application/json; charset=utf-8
               <span class="s">"'vendor-po': '146798810923',"</span> <span class="o">+</span>
               <span class="s">"'shipping-method': 'SAMPLE',"</span> <span class="o">+</span>
               <span class="s">"'shipping-account-number': '1234',"</span> <span class="o">+</span>
+              <span class="s">"'test-order': 'test'"</span> <span class="o">+</span>
             <span class="s">"}"</span> <span class="o">+</span>
           <span class="s">"},"</span> <span class="o">+</span>
           <span class="s">"'included': ["</span> <span class="o">+</span>
@@ -1116,6 +1121,10 @@ Content-Type: application/json; charset=utf-8
 <td>included <br><em>array[objects]</em></td>
 <td>The array element describing the item(s) to be included in the order.</td>
 </tr>
+<tr>
+<td>test-order <br> <em> string </em> <br> optional</td>
+<td>Optional field, &lsquo;test&rsquo; for a test order, &lsquo;new&rsquo; for a new regular order (defaults to &#39;new&rsquo;)</td>
+</tr>
 </tbody></table>
 
 <p><em>Line Item details</em></p>
@@ -1269,7 +1278,7 @@ Content-Type: application/json; charset=utf-8
 <p><em>Note: This endpoint follows the <a href="http://jsonapi.org/format/1.0/">JSON API 1.0 Spec</a>, and also allows included items when creating the order.</em></p>
 
 <aside class="success">
-Remember to replace &lsquo;YOUR_API_KEY&rsquo; with your actual key!
+Remember to replace 'YOUR_API_KEY&rsquo; with your actual key!
 </aside>
 
 <h2 id="get-all-orders">Get All Orders</h2>
