@@ -715,18 +715,17 @@ Content-Type: application/json; charset=utf-8
 <span class="c1">// Set headers
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
   <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
-  <span class="s2">"Authorization: auth-key=S@mpl3!"</span><span class="p">,</span>
+  <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span><span class="p">,</span>
   <span class="s2">"Accept: application/vnd.api+json; version=1"</span><span class="p">,</span>
  <span class="p">]</span>
 <span class="p">);</span>
 <span class="c1">// Create body
-</span><span class="nv">$body</span> <span class="o">=</span> <span class="s1">'"data": {
+</span><span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{"data": {
    "type": "orders",
    "attributes": {
      "vendor-po": "1467988109",
      "shipping-method": "SAMPLE",
      "shipping-account-number": "1234",
-     "test-order": "test"
    }
  },
  "included": [
@@ -820,7 +819,7 @@ Content-Type: application/json; charset=utf-8
       "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
      }
    }
- ]'</span><span class="p">;</span>
+ ]}'</span><span class="p">;</span>
 
 <span class="c1">// Set body
 </span><span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="nx">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
