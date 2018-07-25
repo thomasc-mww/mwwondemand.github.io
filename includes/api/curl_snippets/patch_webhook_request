@@ -1,0 +1,16 @@
+<pre class="highlight shell"><code>curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+      "id": "503678086298993748",
+      "type": "webhooks",
+      "attributes": {
+        "url": "https://your-server.com/mwwondemand-order-notifications",
+        "enabled": true,
+        "shipped": true
+      }
+    }
+  }'</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
+</code></pre>

@@ -1,0 +1,133 @@
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="c1"># Create Order (POST )</span>
+<span class="k">def</span> <span class="nf">send_request</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">)</span>
+
+  <span class="c1"># Create client</span>
+  <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+  <span class="c1"># Create Request</span>
+  <span class="c1">#http.use_ssl = true</span>
+  <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+  <span class="c1"># Add headers</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json; version=1"</span>
+  <span class="c1"># Add headers</span>
+  <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
+  <span class="c1"># Add headers</span>
+  <span class="n">req</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json"</span>
+  <span class="c1"># Set body</span>
+  <span class="n">req</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "data": {
+     "type": "orders",
+     "attributes": {
+       "vendor-po": "14679881309",
+       "shipping-method": "SAMPLE",
+       "shipping-account-number": "1234",
+       "test-order": "test"
+     }
+   },
+   "included": [
+     {
+       "type": "shipping-address",
+       "attributes": {
+         "name": "Phillip J. Fry",
+         "address1": "123 Green St.",
+         "address2": "Suite 321",
+         "city": "New New York",
+         "state": "NY",
+         "country": "US",
+         "postal-code": "10012",
+         "email": "bob@dobalina.net",
+         "phone": "8288888888"
+       }
+     },
+     {
+       "type": "billing-address",
+       "attributes": {
+         "name": "Hubert Farnsworth",
+         "address1": "123 Green St.",
+         "address2": "Suite 321",
+         "city": "New New York",
+         "state": "NY",
+         "country": "US",
+         "postal-code": "10012",
+         "email": "bob@dobalina.net",
+         "phone": "8288888888"
+       }
+     },
+     {
+       "type": "return-address",
+       "attributes": {
+         "name": "Bender B. Rodriguez",
+         "address1": "123 Green St.",
+         "address2": "Suite 321",
+         "city": "New New York",
+         "state": "NY",
+         "country": "US",
+         "postal-code": "10012".
+         "email": "bob@dobalina.net",
+         "phone": "8288888888"
+       }
+     },
+     {
+       "type": "line-items",
+       "attributes": {
+         "line-number": 1,
+         "quantity": 2,
+         "description": "It\'s not sò fluffy!",
+         "product-code": "3PF-SC6-SPFPI",
+         "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+         "item-properties": {
+           "thread-color": "white"
+         },
+         "designs": [
+           {
+             "image-remote-url": "https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg"
+           }
+         ]
+       }
+     },
+     {
+       "type": "line-items",
+       "attributes": {
+         "line-number": 2,
+         "quantity": 5,
+         "description": "Velour Vest",
+         "product-code": "3PF-SC6-SPFPI",
+         "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+         "item-properties": {
+           "thread-color": "white"
+         },
+         "designs": [
+           {
+             "image-remote-url": "http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg"
+           }
+         ]
+       }
+     },
+     {
+       "type": "packing-list",
+       "attributes": {
+         "url": "https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf"
+        }
+       },
+       {
+       "type": "shipping-label",
+       "attributes": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
+       }
+     }
+   ]
+
+}'</span>
+
+
+  <span class="c1"># Fetch Request</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Response HTTP Status Code: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">code</span><span class="si">}</span><span class="s2">"</span>
+  <span class="nb">puts</span> <span class="s2">"Response HTTP Response Body: </span><span class="si">#{</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">"HTTP Request failed (</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">)"</span>
+<span class="k">end</span>
+</code></pre>

@@ -1,0 +1,335 @@
+<p>A customer can provide a single URL to be called with a notifications when various events occur related to his/her orders. Also customers may opt-in/out to various order/order item events that fire notifications. This is an experimental feature and subject to change. For production applications we highly recommend querying for status via the order end point.</p>
+
+<h2 id="create-a-web-hook">Create a Web Hook</h2>
+
+<p>This endpoint will submit a new Web hook record.</p>
+
+<ul>
+<li>Customers should only have one Web Hook.</li>
+<li>The URL for a customer&rsquo;s webhook must be unique.</li>
+</ul>
+
+<pre class="highlight shell"><code>curl -i -X POST https://api.mwwondemand.com/api/webhooks <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+      "type": "webhooks",
+      "attributes": {
+        "url": "https://your-server.com/order-notifications"
+      }
+    }
+  }'</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTPS/1.1 201 Created
+Content-Type: application/vnd.api+json
+ETag: W/"a3c86d6fc9e44e75887b996cafc57b37"
+Cache-Control: max-age=0, private, must-revalidate
+</code></pre>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503678086298993748"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T22:38:50.426Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T22:38:50.426Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-server.com/order-notifications"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"received"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>User and URL must be unique, otherwise an 422 will be returned</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+</code></pre>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"has already been taken"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user-id - has already been taken"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/user-id"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="https-request">HTTPS Request</h3>
+
+<p><code class="prettyprint">POST https://api.mwwondemand.com/api/webhooks</code></p>
+
+<h3 id="post-parameters">POST Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data <br><em>object</em></td>
+<td>The root element of your JSON post object.</td>
+</tr>
+<tr>
+<td>type <br><em>string</em></td>
+<td>Resource the object represents. This will always be &ldquo;webhooks&rdquo;.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>object</td>
+</tr>
+<tr>
+<td>url <br><em>string</em></td>
+<td>The URL to receive callback notifications.</td>
+</tr>
+<tr>
+<td>enabled <br><em>boolean</em></td>
+<td>Pause notifications by setting false.</td>
+</tr>
+<tr>
+<td>received <br><em>boolean</em></td>
+<td>Fired when order is received.</td>
+</tr>
+<tr>
+<td>designdownloaded<br><em>boolean</em></td>
+<td>Fired after item design downloaded.</td>
+</tr>
+<tr>
+<td>processed <br><em>boolean</em></td>
+<td>Fired after processing complete for order/items.</td>
+</tr>
+<tr>
+<td>shipped <br><em>boolean</em></td>
+<td>Fired when an order/item ships.</td>
+</tr>
+<tr>
+<td>cancelled <br><em>boolean</em></td>
+<td>Fired when an order/item is cancelled.</td>
+</tr>
+<tr>
+<td>printed <br><em>boolean</em></td>
+<td>Fired after an item is printed.</td>
+</tr>
+<tr>
+<td>pressed <br><em>boolean</em></td>
+<td>Fired after an item is pressed.</td>
+</tr>
+<tr>
+<td>cut <br><em>boolean</em></td>
+<td>Fired after an item is cut.</td>
+</tr>
+<tr>
+<td>sewn <br><em>boolean</em></td>
+<td>Fired after an item is sewn.</td>
+</tr>
+<tr>
+<td>turned <br><em>boolean</em></td>
+<td>Fired after an item is turned.</td>
+</tr>
+<tr>
+<td>packed <br><em>boolean</em></td>
+<td>Fired after an item is packed.</td>
+</tr>
+</tbody></table>
+
+<p><em>Note: This endpoint follows the <a href="http://jsonapi.org/format/1.0/">JSON API 1.0 Spec</a></em></p>
+
+<h3 id="errors">Errors</h3>
+
+<ul>
+<li>422 Unprocessable Entity</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>422</td>
+<td>user-id</td>
+<td>Customer can only have one Web hook</td>
+</tr>
+<tr>
+<td>422</td>
+<td>url</td>
+<td>URL must be unique in the MWWOndemand system</td>
+</tr>
+</tbody></table>
+
+<h2 id="show-web-hook-details">Show Web Hook Details</h2>
+
+<p>Shows Web hook attributes.</p>
+
+<p><code class="prettyprint">GET https://api.mwwondemand.com/api/webhooks</code></p>
+
+<p>Or,</p>
+
+<p><code class="prettyprint">GET https://api.mwwondemand.com/api/webhooks/:id</code></p>
+
+<pre class="highlight shell"><code>curl -X GET https://api.mwwondemand.com/api/webhooks <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+ETag: W/"db50338caf58efd86513055a93bf1ebb"
+Cache-Control: max-age=0, private, must-revalidate
+</code></pre>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503678086298993748"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhooks"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T22:38:50.426Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T23:35:18.364Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-server.com/mwwondemand-order-notifications"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"received"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/relationships/user"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/user"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="patch-web-hook-attributes">Patch Web hook Attributes</h2>
+
+<p>Update attributes, e.g. opt-in to receive notifications for additional events.</p>
+
+<p><code class="prettyprint">GET https://api.mwwondemand.com/api/webhooks/:id</code></p>
+
+<pre class="highlight shell"><code>curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 <span class="se">\</span>
+  -d <span class="s1">'{
+    "data": {
+      "id": "503678086298993748",
+      "type": "webhooks",
+      "attributes": {
+        "url": "https://your-server.com/mwwondemand-order-notifications",
+        "enabled": true,
+        "shipped": true
+      }
+    }
+  }'</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+ETag: W/"79fb5347c319c693f6d89ca82dc43e78"
+Cache-Control: max-age=0, private, must-revalidate
+</code></pre>
+
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"503678086298993748"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T22:38:50.426Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-09T23:35:18.364Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://your-server.com/mwwondemand-order-notifications"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"received"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/webhooks/503678086298993748/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="delete-web-hook">Delete Web Hook</h2>
+
+<p>Remove customer Web hook.</p>
+
+<p><code class="prettyprint">GET https://api.mwwondemand.com/api/webhooks/:id</code></p>
+
+<pre class="highlight shell"><code>curl -X DELETE https://api.mwwondemand.com/api/webhooks/503678086298993748 <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<pre class="highlight plaintext"><code>HTTP/1.1 204 No Content
+Cache-Control: no-cache
+</code></pre>
+
+<pre class="highlight json"><code></code></pre>
