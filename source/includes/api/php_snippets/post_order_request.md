@@ -16,18 +16,17 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 // Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "Content-Type: application/vnd.api+json",
-  "Authorization: auth-key=S@mpl3!",
+  "Authorization: auth-key=YOUR_API_KEY",
   "Accept: application/vnd.api+json; version=1",
  ]
 );
 // Create body
-$body = '"data": {
+$body = '{"data": {
    "type": "orders",
    "attributes": {
      "vendor-po": "1467988109",
      "shipping-method": "SAMPLE",
      "shipping-account-number": "1234",
-     "test-order": "test"
    }
  },
  "included": [
@@ -121,7 +120,7 @@ $body = '"data": {
       "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
      }
    }
- ]';
+ ]}';
 
 // Set body
 curl_setopt($ch, CURLOPT_POST, 1);
