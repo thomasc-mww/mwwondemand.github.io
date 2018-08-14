@@ -39,11 +39,11 @@ Error Code | Meaning
 
 'Cannot update shipping address'
 
-**Description** 
+**Description**
 
 The order has already shipped. It is no longer possible to change the shipping address for this order.
 
-**Notes** 
+**Notes**
 
 'The 422 (Unprocessable Entity) status code means the server understands the content type of the request entity, and the syntax of the request entity is correct (thus a 400 (Bad Request) status code is inappropriate) but was unable to process the contained instructions.'
 
@@ -59,11 +59,11 @@ Error Code | Meaning
 
 'Shipping address is required'
 
-**Description** 
+**Description**
 
 The order is missing a shipping address. A shipping request is required to submit an order.
 
-**Notes** 
+**Notes**
 
 'The 422 (Unprocessable Entity) status code means the server understands the content type of the request entity, and the syntax of the request entity is correct (thus a 400 (Bad Request) status code is inappropriate) but was unable to process the contained instructions.'
 
@@ -79,11 +79,11 @@ Error Code | Meaning
 
 'Invalid Order Format'
 
-**Description** 
+**Description**
 
 Please ensure that the item designs are an array
 
-**Notes** 
+**Notes**
 
 'The 422 (Unprocessable Entity) status code means the server understands the content type of the request entity, and the syntax of the request entity is correct (thus a 400 (Bad Request) status code is inappropriate) but was unable to process the contained instructions.'
 
