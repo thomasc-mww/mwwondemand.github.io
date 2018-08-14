@@ -1,9 +1,0 @@
-<pre class="highlight shell"><code>curl -X POST https://api.mwwondemand.com/api/login <span class="se">\</span>
-  -d <span class="s1">'{
-    "api_user": {
-      "email": "user@domain.com",
-      "password": "Xa34.678"
-    }
-  }'</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-</code></pre>

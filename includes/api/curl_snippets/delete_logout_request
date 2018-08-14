@@ -1,5 +1,0 @@
-<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://api.mwwondemand.com/api/logout"</span> <span class="se">\</span>
-    -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
-    -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
-</code></pre>
