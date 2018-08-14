@@ -68,7 +68,9 @@ For those who don't have JavaScript runtime or are experiencing JavaScript runti
 * Make changes on your fork and commit.
 * Run `./build.sh`.
 * Create a Pull Request on to **upstream** `master` from your **origin** `master`.
-#  
+
+
+<br/>
 
 Companies Using Slate
 ---------------------------------
