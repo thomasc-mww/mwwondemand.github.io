@@ -1,0 +1,217 @@
+# Authentication
+
+Customers are granted a API Key that can be used to authorize requests to the application server at <https://api.mwwondemand.com>
+
+<!-- Alternatively a token can be used by making a login request. -->
+
+
+## API Key
+
+> To authorize, use this code:
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl -X GET https://api.mwwondemand.com/api/endpoint \
+  -H "Content-Type: application/vnd.api+json" \
+  -H "Accept: application/vnd.api+json; version=1" \
+  -H "Authorization: auth-key=YOUR_API_KEY"
+```
+
+```ruby
+require 'net/http'
+
+# api_user Login API KEY (POST )
+def send_request
+  uri = URI('https://api.mwwondemand.com/api/login')
+
+  # Create client
+  http = Net::HTTP.new(uri.host, uri.port)
+
+  # Create Request
+  req =  Net::HTTP::Post.new(uri)
+  # Add headers
+  req.add_field "Content-Type", "application/vnd.api+json"
+  # Add headers
+  req.add_field "Authorization", "auth-key=S@mpl3!"
+  # Add headers
+  req.add_field "Accept", "application/vnd.api+json; version=1"
+
+  # Fetch Request
+  res = http.request(req)
+  puts "Response HTTP Status Code: #{res.code}"
+  puts "Response HTTP Response Body: #{res.body}"
+rescue StandardError => e
+  puts "HTTP Request failed (#{e.message})"
+end
+```
+
+```python
+# Install the Python Requests library:
+# `pip install requests`
+
+import requests
+
+
+def send_request():
+    # api_user Login API KEY
+    # POST https://api.mwwondemand.com/api/login
+
+    try:
+        response = requests.post(
+            url="https://api.mwwondemand.com/api/login",
+            headers={
+                "Content-Type": "application/vnd.api+json",
+                "Authorization": "auth-key=S@mpl3!",
+                "Accept": "application/vnd.api+json; version=1",
+            },
+        )
+        print('Response HTTP Status Code: {status_code}'.format(
+            status_code=response.status_code))
+        print('Response HTTP Response Body: {content}'.format(
+            content=response.content))
+    except requests.exceptions.RequestException:
+        print('HTTP Request failed')
+```
+
+```java
+import java.io.IOException;
+import org.apache.http.client.fluent.*;
+
+public class SendRequest
+{
+  public static void main(String[] args) {
+    sendRequest();
+  }
+
+  private static void sendRequest() {
+
+    // api_user Login API KEY (POST )
+
+    try {
+
+      // Create request
+      Content content = Request.Post("https://api.mwwondemand.com/api/login")
+
+      // Add headers
+      .addHeader("Content-Type", "application/vnd.api+json")
+      .addHeader("Authorization", "auth-key=S@mpl3!")
+      .addHeader("Accept", "application/vnd.api+json; version=1")
+
+      // Fetch request and return content
+      .execute().returnContent();
+
+      // Print content
+      System.out.println(content);
+    }
+    catch (IOException e) { System.out.println(e); }
+  }
+}
+```
+
+```php
+<?php
+
+// Get cURL resource
+$ch = curl_init();
+
+// Set url
+curl_setopt($ch, CURLOPT_URL, 'https://api.mwwondemand.com/api/login');
+
+// Set method
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+
+// Set options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// Set headers
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Content-Type: application/vnd.api+json",
+  "Authorization: auth-key=S@mpl3!",
+  "Accept: application/vnd.api+json; version=1",
+ ]
+);
+
+
+// Send the request & save response to $resp
+$resp = curl_exec($ch);
+
+if(!$resp) {
+  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
+} else {
+  echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  echo "\nResponse HTTP Body : " . $resp;
+}
+```
+
+> Be sure to replace `YOUR_API_KEY` with your API key.
+
+If you need and API key please contact your MWW representative.
+
+<%#
+
+Access to the API uses an API key for authentication. You can register a new API key at <https://api.mwwondemand.com/account/>.
+
+After you register, you can view your API key at <https://api.mwwondemand.com/account/user/api-key>.
+
+The API expects an API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: auth-key=YOUR_API_KEY`
+
+`Content-Type: application/vnd.api+json`
+
+`Accept: application/vnd.api+json; version=1`
+
+<aside class="notice">
+In the example code above, you must replace <code>YOUR_API_KEY</code> with your personal API key.
+</aside>
+
+<aside class="warning">
+You must include the Content-Type and Accept headers in every request.
+</aside>
+
+%>
+
+## Regenerate Your API Key
+
+> To expire your existing api-key and generate a new one, use this code:
+
+```shell
+curl -X PATCH https://api.mwwondemand.com/api/regenerate-api-key \
+  -H "Content-Type: application/vnd.api+json" \
+  -H "Accept: application/vnd.api+json; version=1" \
+  -H "Authorization: auth-key=YOUR_EXISTING_API_KEY"
+```
+
+> Be sure to replace `YOUR_EXISTING_API_KEY` with your existing API key.
+> The above command returns a response like:
+
+```
+HTTP/1.1 200 OK
+Authorization: auth-key=YOUR_NEW_API_KEY
+Content-Type: application/json; charset=utf-8
+```
+
+```json
+{
+  "data": {
+    "id": "YOUR_USER_ID",
+    "type": "users",
+    "attributes": {
+      "api-key": "YOUR_NEW_API_KEY"
+    }
+  }
+}
+```
+
+For any issues with regenerating an API key please contact your MWW representative.
+
+<%#
+
+To change your API key make a PATCH request using the `api/regenerate-api-key` endpoint.
+
+- Requires your existing API Key in the `Authorization` Header
+- Response Header and body include your newly generated `api-key`
+
+Also, you can regenerate the key at <https://api.mwwondemand.com/account/user/api-key>.
+
+%>
