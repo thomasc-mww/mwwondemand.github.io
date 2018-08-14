@@ -1,0 +1,17 @@
+<pre class="highlight plaintext"><code>HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"has already been taken"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user-id - has already been taken"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/user-id"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
