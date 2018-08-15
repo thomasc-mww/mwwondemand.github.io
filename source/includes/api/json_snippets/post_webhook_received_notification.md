@@ -1,7 +1,3 @@
-
-
-
-
 ```shell
 # Notification for received event
 

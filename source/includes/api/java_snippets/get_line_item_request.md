@@ -4,8 +4,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-public class SendRequest4
-{
+
+public class SendRequest4 {
+  
   public static void main(String[] args) {
     sendRequest();
   }

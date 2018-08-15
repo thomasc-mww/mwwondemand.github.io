@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.io.DataOutputStream;
 
 
-public class post_request
-{
+public class post_request {
+  
   public static void main(String[] args) {
     sendRequest();
   }

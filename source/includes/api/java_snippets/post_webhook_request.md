@@ -3,8 +3,8 @@ import java.io.IOException;
 import org.apache.http.client.fluent.*;
 import org.apache.http.entity.ContentType;
 
-public class SendRequest
-{
+public class SendRequest {
+  
   public static void main(String[] args) {
     sendRequest();
   }

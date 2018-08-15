@@ -1,18 +1,16 @@
 ```java
 import java.io.IOException;
 import org.apache.http.client.fluent.*;
-import org.apache.http.entity.ContentType;
 
-public class SendRequest
-{
+public class SendRequest {
+
   public static void main(String[] args) {
     sendRequest();
   }
 
   private static void sendRequest() {
 
-    // api_user Login JWT (POST )
-
+    // api_user Login API KEY (POST )
     try {
 
       // Create request
@@ -20,11 +18,8 @@ public class SendRequest
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")
-      .addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY")
+      .addHeader("Authorization", "auth-key=S@mpl3!")
       .addHeader("Accept", "application/vnd.api+json; version=1")
-
-      // Add body
-      .bodyString("{}", ContentType.APPLICATION_JSON)
 
       // Fetch request and return content
       .execute().returnContent();
@@ -32,7 +27,9 @@ public class SendRequest
       // Print content
       System.out.println(content);
     }
-    catch (IOException e) { System.out.println(e); }
+    catch (IOException e) { 
+      System.out.println(e);
+    }
   }
 }
 ```

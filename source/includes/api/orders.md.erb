@@ -4,13 +4,9 @@
 ## Submit Order
 
 <%= partial "includes/api/curl_snippets/post_order_request.md" %>
-
 <%= partial "includes/api/ruby_snippets/post_order_request.md" %>
-
-<%= partial "includes/api/python_snippets.md/post_order_request.md" %>
-
+<%= partial "includes/api/python_snippets/post_order_request.md" %>
 <%= partial "includes/api/php_snippets/post_order_request.md" %>
-
 <%= partial "includes/api/java_snippets/post_order_request.md" %>
 
 > The above command returns JSON structured like this:
@@ -36,7 +32,7 @@ vendor-po <br><em>string / number</em> | Your PO number. This string/number must
 shipping-method <br><em>string</em> | The shipping carrier and method for the order. For example, use USPSF for USPS First Class. See shipping methods.
 shipping-account-number <br><em>string</em> | The shipping account number associated with the shipping carrier and order.
 included <br><em>array[objects]</em> | The array element describing the item(s) to be included in the order.
-test-order <br> <em> string </em> <br> optional | Optional field, 'test' for a test order, 'new' for a new regular order (defaults to 'new') 
+test-order <br> <em> string </em> <br> optional | Optional field, 'test' for a test order, 'new' for a new regular order (defaults to 'new')
 
 
 *Line Item details*
@@ -103,7 +99,7 @@ Remember to replace 'YOUR_API_KEY' with your actual key!
 
 <%= partial "includes/api/ruby_snippets/get_all_orders_request.md" %>
 
-<%= partial "includes/api/python_snippets.md/get_all_orders_request.md" %>
+<%= partial "includes/api/python_snippets/get_all_orders_request.md" %>
 
 <%= partial "includes/api/java_snippets/get_all_orders_request.md" %>
 
@@ -150,7 +146,7 @@ Remember — a successful request will be an authenticated request!
 
 <%= partial "includes/api/ruby_snippets/get_specific_order_request.md" %>
 
-<%= partial "includes/api/python_snippets.md/get_specific_order_request.md" %>
+<%= partial "includes/api/python_snippets/get_specific_order_request.md" %>
 
 <%= partial "includes/api/java_snippets/get_specific_order_request.md" %>
 

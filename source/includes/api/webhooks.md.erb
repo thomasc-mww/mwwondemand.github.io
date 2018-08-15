@@ -1,7 +1,7 @@
 # Web Hooks
 
-<%= partial "includes/api/json_snippets/post_webhook_notification.md" %>
-<%= partial "includes/api/json_snippets/webhook_shipped_notification.md" %>
+<%= partial "includes/api/json_snippets/post_webhook_received_notification.md" %>
+<%= partial "includes/api/json_snippets/post_webhook_shipped_notification.md" %>
 
 Based on your opt-in preferences for various events, the API will POST back
 to your Web Hook URL. The web hook url and settings are available in your
@@ -16,12 +16,9 @@ edit your Web Hooks (opt-in) preferences.
 - The `enabled` checkbox must be `checked` in order to receive POST notifications.
 - Check the various events that you would like to receive notifications for.
 
-|Events for Orders|
-|-----------------|
-|<button onclick = "activateLanguage('shell')">Received</button>|
-|<button onclick = "activateLanguage('ruby')">Shipped</button>|
-
-### POST Parameters
+| |Events for Orders||
+--|---------|---------|
+| |<button onclick = "activateLanguage('shell')">Received</button>|<button onclick = "activateLanguage('ruby')">Shipped</button>
 
 Attributes ||
 --------- | ------- | -----------
