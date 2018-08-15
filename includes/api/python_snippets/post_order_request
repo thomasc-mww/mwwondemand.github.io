@@ -1,0 +1,130 @@
+<pre class="highlight python tab-python"><code><span class="c"># Install the Python Requests library:</span>
+<span class="c"># `pip install requests`</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+
+
+<span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
+    <span class="c"># Create Order</span>
+    <span class="c"># POST https://api.mwwondemand.com/api/orders</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
+                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
+                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span>
+            <span class="s">"""{
+         "data": {
+            "type": "orders",
+            "attributes": {
+              "vendor-po": "14679881092",
+              "shipping-method": "SAMPLE",
+              "shipping-account-number": "1234",
+              "test-order": "test"
+            }
+          },
+          "included": [
+            {
+              "type": "shipping-address",
+              "attributes": {
+                "name": "Phillip J. Fry",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "billing-address",
+              "attributes": {
+                "name": "Hubert Farnsworth",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "return-address",
+              "attributes": {
+                "name": "Bender B. Rodriguez",
+                "address1": "123 Green St.",
+                "address2": "Suite 321",
+                "city": "New New York",
+                "state": "NY",
+                "country": "US",
+                "postal-code": "10012",
+                "email": "bob@dobalina.net",
+                "phone": "8288888888"
+              }
+            },
+            {
+              "type": "line-items",
+              "attributes": {
+                "line-number": 1,
+                "quantity": 2,
+                "description": "It</span><span class="se">\'</span><span class="s">s not so fluffy!",
+                "product-code": "3PF-SC6-SPFPI",
+                "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+                "item-properties": {
+                  "thread-color": "white"
+                },
+                "designs": [
+                  {
+                    "image-remote-url": "https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "line-items",
+              "attributes": {
+                "line-number": 2,
+                "quantity": 5,
+                "description": "Velour Vest",
+                "product-code": "3PF-SC6-SPFPI",
+                "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+                "item-properties": {
+                  "thread-color": "white"
+                },
+                "designs": [
+                  {
+                    "image-remote-url": "http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "packing-list",
+              "attributes": {
+                "url": "https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf"
+               }
+              },
+              {
+              "type": "shipping-label",
+              "attributes": {
+               "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
+              }
+            }
+          ]
+        }"""</span>
+        <span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Status Code: {status_code}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Response Body: {content}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre>

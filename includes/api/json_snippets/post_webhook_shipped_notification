@@ -1,0 +1,83 @@
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Notification for shipped order</span>
+
+<span class="p">{</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"501323962228147713"</span><span class="p">,</span>
+    <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mwwondemand-order-notifications"</span><span class="p">,</span>
+    <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"event"</span><span class="p">:</span> <span class="s2">"Shipped"</span><span class="p">,</span>
+      <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Order Shipped"</span><span class="p">,</span>
+      <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"You have a webhook notice"</span><span class="p">,</span>
+      <span class="s2">"timestamp"</span><span class="p">:</span> <span class="s2">"2016-04-06T16:41:36.895Z"</span><span class="p">,</span>
+      <span class="s2">"tracking-numbers"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">"1Z999AA10123456784"</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"relationships"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"mwwondemand-order"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"YOUR-ID-HERE"</span><span class="p">,</span>
+          <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mwwondemand-orders"</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"mwwondemand-order-items"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"501323961934546431"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mwwondemand-order-items"</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"included"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"mwwondemand-orders"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"YOUR-ID-HERE"</span><span class="p">,</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mwwondemand-orders"</span><span class="p">,</span>
+        <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"vendor-po"</span><span class="p">:</span> <span class="s2">"YOUR-ID-HERE"</span><span class="p">,</span>
+          <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"received"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">"mwwondemand-order-items"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"501323961934546431"</span><span class="p">,</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"mwwondemand-order-items"</span><span class="p">,</span>
+        <span class="s2">"attributes"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"state"</span><span class="p">:</span> <span class="s2">"received"</span><span class="p">,</span>
+          <span class="s2">"product-code"</span><span class="p">:</span> <span class="s2">"254"</span><span class="p">,</span>
+          <span class="s2">"line-number"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"quantity"</span><span class="p">:</span> <span class="mi">1</span>
+        <span class="p">},</span>
+        <span class="s2">"meta"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"received"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"not-valid"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"shipped"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"cancelled"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"printed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"pressed"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"cut"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"sewn"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"turned"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">"packed"</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">"links"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"callback"</span><span class="p">:</span> <span class="s2">"https://api.mwwondemand.com/mwwondemand-orders"</span><span class="p">,</span>
+    <span class="s2">"mwwondemand-api"</span><span class="p">:</span> <span class="s2">"https://api.mwwondemand.com"</span><span class="p">,</span>
+    <span class="s2">"webhook"</span><span class="p">:</span> <span class="s2">"https://api.mwwondemand.com/webhooks/501323961246680573"</span>
+  <span class="p">},</span>
+  <span class="s2">"meta"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"mwwondemand-api"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"version"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"jsonapi"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.0"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
