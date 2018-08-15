@@ -2,8 +2,8 @@
 import java.io.IOException;
 import org.apache.http.client.fluent.*;
 
-public class SendRequest
-{
+public class SendRequest {
+  
   public static void main(String[] args) {
     sendRequest();
   }

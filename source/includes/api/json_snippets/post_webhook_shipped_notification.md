@@ -1,7 +1,3 @@
-
-
-
-
 ```ruby
 # Notification for shipped order
 

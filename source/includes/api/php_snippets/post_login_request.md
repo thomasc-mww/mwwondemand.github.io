@@ -16,19 +16,11 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 // Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "Content-Type: application/vnd.api+json",
-  "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY",
+  "Authorization: auth-key=S@mpl3!",
   "Accept: application/vnd.api+json; version=1",
  ]
 );
-// Create body
-$json_array = [
 
-        ];
-$body = json_encode($json_array);
-
-// Set body
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 
 // Send the request & save response to $resp
 $resp = curl_exec($ch);
