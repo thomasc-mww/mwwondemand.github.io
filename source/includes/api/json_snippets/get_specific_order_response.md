@@ -51,12 +51,6 @@
           "self": "https://api.mwwondemand.com/api/orders/572425086284334684/relationships/shipping-address",
           "related": "https://api.mwwondemand.com/api/orders/572425086284334684/shipping-address"
         }
-      },
-      "return-address": {
-        "links": {
-          "self": "https://api.mwwondemand.com/api/orders/572425086284334684/relationships/return-address",
-          "related": "https://api.mwwondemand.com/api/orders/572425086284334684/return-address"
-        }
       }
     }
   }

@@ -8,7 +8,7 @@ import java.io.DataOutputStream;
 
 
 public class post_request {
-  
+
   public static void main(String[] args) {
     sendRequest();
   }
@@ -68,20 +68,6 @@ public class post_request {
                 "'state': 'NY'," +
                 "'country': 'US'," +
                 "'postal-code': '10012'" +
-                "'email': 'bob@dobalina.net'," +
-                "'phone': '8288888888'" +
-              "}" +
-            "}," +
-            "{" +
-              "'type': 'return-address'," +
-              "'attributes': { " +
-                "'name': 'Bender B. Rodriguez'," +
-                "'address1: '123 Green St.'," +
-                "'address2: 'Suite 321'," +
-                "'city': 'New New York', " +
-                "'state': 'NY'," +
-                "'country': 'US'," +
-                "'postal-code': '10012'," +
                 "'email': 'bob@dobalina.net'," +
                 "'phone': '8288888888'" +
               "}" +
