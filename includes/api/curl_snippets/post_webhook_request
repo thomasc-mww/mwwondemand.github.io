@@ -1,4 +1,4 @@
-<pre class="highlight shell"><code>curl -i -X POST https://api.mwwondemand.com/api/webhooks <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -i -X POST https://api.mwwondemand.com/api/webhooks <span class="se">\</span>
   -d <span class="s1">'{
     "data": {
       "type": "webhooks",

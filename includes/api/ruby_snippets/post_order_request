@@ -1,4 +1,4 @@
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 
 <span class="c1"># Create Order (POST )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
@@ -52,20 +52,6 @@
          "state": "NY",
          "country": "US",
          "postal-code": "10012",
-         "email": "bob@dobalina.net",
-         "phone": "8288888888"
-       }
-     },
-     {
-       "type": "return-address",
-       "attributes": {
-         "name": "Bender B. Rodriguez",
-         "address1": "123 Green St.",
-         "address2": "Suite 321",
-         "city": "New New York",
-         "state": "NY",
-         "country": "US",
-         "postal-code": "10012".
          "email": "bob@dobalina.net",
          "phone": "8288888888"
        }

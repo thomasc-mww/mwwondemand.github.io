@@ -1,4 +1,4 @@
-<pre class="highlight shell"><code>curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 <span class="se">\</span>
   -d <span class="s1">'{
     "data": {
       "id": "503678086298993748",

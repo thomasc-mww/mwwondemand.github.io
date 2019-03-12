@@ -1,4 +1,4 @@
-<pre class="highlight ruby"><code><span class="c1"># Notification for shipped order</span>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Notification for shipped order</span>
 
 <span class="p">{</span>
   <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>

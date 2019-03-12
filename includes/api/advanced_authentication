@@ -1,138 +1,133 @@
-## Bearer Token
+<h2 id='bearer-token'>Bearer Token</h2>
+<p>Alternatively to using an API Key for authorization you may use an actual session by including a Bearer token, that you receive by login request, in your Authorizatoin header.</p>
 
-Alternatively to using an API Key for authorization you may use an actual session by including a Bearer token, that you receive by login request, in your Authorizatoin header.
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET https://api.mwwondemand.com/api/endpoint <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span>
+</code></pre>
+<p>The API expects an Authorization header to be included in all API requests to the server in a header that looks like the following:</p>
 
-> To authorize, use this code:
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl -X GET https://api.mwwondemand.com/api/endpoint \
-  -H "Content-Type: application/vnd.api+json" \
-  -H "Accept: application/vnd.api+json; version=1" \
-  -H "Authorization: Bearer YOUR.API.TOKEN"
-```
-
-The API expects an Authorization header to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: Bearer YOUR.API.TOKEN`
+<p><code>Authorization: Bearer YOUR.API.TOKEN</code></p>
 
 <aside class="notice">
 You must replace <code>YOUR.API.TOKEN</code> with the token you receive in response to a login request.
 </aside>
+<h2 id='login'>Login</h2>
+<p>This endpoint is for login to receive a Bearer token.</p>
 
-
-## Login
-
-This endpoint is for login to receive a Bearer token.
-
-<pre class="highlight shell"><code>curl -X POST https://api.mwwondemand.com/api/login <span class="se">\</span>
-  -d <span class="s1">'{
-    "api_user": {
-      "email": "user@domain.com",
-      "password": "Xa34.678"
-    }
-  }'</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET https://api.mwwondemand.com/api/login <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span>
 </code></pre>
 
-
-> The above command returns JSON structured like this:
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
 
 <pre class="highlight plaintext"><code>HTTP/1.1 200 OK
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MjUyMjg5NzA2MDIzOTg3MjksImV4cCI6MTQ2Mjg5Njk5NX0.I2orXOPvfgtY95hXAjkk0KZSYEZFSyaJJ3x6dbLe_6E
 Content-Type: application/json; charset=utf-8
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"526228970902398727"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MjUyMjg5NzA2MDIzOTg3MjksImV4cCI6MTQ2Mjg5Njk5NX0.I2orXOPvfgtY95hXAjkk0KZSYEZFSyaJJ3x6dbLe_6E"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"526228970902398727"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MjUyMjg5NzA2MDIzOTg3MjksImV4cCI6MTQ2Mjg5Njk5NX0.I2orXOPvfgtY95hXAjkk0KZSYEZFSyaJJ3x6dbLe_6E"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<p><code>POST https://api.mwwondemand.com/api/login</code> using <code>Content-Type: application/json</code></p>
 
-`POST https://api.mwwondemand.com/api/login` using `Content-Type: application/json`
+<p>With JSON body…</p>
 
-With JSON body…
+<p><code>{&quot;api_user&quot;:{&quot;email&quot;:&quot;user@domain.com&quot;,&quot;password&quot;:&quot;Xa34.678&quot;}}</code></p>
+<h3 id='post-parameters'>POST Parameters</h3>
+<table><thead>
+<tr>
+<th>Attributes</th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_user <br><em>object</em></td>
+<td>The scope for the session request.</td>
+</tr>
+<tr>
+<td>email <br><em>string</em></td>
+<td>Your username is your email.</td>
+</tr>
+<tr>
+<td>password <br><em>string</em></td>
+<td>Your customer dashboard password.</td>
+</tr>
+</tbody></table>
 
-`{"api_user":{"email":"user@domain.com","password":"Xa34.678"}}`
+<p>You can use the login endpoint to refresh your Bearer token as well</p>
 
-### POST Parameters
+<p><code>POST https://api.mwwondemand.com/api/login</code> with <code>Authorization: Bearer YOUR.API.TOKEN</code> header and no JSON body.</p>
 
-Attributes ||
---------- | ------- | -----------
-api_user <br><em>object</em> | The scope for the session request.
-email <br><em>string</em> | Your username is your email.
-password <br><em>string</em> | Your customer dashboard password.
+<p>This will return a new Bearer token, your current token will become invalid.</p>
 
-You can use the login endpoint to refresh your Bearer token as well
+<p>Alternatively, you can login with your API KEY.</p>
 
-`POST https://api.mwwondemand.com/api/login` with `Authorization: Bearer YOUR.API.TOKEN` header and no JSON body.
+<p><code>POST https://api.mwwondemand.com/api/login</code> with <code>Authorization: auth-key=YOUR_API_KEY</code> header and no JSON body.</p>
+<h2 id='validate-token'>Validate Token</h2>
+<p>This endpoint is for confirm that your Bearer token is currently valid.</p>
 
-This will return a new Bearer token, your current token will become invalid.
-
-Alternatively, you can login with your API KEY.
-
-`POST https://api.mwwondemand.com/api/login` with `Authorization: auth-key=YOUR_API_KEY` header and no JSON body.
-
-
-## Validate Token
-
-This endpoint is for confirm that your Bearer token is currently valid.
-
-<pre class="highlight shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/validate_token"</span> <span class="se">\</span>
-    -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
-    -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"GET"</span> <span class="s2">"https://api.mwwondemand.com/api/validate_token"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
 </code></pre>
 
-
-> The above command returns JSON structured like this:
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
 
 <pre class="highlight plaintext"><code>HTTP/1.1 200 OK
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MjUyMjg5NzA2MDIzOTg3MjksImV4cCI6MTQ2MzA3MDI1Mn0.9FnqsK4IYBqXhlAwIrBcSoXYs2EQf8w1Y7Sn0y4yc9I
 Content-Type: application/json; charset=utf-8
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-
-`DELETE https://api.mwwondemand.com/api/validate_token` using `Authorization: Bearer YOUR.API.TOKEN`
+<p><code>DELETE https://api.mwwondemand.com/api/validate_token</code> using <code>Authorization: Bearer YOUR.API.TOKEN</code></p>
 
 <aside class="notice">
 You must replace <code>YOUR.API.TOKEN</code> with the token you receive in response to a login request.
 </aside>
+<h2 id='logout'>Logout</h2>
+<p>This endpoint is to logout of your session based on your current Bearer token.</p>
 
-
-## Logout
-
-This endpoint is to logout of your session based on your current Bearer token.
-
-<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://api.mwwondemand.com/api/logout"</span> <span class="se">\</span>
-    -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
-    -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span> <span class="se">\</span>
-    -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://api.mwwondemand.com/api/logout"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/vnd.api+json; version=1"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer YOUR.API.TOKEN"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/vnd.api+json"</span>
 </code></pre>
 
-
-> The above command returns JSON structured like this:
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
 
 <pre class="highlight plaintext"><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-
-`DELETE https://api.mwwondemand.com/api/logout` using `Authorization: Bearer YOUR.API.TOKEN`
+<p><code>DELETE https://api.mwwondemand.com/api/logout</code> using <code>Authorization: Bearer YOUR.API.TOKEN</code></p>
 
 <aside class="notice">
 You must replace <code>YOUR.API.TOKEN</code> with the token you receive in response to a login request.

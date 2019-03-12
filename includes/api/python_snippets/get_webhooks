@@ -1,4 +1,4 @@
-<pre class="highlight python"><code><span class="c"># Install the Python Requests library:</span>
+<pre class="highlight python tab-python"><code><span class="c"># Install the Python Requests library:</span>
 <span class="c"># `pip install requests`</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>

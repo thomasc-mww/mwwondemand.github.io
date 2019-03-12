@@ -1,4 +1,4 @@
-<pre class="highlight shell"><code><span class="c"># Notification for received event</span>
+<pre class="highlight shell tab-shell"><code><span class="c"># Notification for received event</span>
 
 <span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">{</span>

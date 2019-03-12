@@ -1,4 +1,4 @@
-<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get cURL resource
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>

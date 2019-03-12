@@ -1,4 +1,4 @@
-<pre class="highlight php"><code><span class="cp">&lt;?php</span>
+<pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get cURL resource
 </span><span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -47,20 +47,6 @@
      "type": "billing-address",
      "attributes": {
        "name": "Hubert Farnsworth",
-       "address1": "123 Green St.",
-       "address2": "Suite 321",
-       "city": "New New York",
-       "state": "NY",
-       "country": "US",
-       "postal-code": "10012",
-       "email": "bob@dobalina.net",
-       "phone": "8288888888"
-     }
-   },
-   {
-     "type": "return-address",
-     "attributes": {
-       "name": "Bender B. Rodriguez",
        "address1": "123 Green St.",
        "address2": "Suite 321",
        "city": "New New York",

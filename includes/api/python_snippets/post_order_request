@@ -1,4 +1,4 @@
-<pre class="highlight python"><code><span class="c"># Install the Python Requests library:</span>
+<pre class="highlight python tab-python"><code><span class="c"># Install the Python Requests library:</span>
 <span class="c"># `pip install requests`</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -46,20 +46,6 @@
               "type": "billing-address",
               "attributes": {
                 "name": "Hubert Farnsworth",
-                "address1": "123 Green St.",
-                "address2": "Suite 321",
-                "city": "New New York",
-                "state": "NY",
-                "country": "US",
-                "postal-code": "10012",
-                "email": "bob@dobalina.net",
-                "phone": "8288888888"
-              }
-            },
-            {
-              "type": "return-address",
-              "attributes": {
-                "name": "Bender B. Rodriguez",
                 "address1": "123 Green St.",
                 "address2": "Suite 321",
                 "city": "New New York",

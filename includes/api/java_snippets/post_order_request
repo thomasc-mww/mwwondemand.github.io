@@ -1,4 +1,4 @@
-<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
@@ -6,13 +6,13 @@
 <span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
 
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">post_request</span>
-<span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">post_request</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">sendRequest</span><span class="o">();</span>
   <span class="o">}</span>
 
-  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">sendRequest</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sendRequest</span><span class="o">()</span> <span class="o">{</span>
 
     <span class="c1">// Create Order (POST )</span>
 
@@ -67,20 +67,6 @@
                 <span class="s">"'state': 'NY',"</span> <span class="o">+</span>
                 <span class="s">"'country': 'US',"</span> <span class="o">+</span>
                 <span class="s">"'postal-code': '10012'"</span> <span class="o">+</span>
-                <span class="s">"'email': 'bob@dobalina.net',"</span> <span class="o">+</span>
-                <span class="s">"'phone': '8288888888'"</span> <span class="o">+</span>
-              <span class="s">"}"</span> <span class="o">+</span>
-            <span class="s">"},"</span> <span class="o">+</span>
-            <span class="s">"{"</span> <span class="o">+</span>
-              <span class="s">"'type': 'return-address',"</span> <span class="o">+</span>
-              <span class="s">"'attributes': { "</span> <span class="o">+</span>
-                <span class="s">"'name': 'Bender B. Rodriguez',"</span> <span class="o">+</span>
-                <span class="s">"'address1: '123 Green St.',"</span> <span class="o">+</span>
-                <span class="s">"'address2: 'Suite 321',"</span> <span class="o">+</span>
-                <span class="s">"'city': 'New New York', "</span> <span class="o">+</span>
-                <span class="s">"'state': 'NY',"</span> <span class="o">+</span>
-                <span class="s">"'country': 'US',"</span> <span class="o">+</span>
-                <span class="s">"'postal-code': '10012',"</span> <span class="o">+</span>
                 <span class="s">"'email': 'bob@dobalina.net',"</span> <span class="o">+</span>
                 <span class="s">"'phone': '8288888888'"</span> <span class="o">+</span>
               <span class="s">"}"</span> <span class="o">+</span>
@@ -144,7 +130,7 @@
        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
 
        <span class="n">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="o">(</span>
-                    <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
+                    <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">()));</span>
             <span class="n">String</span> <span class="n">inputLine</span><span class="o">;</span>
             <span class="n">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
 

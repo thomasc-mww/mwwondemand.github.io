@@ -1,6 +1,5 @@
-<h1 id="web-hooks">Web Hooks</h1>
-
-<pre class="highlight shell"><code><span class="c"># Notification for received event</span>
+<h1 id='web-hooks'>Web Hooks</h1>
+<pre class="highlight shell tab-shell"><code><span class="c"># Notification for received event</span>
 
 <span class="o">{</span>
   <span class="s2">"data"</span>: <span class="o">{</span>
@@ -84,7 +83,7 @@
 <span class="o">}</span>
 </code></pre>
 
-<pre class="highlight ruby"><code><span class="c1"># Notification for shipped order</span>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Notification for shipped order</span>
 
 <span class="p">{</span>
   <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
@@ -172,31 +171,30 @@
 to your Web Hook URL. The web hook url and settings are available in your
 profile, see the <a href="https://api.mwwondemand.com/account/">https://api.mwwondemand.com/account/</a> page.</p>
 
-<p>The <code class="prettyprint">url</code> (string) must be a valid URL (an API endpoint you host) and the
-<code class="prettyprint">enabled</code> (boolean) setting must be checked.</p>
+<p>The <code>url</code> (string) must be a valid URL (an API endpoint you host) and the
+<code>enabled</code> (boolean) setting must be checked.</p>
 
 <p>First login, then visit <a href="https://api.mwwondemand.com/account/user/webhooks">https://api.mwwondemand.com/account/user/webhooks</a> to
 edit your Web Hooks (opt-in) preferences.</p>
 
 <ul>
-<li>The <code class="prettyprint">enabled</code> checkbox must be <code class="prettyprint">checked</code> in order to receive POST notifications.</li>
+<li>The <code>enabled</code> checkbox must be <code>checked</code> in order to receive POST notifications.</li>
 <li>Check the various events that you would like to receive notifications for.</li>
 </ul>
 
 <table><thead>
 <tr>
+<th></th>
 <th>Events for Orders</th>
+<th></th>
 </tr>
 </thead><tbody>
 <tr>
+<td></td>
 <td><button onclick = "activateLanguage('shell')">Received</button></td>
-</tr>
-<tr>
 <td><button onclick = "activateLanguage('ruby')">Shipped</button></td>
 </tr>
 </tbody></table>
-
-<h3 id="post-parameters">POST Parameters</h3>
 
 <table><thead>
 <tr>
