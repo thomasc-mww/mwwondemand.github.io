@@ -1,0 +1,83 @@
+<pre class="highlight shell tab-shell"><code><span class="c"># Notification for received event</span>
+
+<span class="o">{</span>
+  <span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>: <span class="s2">"501323962228147713"</span>,
+    <span class="s2">"type"</span>: <span class="s2">"mwwondemand-order-notifications"</span>,
+    <span class="s2">"attributes"</span>: <span class="o">{</span>
+      <span class="s2">"event"</span>: <span class="s2">"received"</span>,
+      <span class="s2">"title"</span>: <span class="s2">"Order Received"</span>,
+      <span class="s2">"description"</span>: <span class="s2">"You have a webhook notice"</span>,
+      <span class="s2">"timestamp"</span>: <span class="s2">"2016-04-06T16:41:36.895Z"</span>,
+      <span class="s2">"tracking-numbers"</span>: <span class="o">[</span>
+          <span class="s2">"1Z999AA10123456784"</span>
+      <span class="o">]</span>
+    <span class="o">}</span>,
+    <span class="s2">"relationships"</span>: <span class="o">{</span>
+      <span class="s2">"mwwondemand-order"</span>: <span class="o">{</span>
+        <span class="s2">"data"</span>: <span class="o">{</span>
+          <span class="s2">"id"</span>: <span class="s2">"YOUR-ID-HERE"</span>,
+          <span class="s2">"type"</span>: <span class="s2">"mwwondemand-orders"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>,
+      <span class="s2">"mwwondemand-order-items"</span>: <span class="o">{</span>
+        <span class="s2">"data"</span>: <span class="o">[</span>
+          <span class="o">{</span>
+            <span class="s2">"id"</span>: <span class="s2">"501323961934546431"</span>,
+            <span class="s2">"type"</span>: <span class="s2">"mwwondemand-order-items"</span>
+          <span class="o">}</span>
+        <span class="o">]</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"included"</span>: <span class="o">{</span>
+    <span class="s2">"mwwondemand-orders"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">"YOUR-ID-HERE"</span>,
+        <span class="s2">"type"</span>: <span class="s2">"mwwondemand-orders"</span>,
+        <span class="s2">"attributes"</span>: <span class="o">{</span>
+          <span class="s2">"vendor-po"</span>: <span class="s2">"YOUR-ID-HERE"</span>,
+          <span class="s2">"state"</span>: <span class="s2">"received"</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"mwwondemand-order-items"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">"501323961934546431"</span>,
+        <span class="s2">"type"</span>: <span class="s2">"mwwondemand-order-items"</span>,
+        <span class="s2">"attributes"</span>: <span class="o">{</span>
+          <span class="s2">"state"</span>: <span class="s2">"received"</span>,
+          <span class="s2">"product-code"</span>: <span class="s2">"254"</span>,
+          <span class="s2">"line-number"</span>: 1,
+          <span class="s2">"quantity"</span>: 1
+        <span class="o">}</span>,
+        <span class="s2">"meta"</span>: <span class="o">{</span>
+          <span class="s2">"received"</span>: 1,
+          <span class="s2">"not-valid"</span>: 0,
+          <span class="s2">"shipped"</span>: 0,
+          <span class="s2">"cancelled"</span>: 0,
+          <span class="s2">"printed"</span>: 0,
+          <span class="s2">"pressed"</span>: 0,
+          <span class="s2">"cut"</span>: 0,
+          <span class="s2">"sewn"</span>: 0,
+          <span class="s2">"turned"</span>: 0,
+          <span class="s2">"packed"</span>: 0
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">"links"</span>: <span class="o">{</span>
+    <span class="s2">"callback"</span>: <span class="s2">"https://api.mwwondemand.com/mwwondemand-orders"</span>,
+    <span class="s2">"mwwondemand-api"</span>: <span class="s2">"https://api.mwwondemand.com"</span>,
+    <span class="s2">"webhook"</span>: <span class="s2">"https://api.mwwondemand.com/webhooks/501323961246680573"</span>
+  <span class="o">}</span>,
+  <span class="s2">"meta"</span>: <span class="o">{</span>
+    <span class="s2">"mwwondemand-api"</span>: <span class="o">{</span>
+      <span class="s2">"version"</span>: 1
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="s2">"jsonapi"</span>: <span class="o">{</span>
+    <span class="s2">"version"</span>: <span class="s2">"1.0"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
