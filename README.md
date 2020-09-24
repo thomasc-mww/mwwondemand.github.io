@@ -24,6 +24,7 @@ With Slate,
  * **[Authentication](http://mwwondemand.github.io/#authentication)**
  * **[Orders](http://mwwondemand.github.io/#orders)**
  * **[Line Items](http://mwwondemand.github.io/#line-items)**
+ * **[Shipping Address Update](http://mwwondemand.github.io/#shipping-address-update)**
  * **[Web Hooks](http://mwwondemand.github.io/#web-hooks)**
  * **[Errors](http://mwwondemand.github.io/#errors)**
  * **[Credits](http://mwwondemand.github.io/#credits)**
