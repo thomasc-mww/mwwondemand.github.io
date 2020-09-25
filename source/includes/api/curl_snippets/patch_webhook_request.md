@@ -1,6 +1,9 @@
 ```shell
 curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 \
-  -d '{
+  -H "Content-Type: application/vnd.api+json" \
+  -H "Accept: application/vnd.api+json; version=1" \
+  -H "Authorization: auth-key=YOUR_API_KEY"
+  -d $'{
     "data": {
       "id": "503678086298993748",
       "type": "webhooks",
@@ -10,8 +13,6 @@ curl -X PATCH https://api.mwwondemand.com/api/webhooks/503678086298993748 \
         "shipped": true
       }
     }
-  }' \
-  -H "Content-Type: application/vnd.api+json" \
-  -H "Accept: application/vnd.api+json; version=1" \
-  -H "Authorization: auth-key=YOUR_API_KEY"
+  }'
+
 ```

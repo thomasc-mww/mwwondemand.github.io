@@ -17,6 +17,7 @@ includes:
   - api/authentication
   - api/orders
   - api/line_items
+  - api/shipping_address_update
   - api/webhooks
   - errors
   - credits
