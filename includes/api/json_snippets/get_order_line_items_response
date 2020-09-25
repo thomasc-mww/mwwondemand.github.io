@@ -1,0 +1,139 @@
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"647372455787562562"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"line-items"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.043Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.043Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's sò fluffy!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3PF-PJT-SLPG4CW"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line-number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6477724553765206641477418918.0488908"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"line_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">647372455787562562</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"received"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"loom"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"printed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stretched"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pressed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cut"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"eton"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"packed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pillow_blow"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tentered"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quality_control"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sewn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"turned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"kit-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"co"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tracking-numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/items"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/items"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/designs"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/designs"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/line-item-count"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/line-item-count"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order-shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/relationships/order-shipments"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647372455787562562/order-shipments"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"647772455569458650"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"line-items"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.015Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-25T18:08:38.015Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"It's not sò fluffy!"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3PF-PSY-SQPGZ2C"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line-number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6477724553765206641477418918.02306"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"line_item_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">647772455569458650</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"received"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cancelled"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"loom"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"printed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stretched"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pressed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cut"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"eton"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"packed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"pillow_blow"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tentered"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quality_control"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sewn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"turned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"shipped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"kit-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"co"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tracking-numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/relationships/items"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/items"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"designs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/relationships/designs"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/designs"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"line-item-count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/relationships/line-item-count"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/line-item-count"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order-shipments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/relationships/order-shipments"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/line-items/647772455569458650/order-shipments"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/647772455376520664/line-items?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/647772455376520664/line-items?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>

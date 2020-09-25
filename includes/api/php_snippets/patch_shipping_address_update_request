@@ -1,0 +1,56 @@
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/shipping-addresses/1674068325472142392'</span><span class="p">);</span>
+
+<span class="c1">// Set method</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'PATCH'</span><span class="p">);</span>
+
+<span class="c1">// Set options</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
+  <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span><span class="p">,</span>
+  <span class="s2">"Accept: application/vnd.api+json; version=1"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{"data": {
+   "id": "1674068325472142392",
+    "type": "shipping-addresses",
+    "attributes": {
+        "name": "Test User",
+        "address1": "5757 Howard Gap Rd.",
+        "address2": "",
+        "city": "Hendersonville",
+        "state": "NC",
+        "postal-code": 28792,
+        "country": "US",
+        "phone": "555-555-5555",
+        "email": "user@mwwwondemand.com"
+    }
+   }
+}'</span><span class="p">;</span>
+
+<span class="c1">// Set body</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_PATCH</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_PATCHFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp</span>
+<span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="mf">.</span> <span class="s1">'" - Code: '</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="mf">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="mf">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div>

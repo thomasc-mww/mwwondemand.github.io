@@ -1,0 +1,81 @@
+<div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubmitOrder</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">sendRequest</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sendRequest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Update Shipping Address (PATCH)</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// Create request</span>
+            <span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/shipping-addresses/1674068325472142392"</span><span class="o">);</span>
+            <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+
+
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PATCH"</span><span class="o">);</span>
+
+            <span class="c1">// // Add headers</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">);</span>
+            <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">);</span>
+
+            <span class="c1">// Add body</span>
+            <span class="nc">String</span> <span class="n">urlParams</span> <span class="o">=</span> <span class="s">"{"</span><span class="o">+</span>
+              <span class="s">"\"data\": {"</span><span class="o">+</span>
+                <span class="s">"\"type\": \"shipping-addresses\","</span><span class="o">+</span>
+                  <span class="s">"\"attributes\":"</span><span class="o">+</span>
+                  <span class="s">"{"</span><span class="o">+</span>
+                    <span class="s">"\"name\": \"Test User\","</span><span class="o">+</span>
+                    <span class="s">"\"address1\": \"5757 Howard Gap Rd.\","</span><span class="o">+</span>
+                    <span class="s">"\"address2\": \"\","</span><span class="o">+</span>
+                    <span class="s">"\"city\": \"Hendersonville"</span><span class="o">,</span><span class="s">"+
+                    "</span><span class="err">\</span><span class="s">"state\": \"NV\","</span><span class="o">+</span>
+                    <span class="s">"\"country\": \"US\","</span><span class="o">+</span>
+                    <span class="s">"\"postal-code\": \"28792\","</span><span class="o">+</span>
+                    <span class="s">"\"email\": \"user@mwwondemand.com\","</span><span class="o">+</span>
+                    <span class="s">"\"phone\": \"555-555-5555\""</span><span class="o">+</span>
+                  <span class="s">"}"</span><span class="o">+</span>
+                <span class="s">"},"</span><span class="o">+</span>
+            <span class="s">"}"</span><span class="o">;</span>
+
+
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">urlParams</span><span class="o">);</span>
+
+            <span class="n">con</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+            <span class="nc">DataOutputStream</span> <span class="n">wr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DataOutputStream</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+            <span class="n">wr</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">urlParams</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
+            <span class="n">wr</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+            <span class="n">wr</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+            <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"POST Response Message : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseMessage</span><span class="o">());</span>
+
+            <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+                <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+            <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+            <span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+
+            <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+            <span class="c1">//print result</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div>

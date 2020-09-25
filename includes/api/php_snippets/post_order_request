@@ -1,0 +1,126 @@
+<div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get cURL resource</span>
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="c1">// Set url</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">);</span>
+
+<span class="c1">// Set method</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'POST'</span><span class="p">);</span>
+
+<span class="c1">// Set options</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Set headers</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
+  <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span><span class="p">,</span>
+  <span class="s2">"Accept: application/vnd.api+json; version=1"</span><span class="p">,</span>
+ <span class="p">]</span>
+<span class="p">);</span>
+<span class="c1">// Create body</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{"data": {
+   "type": "orders",
+   "attributes": {
+     "vendor-po": "1467988109",
+     "shipping-method": "SAMPLE",
+     "shipping-account-number": "1234",
+   }
+ },
+ "included": [
+   {
+     "type": "shipping-address",
+     "attributes": {
+     "name": "Phillip J. Fry",
+       "address1": "123 Green St.",
+       "address2": "Suite 321",
+       "city": "New New York",
+       "state": "NY",
+       "country": "US",
+       "postal-code": "10012",
+       "email": "bob@dobalina.net",
+       "phone": "8288888888"
+     }
+   },
+   {
+     "type": "billing-address",
+     "attributes": {
+       "name": "Hubert Farnsworth",
+       "address1": "123 Green St.",
+       "address2": "Suite 321",
+       "city": "New New York",
+       "state": "NY",
+       "country": "US",
+       "postal-code": "10012",
+       "email": "bob@dobalina.net",
+       "phone": "8288888888"
+     }
+   },
+   {
+     "type": "line-items",
+     "attributes": {
+       "line-number": 1,
+       "quantity": 2,
+       "description": "It\'s not sò fluffy!",
+       "product-code": "3PF-SC6-SPFPI",
+       "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+       "item-properties": {
+         "thread-color": "white"
+       },
+       "designs": [
+         {
+           "image-remote-url": "https://static.pexels.com/photos/39803/pexels-photo-39803.jpeg"
+         }
+       ]
+     }
+   },
+   {
+     "type": "line-items",
+     "attributes": {
+       "line-number": 2,
+       "quantity": 5,
+       "description": "Velour Vest",
+       "product-code": "3PF-SC6-SPFPI",
+       "customer-product-code": "YOUR_UPC/SKU_NUMBER",
+       "item-properties": {
+         "thread-color": "white"
+       },
+       "designs": [
+         {
+           "image-remote-url": "http://www.publicdomainpictures.net/pictures/10000/velka/orange-871282749123hSB3.jpg"
+         }
+       ]
+     }
+   },
+   {
+     "type": "packing-list",
+     "attributes": {
+       "url": "https://dllc.appstate.edu/sites/dllc.appstate.edu/files/SearchCCimages.pdf"
+      }
+     },
+     {
+     "type": "shipping-label",
+     "attributes": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Einschreiben-Label_Deutsche_Post_2011.jpg"
+     }
+   }
+ ]}'</span><span class="p">;</span>
+
+<span class="c1">// Set body</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+
+<span class="c1">// Send the request &amp; save response to $resp</span>
+<span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="mf">.</span> <span class="s1">'" - Code: '</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="mf">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="mf">.</span> <span class="nv">$resp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Close request to clear up some resources</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div>
