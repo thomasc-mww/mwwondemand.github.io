@@ -1,0 +1,135 @@
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"764805840312993036"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"line-items"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"links"</span><span class="p">:{</span><span class="w">
+         </span><span class="nl">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:{</span><span class="w">
+         </span><span class="nl">"created-at"</span><span class="p">:</span><span class="s2">"2017-04-05T05:18:22.573Z"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"updated-at"</span><span class="p">:</span><span class="s2">"2017-04-06T21:42:15.562Z"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"description"</span><span class="p">:</span><span class="s2">"Carry-All Pouch / Set of 3"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"state"</span><span class="p">:</span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"state-events"</span><span class="p">:[</span><span class="w">
+
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"order-id"</span><span class="p">:</span><span class="s2">"764805828787045582"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"product-code"</span><span class="p">:</span><span class="s2">"3PF-SC6-SPFZMP"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"customer-product-code"</span><span class="p">:</span><span class="s2">"3PF-SC6-SPFZMP"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"line-number"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"item-properties"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="s2">"PENCIL POUCH POLY SILK"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fabric"</span><span class="p">:</span><span class="s2">"PFP POLY SILKY SLUB 61IN"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"weight"</span><span class="p">:</span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"law_tag"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"con_safety"</span><span class="p">:</span><span class="s2">"FOR CONSUMER PRODUCT SAFETY INFORMATION. PLEASE VISIT"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"label_size"</span><span class="p">:</span><span class="s2">"9.5X6in 24.13X15.24cm"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"french_back"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"french_care"</span><span class="p">:</span><span class="s2">"NETTOYER LES TACHES OU PEUVENT ÊTRE NETTOYÉS À SEC"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"french_fill"</span><span class="p">:</span><span class="s2">"100% FIBRES DE POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"french_made"</span><span class="p">:</span><span class="s2">"FABRIQUÉ AUX E.-U."</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"english_back"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"english_care"</span><span class="p">:</span><span class="s2">"DRY OR SPOT CLEAN ONLY"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"english_fill"</span><span class="p">:</span><span class="s2">"100% POLYESTER FIBER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"english_made"</span><span class="p">:</span><span class="s2">"MADE IN USA"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"spanish_back"</span><span class="p">:</span><span class="s2">"100% POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"spanish_care"</span><span class="p">:</span><span class="s2">"LIMPIEZA DE ÁREAS SUCIAS O PUEDE LIMPIARSE EN SECO"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"spanish_fill"</span><span class="p">:</span><span class="s2">"100% FIBRA DE POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"spanish_made"</span><span class="p">:</span><span class="s2">"HECHO EN E.U.A"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"english_front"</span><span class="p">:</span><span class="s2">"100% POLYESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"spanish_front"</span><span class="p">:</span><span class="s2">"100% POLIESTER"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"label_description"</span><span class="p">:</span><span class="s2">"GEN -DYE ZIP PENCIL POUCH "</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"con_safety_website"</span><span class="p">:</span><span class="s2">"http://67.32.50.6/CSPC/defult.aspx"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"federal_registration_number"</span><span class="p">:</span><span class="s2">"FEDERAL RN# 90630 ONT. REG.# 34333"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"eton_flow"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dimensions"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"width"</span><span class="p">:</span><span class="mf">11.5</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"height"</span><span class="p">:</span><span class="mf">14.0</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"measurement"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"resolution"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"flow_number"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"state_machine"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"on"</span><span class="p">:</span><span class="s2">"print_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"received"</span><span class="p">:</span><span class="s2">"printed"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"on"</span><span class="p">:</span><span class="s2">"press_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"printed"</span><span class="p">:</span><span class="s2">"pressed"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"on"</span><span class="p">:</span><span class="s2">"cut_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"pressed"</span><span class="p">:</span><span class="s2">"cut"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"on"</span><span class="p">:</span><span class="s2">"sew_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"cut"</span><span class="p">:</span><span class="s2">"sewn"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"on"</span><span class="p">:</span><span class="s2">"pack_it"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"sewn"</span><span class="p">:</span><span class="s2">"packed"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"print_environment"</span><span class="p">:</span><span class="s2">"op130328-{0}-JV33-PP14-EJ-4C-JC2-6248-540x720v"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"design-urls"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"original"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/original/764805843181896991.jpg?1491370890"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"thumb"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/thumb/764805843181896991.png?1491370890"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"medium"</span><span class="p">:</span><span class="s2">"/system/designs/764/805/843/181/896/991/medium/764805843181896991.png?1491370890"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"po"</span><span class="p">:</span><span class="s2">"SOC040517000138"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"co"</span><span class="p">:</span><span class="s2">"CDS-04051701134"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"line-item-count"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"line_item_id"</span><span class="p">:</span><span class="mi">764805840312993036</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"received"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cancelled"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"loom"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"printed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"hold"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stretched"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pressed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cut"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"eton"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"packed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"pillow_blow"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tentered"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quality_control"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sewn"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"turned"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"shipped"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"kit-data"</span><span class="p">:[</span><span class="w">
+
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"tracking-numbers"</span><span class="p">:[</span><span class="w">
+            </span><span class="s2">"44335442-5331554"</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:{</span><span class="w">
+         </span><span class="nl">"items"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/items"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/items"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"order"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/order"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/order"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"line-item-count"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"links"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"self"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/relationships/line-item-count"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"related"</span><span class="p">:</span><span class="s2">"https://api.mwwondemand.com/api/line-items/764805840312993036/line-item-count"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
