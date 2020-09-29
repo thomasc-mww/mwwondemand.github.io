@@ -13,7 +13,7 @@
             <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/webhooks"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
-                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY"</span><span class="p">,</span>
+                <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"&lt;BEARER_TOKEN&gt;"</span><span class="p">,</span>
                 <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json;version=1"</span><span class="p">,</span>
             <span class="p">},</span>
             <span class="n">data</span><span class="o">=</span><span class="s">"{

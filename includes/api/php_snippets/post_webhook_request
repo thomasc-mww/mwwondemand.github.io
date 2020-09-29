@@ -15,34 +15,34 @@
 <span class="c1">// Set headers</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
   <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
-  <span class="s2">"Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY"</span><span class="p">,</span>
-  <span class="s2">"Accept: application/vnd.api+json;version=1"</span><span class="p">,</span>
- <span class="p">]</span>
-<span class="p">);</span>
-<span class="c1">// Create body</span>
-<span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{
-  \"data\": {
-    \"type\": \"webhooks\",
-    \"attributes\": {
-      \"url\": \"http://test\"
+  <span class="s2">"Authorization: &lt;BEARER_TOKEN&gt;,
+  "</span><span class="nc">Accept</span><span class="o">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="mf">.</span><span class="n">api</span><span class="o">+</span><span class="n">json</span><span class="p">;</span><span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="s2">",
+ ]
+);
+// Create body
+</span><span class="nv">$body</span><span class="s2"> = '{
+  </span><span class="se">\"</span><span class="s2">data</span><span class="se">\"</span><span class="s2">: {
+    </span><span class="se">\"</span><span class="s2">type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">webhooks</span><span class="se">\"</span><span class="s2">,
+    </span><span class="se">\"</span><span class="s2">attributes</span><span class="se">\"</span><span class="s2">: {
+      </span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">http://test</span><span class="se">\"</span><span class="s2">
     }
   }
-}'</span><span class="p">;</span>
+}';
 
-<span class="c1">// Set body</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
+// Set body
+curl_setopt(</span><span class="nv">$ch</span><span class="s2">, CURLOPT_POST, 1);
+curl_setopt(</span><span class="nv">$ch</span><span class="s2">, CURLOPT_POSTFIELDS, </span><span class="nv">$body</span><span class="s2">);
 
-<span class="c1">// Send the request &amp; save response to $resp</span>
-<span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+// Send the request &amp; save response to </span><span class="nv">$resp</span><span class="s2">
+</span><span class="nv">$resp</span><span class="s2"> = curl_exec(</span><span class="nv">$ch</span><span class="s2">);
 
-<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$resp</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">die</span><span class="p">(</span><span class="s1">'Error: "'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">)</span> <span class="mf">.</span> <span class="s1">'" - Code: '</span> <span class="mf">.</span> <span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">));</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">"Response HTTP Status Code : "</span> <span class="mf">.</span> <span class="nb">curl_getinfo</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLINFO_HTTP_CODE</span><span class="p">);</span>
-  <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">Response HTTP Body : "</span> <span class="mf">.</span> <span class="nv">$resp</span><span class="p">;</span>
-<span class="p">}</span>
+if(!</span><span class="nv">$resp</span><span class="s2">) {
+  die('Error: "</span><span class="s1">' . curl_error($ch) . '</span><span class="s2">" - Code: ' . curl_errno(</span><span class="nv">$ch</span><span class="s2">));
+} else {
+  echo "</span><span class="nc">Response</span> <span class="no">HTTP</span> <span class="nc">Status</span> <span class="nc">Code</span> <span class="o">:</span> <span class="s2">" . curl_getinfo(</span><span class="nv">$ch</span><span class="s2">, CURLINFO_HTTP_CODE);
+  echo "</span><span class="err">\</span><span class="n">nResponse</span> <span class="no">HTTP</span> <span class="nc">Body</span> <span class="o">:</span> <span class="s2">" . </span><span class="nv">$resp</span><span class="s2">;
+}
 
-<span class="c1">// Close request to clear up some resources</span>
-<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre></div>
+// Close request to clear up some resources
+curl_close(</span><span class="nv">$ch</span><span class="s2">);
+</span></code></pre></div>
