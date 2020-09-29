@@ -13,7 +13,7 @@ def send_request
   # Add headers
   req.add_field "Content-Type", "application/vnd.api+json"
   # Add headers
-  req.add_field "Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY"
+  req.add_field "Authorization", "<BEARER_TOKEN>"
   # Add headers
   req.add_field "Accept", "application/vnd.api+json; version=1"
 

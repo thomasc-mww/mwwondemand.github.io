@@ -19,7 +19,7 @@ public class SendRequest {
 
       // Add headers
       .addHeader("Content-Type", "application/vnd.api+json")
-      .addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY")
+      .addHeader("Authorization", "<BEARER_TOKEN>")
       .addHeader("Accept", "application/vnd.api+json; version=1")
 
       // Fetch request and return content

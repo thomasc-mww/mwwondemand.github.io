@@ -16,7 +16,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 // Set headers
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "Content-Type: application/vnd.api+json",
-  "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgzODcyODM1Njg4MjE1MjYsImV4cCI6MTQ4MDUxNzcyOX0.SijY04z68CwqQ6AV2N3cWSng6fQAl06zodWicym_uuY",
+  "Authorization: <BEARER_TOKEN>",
   "Accept: application/vnd.api+json; version=1",
  ]
 );
