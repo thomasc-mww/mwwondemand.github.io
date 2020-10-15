@@ -1,0 +1,8 @@
+<div class="highlight"><pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;MWW_ORDER_ID&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>

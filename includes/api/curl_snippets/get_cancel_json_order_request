@@ -1,0 +1,6 @@
+<p>*<code>shell
+curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_json_order&quot; \
+  -H &quot;Accept: application/vnd.api+json;version=1&quot; \
+  -H &quot;Authorization: auth-key=YOUR_API_KEY&quot; \
+  -H &quot;Content-Type: application/vnd.api+json&quot;
+</code></p>

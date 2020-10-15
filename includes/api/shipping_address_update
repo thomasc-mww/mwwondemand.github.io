@@ -279,11 +279,7 @@
 
 <p>This endpoint will update a shipping address from an existing order.</p>
 <h3 id='https-request'>HTTPS Request</h3>
-<p><code>PATCH https://api.mwwondemand.com/api/shipping-addresses/&lt;MWW_SHIPPING_ADDRESS_ID&gt;</code></p>
-
-<aside class="success">
-Remember, your shipping address ID can be requested by sending a GET request to https://api.mwwondemand.com/api/orders/MWW_ORDER_ID/shipping-address !
-</aside>
+<p><code>PATCH https://api.mwwondemand.com/api/shipping-addresses/&lt;YOUR_PO&gt;</code></p>
 <h3 id='patch-parameters'>PATCH Parameters</h3>
 <p><em>Shipping Address Details</em></p>
 
