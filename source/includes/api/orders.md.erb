@@ -183,3 +183,36 @@ Parameter | Description
 --------- | -----------
 id | The ID of the thing to retrieve
 vendor_po | Your PO number. This string/number must be unique with every order
+
+## Cancel Order
+
+<%= partial "includes/api/curl_snippets/get_cancel_json_order_request.md" %>
+
+<%= partial "includes/api/ruby_snippets/get_cancel_json_order_request.md" %>
+
+<%= partial "includes/api/python_snippets/get_cancel_json_order_request.md" %>
+
+<%= partial "includes/api/java_snippets/get_cancel_json_order_request.md" %>
+
+<%= partial "includes/api/php_snippets/get_cancel_json_order_request.md" %>
+
+> The above command returns the following JSON:
+
+<%= partial "includes/api/json_snippets/get_cancel_json_order_request.md" %>
+
+This endpoint cancels a specific order.
+
+### HTTPS Request
+
+`GET https://api.mwwondemand.com/api/orders/<YOUR_PO>/cancel_json_order`
+### _or_
+
+`GET https://api.mwwondemand.com/api/orders/<YOUR_PO>/cancel_json_order`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the thing to retrieve
+vendor_po | Your PO number. This string/number must be unique with every order
