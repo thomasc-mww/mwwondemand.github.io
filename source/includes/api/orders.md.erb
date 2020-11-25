@@ -200,14 +200,14 @@ vendor_po | Your PO number. This string/number must be unique with every order
 
 <%= partial "includes/api/json_snippets/get_cancel_json_order_request.md" %>
 
-This endpoint cancels a specific order.
+This endpoint requests to cancel a specific order. We are unable to immediately cancel the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Sucessful requests will then recieve a webhook confirming the cancellation.
 
 ### HTTPS Request
 
-`GET https://api.mwwondemand.com/api/orders/<YOUR_PO>/cancel_json_order`
+`PATCH https://api.mwwondemand.com/api/orders/<MWW_ORDER_ID>/`
 ### _or_
 
-`GET https://api.mwwondemand.com/api/orders/<YOUR_PO>/cancel_json_order`
+`PATCH https://api.mwwondemand.com/api/orders/<YOUR_VENDOR_PO>/`
 
 
 ### URL Parameters

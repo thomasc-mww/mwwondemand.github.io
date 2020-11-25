@@ -6,25 +6,33 @@ import requests
 
 
 def send_request():
-    # Get Order
-    # GET https://api.mwwondemand.com/api/orders/:id/cancel_json_order
+    # Cancel Order
+    # PATCH https://api.mwwondemand.com/api/orders/:id
 
     try:
-        response = requests.get(
-            url="https://api.mwwondemand.com/api/orders/:id/cancel_json_order",
-            params={
-                "history": "1",
-            },
+        response = requests.post(
+            url="https://api.mwwondemand.com/api/orders",
             headers={
                 "Content-Type": "application/vnd.api+json",
                 "Authorization": "auth-key=YOUR_API_KEY",
-                "Accept": "application/vnd.api+json;version=1",
+                "Accept": "application/vnd.api+json; version=1",
             },
-        )
+            data=
+            """{
+         "data": {
+            "type": "orders",
+            "attributes": {
+              "vendor-po": "14679881092",
+              "shipping-method": "SAMPLE",
+              "shipping-account-number": "1234",
+              "test-order": "test"
+            }
+          }
+        }"""
         print('Response HTTP Status Code: {status_code}'.format(
             status_code=response.status_code))
         print('Response HTTP Response Body: {content}'.format(
             content=response.content))
-    except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+    except requests.exceptions.RequestException as e:
+        print(e)
 ```
