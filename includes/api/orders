@@ -1384,30 +1384,51 @@ Remember — a successful request will be an authenticated request!
 </tr>
 </tbody></table>
 <h2 id='cancel-order'>Cancel Order</h2>
-<p>*<code>shell
-curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_json_order&quot; \
-  -H &quot;Accept: application/vnd.api+json;version=1&quot; \
-  -H &quot;Authorization: auth-key=YOUR_API_KEY&quot; \
-  -H &quot;Content-Type: application/vnd.api+json&quot;
-</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="s2">"https://api.mwwondemand.com/api/orders/:id/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json;version=1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/vnd.api+json"</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "data": {
+      "type": "orders",
+      "id": &lt;YOUR_VENDOR_PO/ORDER_ID&gt;
+      "attributes": {
+        "request": "cancel"
+        }
+      }
+    }'</span>
+</code></pre></div>
 
 <div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="c1"># Cancel Order by ID or Vendor Po</span>
+<span class="c1"># Create Order (POST )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders/:id/cancel_json_order'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
-  <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
   <span class="c1"># Create Request</span>
-  <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+  <span class="c1">#http.use_ssl = true</span>
+  <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json; version=1"</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json"</span>
+  <span class="c1"># Set body</span>
+  <span class="n">req</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "data": {
+     "type": "orders",
+     "attributes": {
+       "vendor-po": "14679881309",
+       "shipping-method": "SAMPLE",
+       "shipping-account-number": "1234",
+       "test-order": "test"
+     }
+   }
+  }'</span>
 
   <span class="c1"># Fetch Request</span>
   <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
@@ -1425,61 +1446,107 @@ curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_
 
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
-    <span class="c1"># Get Order
-</span>    <span class="c1"># GET https://api.mwwondemand.com/api/orders/:id/cancel_json_order
+    <span class="c1"># Cancel Order
+</span>    <span class="c1"># PATCH https://api.mwwondemand.com/api/orders/:id
 </span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders/:id/cancel_json_order"</span><span class="p">,</span>
-            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-                <span class="s">"history"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
-            <span class="p">},</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
-                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json;version=1"</span><span class="p">,</span>
+                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
             <span class="p">},</span>
-        <span class="p">)</span>
+            <span class="n">data</span><span class="o">=</span>
+            <span class="s">"""{
+         "data": {
+            "type": "orders",
+            "attributes": {
+              "vendor-po": "14679881092",
+              "shipping-method": "SAMPLE",
+              "shipping-account-number": "1234",
+              "test-order": "test"
+            }
+          }
+        }"""</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Status Code: {status_code}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
             <span class="n">status_code</span><span class="o">=</span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">))</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Response Body: {content}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
             <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">'HTTP Request failed'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="highlight"><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.apache.http.client.fluent.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.HttpURLConnection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.DataOutputStream</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SendRequest</span> <span class="o">{</span>
-
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubmitOrder</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">sendRequest</span><span class="o">();</span>
+      <span class="n">sendRequest</span><span class="o">();</span>
   <span class="o">}</span>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sendRequest</span><span class="o">()</span> <span class="o">{</span>
+      <span class="c1">// Create Order (POST )</span>
 
-    <span class="c1">// Get Order (GET )</span>
-
-    <span class="k">try</span> <span class="o">{</span>
-
+  <span class="k">try</span> <span class="o">{</span>
       <span class="c1">// Create request</span>
-      <span class="nc">Content</span> <span class="n">content</span> <span class="o">=</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Get</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/:id/cancel_json_order"</span><span class="o">)</span>
+      <span class="no">URL</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"https://api.mwwondemand.com/api/orders/:id"</span><span class="o">);</span>
+      <span class="nc">HttpURLConnection</span> <span class="n">con</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpURLConnection</span><span class="o">)</span> <span class="n">obj</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
 
-      <span class="c1">// Add headers</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json;version=1"</span><span class="o">)</span>
 
-      <span class="c1">// Fetch request and return content</span>
-      <span class="o">.</span><span class="na">execute</span><span class="o">().</span><span class="na">returnContent</span><span class="o">();</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">"PATCH"</span><span class="o">);</span>
 
-      <span class="c1">// Print content</span>
-      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
-    <span class="o">}</span>
-    <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span> <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
+      <span class="c1">// // Add headers</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="o">);</span>
+      <span class="n">con</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/vnd.api+json"</span><span class="o">);</span>
+
+      <span class="c1">// Add body</span>
+      <span class="nc">String</span> <span class="n">urlParams</span> <span class="o">=</span> <span class="s">"{"</span><span class="o">+</span>
+        <span class="s">"\"data\": {"</span><span class="o">+</span>
+          <span class="s">"\"type\": \"orders\","</span><span class="o">+</span>
+          <span class="s">"\"id\": \"YOUR_PO/ORDER_ID\","</span><span class="o">+</span>
+          <span class="s">"\"attributes\":"</span><span class="o">+</span>
+          <span class="s">"{"</span><span class="o">+</span>
+            <span class="s">"\"request\": \"cancel\""</span><span class="o">+</span>
+          <span class="s">"}"</span><span class="o">+</span>
+        <span class="s">"},"</span><span class="o">+</span>
+      <span class="s">"}"</span>
+
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">urlParams</span><span class="o">);</span>
+
+      <span class="n">con</span><span class="o">.</span><span class="na">setDoOutput</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+      <span class="nc">DataOutputStream</span> <span class="n">wr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DataOutputStream</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+      <span class="n">wr</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">urlParams</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
+      <span class="n">wr</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+      <span class="n">wr</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Response Code : "</span> <span class="o">+</span> <span class="n">responseCode</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"PATCH Response Message : "</span> <span class="o">+</span> <span class="n">con</span><span class="o">.</span><span class="na">getResponseMessage</span><span class="o">());</span>
+
+      <span class="nc">BufferedReader</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span>
+          <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">con</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+      <span class="nc">String</span> <span class="n">inputLine</span><span class="o">;</span>
+      <span class="nc">StringBuffer</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+
+      <span class="k">while</span> <span class="o">((</span><span class="n">inputLine</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">readLine</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">response</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">inputLine</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+      <span class="c1">//print result</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+
 </code></pre></div>
 
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
@@ -1491,7 +1558,7 @@ curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.mwwondemand.com/api/orders/:id'</span><span class="p">);</span>
 
 <span class="c1">// Set method</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'PATCH'</span><span class="p">);</span>
 
 <span class="c1">// Set options</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -1500,10 +1567,22 @@ curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
   <span class="s2">"Content-Type: application/vnd.api+json"</span><span class="p">,</span>
   <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span><span class="p">,</span>
-  <span class="s2">"Accept: application/vnd.api+json;version=1"</span><span class="p">,</span>
+  <span class="s2">"Accept: application/vnd.api+json; version=1"</span><span class="p">,</span>
  <span class="p">]</span>
 <span class="p">);</span>
+<span class="c1">// Create body</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="s1">'{"data": {
+  "type": "orders",
+  "id": &lt;YOUR_VENDOR_PO/ORDER_ID&gt;
+  "attributes": {
+    "request": "cancel"
+    }
+  }
+}'</span>
 
+<span class="c1">// Set body</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$body</span><span class="p">);</span>
 
 <span class="c1">// Send the request &amp; save response to $resp</span>
 <span class="nv">$resp</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
@@ -1526,17 +1605,73 @@ curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_
 <div class="highlight"><pre class="highlight plaintext"><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;MWW_ORDER_ID&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"568129875827754040"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T20:53:02.578Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-07T20:53:02.578Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"received"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shipping-method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAMPLE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shipping-account-number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vendor-po"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1467924781"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"line-items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/line-items"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/line-items"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"line-item-views"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/line-item-views"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/line-item-views"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"packing-list"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/packing-list"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/packing-list"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"shipping-label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/shipping-label"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/shipping-label"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"billing-address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/billing-address"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/billing-address"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"shipping-address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/relationships/shipping-address"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.mwwondemand.com/api/orders/568129875827754040/shipping-address"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 
-<p>This endpoint cancels a specific order.</p>
+<p>This endpoint requests to cancel a specific order. We are unable to immediately cancel the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Sucessful requests will then recieve a webhook confirming the cancellation.</p>
 <h3 id='https-request-4'>HTTPS Request</h3>
-<p><code>GET https://api.mwwondemand.com/api/orders/&lt;YOUR_PO&gt;/cancel_json_order</code></p>
+<p><code>PATCH https://api.mwwondemand.com/api/orders/&lt;MWW_ORDER_ID&gt;/</code></p>
 <h3 id='or-2'><em>or</em></h3>
-<p><code>GET https://api.mwwondemand.com/api/orders/&lt;YOUR_PO&gt;/cancel_json_order</code></p>
+<p><code>PATCH https://api.mwwondemand.com/api/orders/&lt;YOUR_VENDOR_PO&gt;/</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>

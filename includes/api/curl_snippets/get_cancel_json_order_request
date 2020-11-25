@@ -1,6 +1,14 @@
-<p>*<code>shell
-curl -X &quot;GET&quot; &quot;https://api.mwwondemand.com/api/orders/:id/cancel_json_order&quot; \
-  -H &quot;Accept: application/vnd.api+json;version=1&quot; \
-  -H &quot;Authorization: auth-key=YOUR_API_KEY&quot; \
-  -H &quot;Content-Type: application/vnd.api+json&quot;
-</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s2">"PATCH"</span> <span class="s2">"https://api.mwwondemand.com/api/orders/:id/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/vnd.api+json;version=1"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: auth-key=YOUR_API_KEY"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/vnd.api+json"</span>
+  <span class="nt">-d</span> <span class="s1">$'{
+    "data": {
+      "type": "orders",
+      "id": &lt;YOUR_VENDOR_PO/ORDER_ID&gt;
+      "attributes": {
+        "request": "cancel"
+        }
+      }
+    }'</span>
+</code></pre></div>

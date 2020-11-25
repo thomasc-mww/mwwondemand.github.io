@@ -1,20 +1,33 @@
 <div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
 
-<span class="c1"># Cancel Order by ID or Vendor Po</span>
+<span class="c1"># Create Order (POST )</span>
 <span class="k">def</span> <span class="nf">send_request</span>
-  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders/:id/cancel_json_order'</span><span class="p">)</span>
+  <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://api.mwwondemand.com/api/orders'</span><span class="p">)</span>
 
   <span class="c1"># Create client</span>
   <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
-  <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
   <span class="c1"># Create Request</span>
-  <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+  <span class="c1">#http.use_ssl = true</span>
+  <span class="n">req</span> <span class="o">=</span>  <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">[</span><span class="s2">"Accept"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json; version=1"</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">.</span><span class="nf">add_field</span> <span class="s2">"Authorization"</span><span class="p">,</span> <span class="s2">"auth-key=YOUR_API_KEY"</span>
   <span class="c1"># Add headers</span>
   <span class="n">req</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/vnd.api+json"</span>
+  <span class="c1"># Set body</span>
+  <span class="n">req</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'{
+  "data": {
+     "type": "orders",
+     "attributes": {
+       "vendor-po": "14679881309",
+       "shipping-method": "SAMPLE",
+       "shipping-account-number": "1234",
+       "test-order": "test"
+     }
+   }
+  }'</span>
 
   <span class="c1"># Fetch Request</span>
   <span class="n">res</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>

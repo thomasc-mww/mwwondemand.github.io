@@ -5,25 +5,33 @@
 
 
 <span class="k">def</span> <span class="nf">send_request</span><span class="p">():</span>
-    <span class="c1"># Get Order
-</span>    <span class="c1"># GET https://api.mwwondemand.com/api/orders/:id/cancel_json_order
+    <span class="c1"># Cancel Order
+</span>    <span class="c1"># PATCH https://api.mwwondemand.com/api/orders/:id
 </span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span>
-            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders/:id/cancel_json_order"</span><span class="p">,</span>
-            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
-                <span class="s">"history"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
-            <span class="p">},</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="s">"https://api.mwwondemand.com/api/orders"</span><span class="p">,</span>
             <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
                 <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/vnd.api+json"</span><span class="p">,</span>
                 <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"auth-key=YOUR_API_KEY"</span><span class="p">,</span>
-                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json;version=1"</span><span class="p">,</span>
+                <span class="s">"Accept"</span><span class="p">:</span> <span class="s">"application/vnd.api+json; version=1"</span><span class="p">,</span>
             <span class="p">},</span>
-        <span class="p">)</span>
+            <span class="n">data</span><span class="o">=</span>
+            <span class="s">"""{
+         "data": {
+            "type": "orders",
+            "attributes": {
+              "vendor-po": "14679881092",
+              "shipping-method": "SAMPLE",
+              "shipping-account-number": "1234",
+              "test-order": "test"
+            }
+          }
+        }"""</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Status Code: {status_code}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
             <span class="n">status_code</span><span class="o">=</span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">))</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'Response HTTP Response Body: {content}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
             <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">'HTTP Request failed'</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div>
