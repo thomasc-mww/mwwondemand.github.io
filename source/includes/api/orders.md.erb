@@ -184,21 +184,55 @@ Parameter | Description
 id | The ID of the thing to retrieve
 vendor_po | Your PO number. This string/number must be unique with every order
 
-## Cancel Order
+## Update Order
 
-<%= partial "includes/api/curl_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/curl_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/ruby_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/ruby_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/python_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/python_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/java_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/java_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/php_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/php_snippets/patch_order_request.md" %>
 
 > The above command returns the following JSON:
 
-<%= partial "includes/api/json_snippets/get_cancel_json_order_request.md" %>
+<%= partial "includes/api/json_snippets/patch_order_request.md" %>
+
+This endpoint requests to update a specific order. We are unable to immediately update the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Sucessful requests will then recieve a webhook confirming the update.
+
+### HTTPS Request
+
+`PATCH https://api.mwwondemand.com/api/orders/<MWW_ORDER_ID>/`
+### _or_
+
+`PATCH https://api.mwwondemand.com/api/orders/<YOUR_VENDOR_PO>/`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the thing to retrieve
+vendor_po | Your PO number. This string/number must be unique with every order
+
+
+## Cancel
+
+<%= partial "includes/api/curl_snippets/cancel_order_request.md" %>
+
+<%= partial "includes/api/ruby_snippets/cancel_order_request.md" %>
+
+<%= partial "includes/api/python_snippets/cancel_order_request.md" %>
+
+<%= partial "includes/api/java_snippets/cancel_order_request.md" %>
+
+<%= partial "includes/api/php_snippets/cancel_order_request.md" %>
+
+> The above command returns the following JSON:
+
+<%= partial "includes/api/json_snippets/cancel_order_request.md" %>
 
 This endpoint requests to cancel a specific order. We are unable to immediately cancel the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Sucessful requests will then recieve a webhook confirming the cancellation.
 
@@ -216,3 +250,4 @@ Parameter | Description
 --------- | -----------
 id | The ID of the thing to retrieve
 vendor_po | Your PO number. This string/number must be unique with every order
+
