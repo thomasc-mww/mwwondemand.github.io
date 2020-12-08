@@ -200,7 +200,7 @@ vendor_po | Your PO number. This string/number must be unique with every order
 
 <%= partial "includes/api/json_snippets/patch_order_request.md" %>
 
-This endpoint requests to update a specific order. We are unable to immediately update the order. We will deny requests immediately if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then recieve a webhook confirming the update.
+This endpoint requests to update a specific order. We are unable to immediately update the order. We will deny requests immediately if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then receive a webhook confirming the update.
 
 ### HTTPS Request
 
@@ -234,7 +234,7 @@ vendor_po | Your PO number. This string/number must be unique with every order
 
 <%= partial "includes/api/json_snippets/cancel_order_request.md" %>
 
-This endpoint requests to cancel a specific order. We are unable to immediately cancel the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then recieve a webhook confirming the cancellation.
+This endpoint requests to cancel a specific order. We are unable to immediately cancel the order. We will deny requests immediatley if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then receive a webhook confirming the cancellation.
 
 ### HTTPS Request
 
