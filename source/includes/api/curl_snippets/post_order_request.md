@@ -51,7 +51,8 @@ curl -X "POST" "http://api.mwwondemand.com/api/orders" \
         "product-code": "PRT-GEN-ZOH99",
         "customer-product-code": "YOUR_UPC/SKU_NUMBER",
         "item-properties": {
-          "thread-color": "white"
+          "thread-color": "white",
+          "hs-code": "1234.56.789"
         },
         "designs": [
           {

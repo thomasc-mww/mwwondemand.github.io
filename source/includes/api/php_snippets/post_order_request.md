@@ -86,7 +86,8 @@ $body = '{"data": {
        "product-code": "3PF-SC6-SPFPI",
        "customer-product-code": "YOUR_UPC/SKU_NUMBER",
        "item-properties": {
-         "thread-color": "white"
+         "thread-color": "white",
+         "hs-code": "1234.56.789"
        },
        "designs": [
          {

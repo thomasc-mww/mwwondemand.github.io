@@ -184,38 +184,38 @@ Parameter | Description
 id | The ID of the thing to retrieve
 vendor_po | Your PO number. This string/number must be unique with every order
 
-## Update Ship Method
+[comment]: <> (## Update Ship Method
 
-<%= partial "includes/api/curl_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/curl_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/ruby_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/ruby_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/python_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/python_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/java_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/java_snippets/patch_order_request.md" %>
 
-<%= partial "includes/api/php_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/php_snippets/patch_order_request.md" %>
 
-> The above command returns the following JSON:
+[comment]: <> (> The above command returns the following JSON:
 
-<%= partial "includes/api/json_snippets/patch_order_request.md" %>
+<%#= partial "includes/api/json_snippets/patch_order_request.md" %>
 
-This endpoint requests to update a specific order. We are unable to immediately update the order. We will deny requests immediately if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then receive a webhook confirming the update.
+[comment]: <> (This endpoint requests to update a specific order. We are unable to immediately update the order. We will deny requests immediately if the order is already packed, shipped or cancelled. We will also deny requests if the original order has not been fully ingested. This may take up to an hour from submission. Successful requests will then receive a webhook confirming the update.
 
-### HTTPS Request
+[comment]: <> (### HTTPS Request
 
-`PATCH https://api.mwwondemand.com/api/orders/<MWW_ORDER_ID>/`
-### _or_
+[comment]: <> (`PATCH https://api.mwwondemand.com/api/orders/<MWW_ORDER_ID>/`
+[comment]: <> (### _or_
 
-`PATCH https://api.mwwondemand.com/api/orders/<YOUR_VENDOR_PO>/`
+[comment]: <> (`PATCH https://api.mwwondemand.com/api/orders/<YOUR_VENDOR_PO>/`
 
 
-### URL Parameters
+[comment]: <> (### URL Parameters
 
-Parameter | Description
---------- | -----------
-id | The ID of the thing to retrieve
-vendor_po | Your PO number. This string/number must be unique with every order
+[comment]: <> (Parameter | Description
+[comment]: <> (--------- | -----------
+[comment]: <> (id | The ID of the thing to retrieve
+[comment]: <> (vendor_po | Your PO number. This string/number must be unique with every order
 
 
 ## Cancel

@@ -80,7 +80,8 @@ public class SubmitOrder {
                     "\"customer-product-code\": \"YOUR_UPC/SKU_NUMBER\","+
                     "\"item-properties\":"+
                     "{"+
-                      "\"thread-color\": \"white\""+
+                      "\"thread-color\": \"white\","+
+                      "\"hs-code\": \"1234.56.789\""+
                     "},"+
                     "\"designs\": ["+
                       "{"+
