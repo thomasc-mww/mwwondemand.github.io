@@ -46,9 +46,12 @@ quantity <br><em>number</em> | The number of items you want to order for a given
 description <br><em>string</em> | Your description of the item. If omitted the default product description will be used.
 product-code <br><em>string</em> | The MWW product code of the item to order.
 customer-product-code <br><em>string (optional)</em> | Your custom SKU or UPC number.
-item-properties <br><em>object (optional)</em> | Additional attributes for some products. This can be omitted in most cases. See products for more information. <br> Options include: alias-item-no, item-price, extended-description, wsf, thread-color, inside-neck-tape-color, cuff-color, string-color, hood-thread-color, body-thread-color, waist-color, item-label, hs-code, height, width, personalization, and unique-id <br> DTG options include: item-type, color, size, placement, and style
+item-properties <br><em>object (optional)</em> | Additional attributes for some products. This can be omitted in most cases. See products for more information. <br> Options include: alias-item-no, item-price, extended-description, wsf, thread-color, inside-neck-tape-color, cuff-color, string-color, <br>hood-thread-color, body-thread-color, waist-color, item-label, hs-code, height, width, personalization, and unique-id
 designs <br><em>array[single object]</em> | Information about the design to be rendered.
 image-remote-url <br><em>string</em> | A publically accessible path to the source artwork.
+location <br><em>string</em> | DTG products only. This is the print location for the image ('front' or 'back' for now)
+placement <br><em>string</em> | DTG products only. This is a customization of the location value. Defaults to center. Not available currently.
+
 
 *Shipping details*
 
